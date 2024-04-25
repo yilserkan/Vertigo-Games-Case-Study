@@ -28,7 +28,16 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.16666667
-        value: {x: 0, y: 0, z: -10}
+        value: {x: 0, y: 0, z: -11.914802}
+        inSlope: {x: 0, y: 0, z: -77.98779}
+        outSlope: {x: 0, y: 0, z: -77.98779}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 0.23333333
+        value: {x: 0, y: 0, z: -14.861008}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -70,13 +79,22 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.19249661}
       - serializedVersion: 3
-        time: 0.33333334
-        value: {x: 0, y: 0, z: 0}
-        inSlope: {x: 0.51719284, y: 0.51719284, z: -518.2749}
-        outSlope: {x: 0.51719284, y: 0.51719284, z: -518.2749}
+        time: 0.26666668
+        value: {x: -0.03034198, y: -0.03034198, z: 23.525866}
+        inSlope: {x: 0.7447577, y: 0.7447577, z: -281.1059}
+        outSlope: {x: 0.7447577, y: 0.7447577, z: -238.8184}
         tangentMode: 0
         weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.08077025}
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.123632856}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.2139491}
+      - serializedVersion: 3
+        time: 0.33333334
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: 0, z: -307.76184}
+        outSlope: {x: 0, y: 0, z: -720.00006}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.16146676}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -225,8 +243,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.16666667
-        value: -10
+        time: 0.23333333
+        value: -14.861008
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -275,9 +293,9 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.33333334
         value: 0
-        inSlope: 0.51719284
-        outSlope: 0.51719284
-        tangentMode: 34
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
@@ -314,9 +332,9 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.33333334
         value: 0
-        inSlope: 0.51719284
-        outSlope: 0.51719284
-        tangentMode: 34
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
@@ -351,13 +369,22 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.19249661
       - serializedVersion: 3
+        time: 0.26666668
+        value: 23.525866
+        inSlope: -281.1059
+        outSlope: -238.8184
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 0.123632856
+        outWeight: 0.2139491
+      - serializedVersion: 3
         time: 0.33333334
         value: 0
-        inSlope: -518.2749
-        outSlope: -518.2749
-        tangentMode: 0
+        inSlope: -307.76184
+        outSlope: -720.00006
+        tangentMode: 65
         weightedMode: 0
-        inWeight: 0.08077025
+        inWeight: 0.16146676
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -375,7 +402,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
+    attribute: m_LocalEulerAngles.x
     path: ui_image_spinWheel_indicator
     classID: 224
     script: {fileID: 0}
@@ -399,7 +426,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
+    attribute: m_LocalEulerAngles.z
     path: ui_image_spinWheel_indicator
     classID: 224
     script: {fileID: 0}
