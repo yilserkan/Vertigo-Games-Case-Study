@@ -17,7 +17,6 @@ namespace CardGame.SceneManagement
         private AsyncOperationHandle<SceneInstance> _activeAddressableSceneHandle;
         private AsyncOperationHandle<SceneInstance> _prevAddressableSceneHandle;
         
-        private SceneType _activeSceneType = SceneType.InitializationScene;
         private const string INITIALIZATION_SCENE_NAME = "InitializationScene"; 
         public void Awake()
         {
