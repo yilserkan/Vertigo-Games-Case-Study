@@ -1,4 +1,5 @@
 using CardGame.Items;
+using CardGame.ServiceManagement;
 using UnityEngine;
 
 namespace CardGame.SpinWheel
@@ -8,12 +9,12 @@ namespace CardGame.SpinWheel
         private ItemContainers _itemContainers;
         private int _levelCount = 50;
         
-        public MockLevelCreator(ItemContainers itemContainers)
+        public MockLevelCreator()
         {
-            _itemContainers = itemContainers;
+            ServiceLocator.Global.Get(out _itemContainers);
         }
 
-        public LevelData[] GetMockLevelData()
+        public WheelLevel GetMockLevelData()
         {
             var levelDatas = new LevelData[_levelCount];
             for (int i = 0; i < _levelCount; i++)
@@ -21,7 +22,9 @@ namespace CardGame.SpinWheel
                 levelDatas[i] = CreateLevelData(i + 1);
             }
 
-            return levelDatas;
+            var lvl = new WheelLevel();
+            lvl.LevelData = levelDatas;
+            return lvl;
         }
         
         private LevelData CreateLevelData(int level)
