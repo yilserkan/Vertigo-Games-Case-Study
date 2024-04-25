@@ -2656,17 +2656,17 @@ PrefabInstance:
     - target: {fileID: 1776801405442527457, guid: 9b9c7f7708db68a40948dbbd93ad7ea3,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1776801405442527457, guid: 9b9c7f7708db68a40948dbbd93ad7ea3,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1776801405442527457, guid: 9b9c7f7708db68a40948dbbd93ad7ea3,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1776801405442527457, guid: 9b9c7f7708db68a40948dbbd93ad7ea3,
         type: 3}
@@ -2697,16 +2697,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ui_spinWheel_parent
-      objectReference: {fileID: 0}
-    - target: {fileID: 6417072494129490090, guid: 9b9c7f7708db68a40948dbbd93ad7ea3,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.14916992
-      objectReference: {fileID: 0}
-    - target: {fileID: 8188367621396054604, guid: 9b9c7f7708db68a40948dbbd93ad7ea3,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 1.1223145
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
