@@ -1,46 +1,49 @@
 using CardGame.SpinWheel;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/ZonePanelUIAssets", fileName = "ZonePanelUIAssets", order = 0)]
-public class ZonePanelUIAssets : ScriptableObject
+namespace CardGame.Zones
 {
-    [Header("Safe Zone")]
-    [SerializeField] private string _safeZoneText;
-    [SerializeField] private Color _safeZoneTextColor;
-    [SerializeField] private Color _safeZoneBgColor;
+    [CreateAssetMenu(menuName = "ScriptableObjects/ZonePanelUIAssets", fileName = "ZonePanelUIAssets", order = 0)]
+    public class ZonePanelUIAssets : ScriptableObject
+    {
+        [Header("Safe Zone")]
+        [SerializeField] private string _safeZoneText;
+        [SerializeField] private Color _safeZoneTextColor;
+        [SerializeField] private Color _safeZoneBgColor;
     
-    [Header("Super Zone")]
-    [SerializeField] private string _superZoneText;
-    [SerializeField] private Color _superZoneTextColor;
-    [SerializeField] private Color _superZoneBgColor;
+        [Header("Super Zone")]
+        [SerializeField] private string _superZoneText;
+        [SerializeField] private Color _superZoneTextColor;
+        [SerializeField] private Color _superZoneBgColor;
     
-    public Color GetBgSpriteColor(LevelType levelType)
-    {
-        if (levelType == LevelType.SafeZone)
+        public Color GetBgSpriteColor(LevelType levelType)
         {
-            return _safeZoneBgColor;
+            if (levelType == LevelType.SafeZone)
+            {
+                return _safeZoneBgColor;
+            }
+
+            return _superZoneBgColor;
         }
 
-        return _superZoneBgColor;
-    }
-
-    public Color GetTextColor(LevelType levelType)
-    {
-        if (levelType == LevelType.SafeZone)
+        public Color GetTextColor(LevelType levelType)
         {
-            return _safeZoneTextColor;
+            if (levelType == LevelType.SafeZone)
+            {
+                return _safeZoneTextColor;
+            }
+
+            return _superZoneTextColor;
         }
 
-        return _superZoneTextColor;
-    }
-
-    public string GetZoneText(LevelType levelType)
-    {
-        if (levelType == LevelType.SafeZone)
+        public string GetZoneText(LevelType levelType)
         {
-            return _safeZoneText;
-        }
+            if (levelType == LevelType.SafeZone)
+            {
+                return _safeZoneText;
+            }
 
-        return _superZoneText;
+            return _superZoneText;
+        }
     }
 }

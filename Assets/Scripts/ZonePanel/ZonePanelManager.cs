@@ -1,12 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using CardGame.ServiceManagement;
 using CardGame.SpinWheel;
 using CardGame.Utils;
 using UnityEngine;
 
-public class ZonePanelManager : MonoBehaviour
+namespace CardGame.Zones
+{
+    public class ZonePanelManager : MonoBehaviour
 {
     [SerializeField] private ZoneCardManager _safeZoneCardManager;
     [SerializeField] private ZoneCardManager _superZoneCardManager;
@@ -15,6 +14,8 @@ public class ZonePanelManager : MonoBehaviour
     private ZonePanelUIManager _zonePanelUIManager;
     private Observable<int> _safeZoneLevel;
     private Observable<int> _superZoneLevel;
+
+    public const int ZONE_NOT_FOUND = -1;
     
     private void OnEnable()
     {
@@ -92,4 +93,6 @@ public class ZonePanelManager : MonoBehaviour
         LevelManager.OnStartGame -= Initialize;
         LevelManager.OnShowNextStage -= HandleOnShowNextStage;
     }
+}
+
 }

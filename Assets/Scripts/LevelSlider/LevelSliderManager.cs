@@ -61,9 +61,10 @@ namespace CardGame.LevelSlider
             _levelSliderItems = new LevelSliderItem[levelCount];
             for (int i = 0; i < levelCount; i++)
             {
+                var level = _levelManager.CurrentStage + i;
                 var instantiated = Instantiate(_levelSliderData.LevelSliderItemPrefab, _levelParentRect);
                 instantiated.SetAnchoredPosition(new Vector2(i * _levelSliderData.SingleItemWidth, 0));
-                instantiated.SetLevelText((LevelType)levelDatas[i].LevelType, i, _levelManager.CurrentStage);
+                instantiated.SetLevelText((LevelType)levelDatas[level].LevelType, level, _levelManager.CurrentStage);
                 _levelSliderItems[i] = instantiated;
             }
         }
@@ -74,9 +75,10 @@ namespace CardGame.LevelSlider
             var levelDatas = _levelManager.LevelData.Levels;
             for (int i = 0; i < _levelSliderItems.Length; i++)
             {
-                if (levelDatas.Length <= i) { break; }
+                var level = _levelManager.CurrentStage + i;
+                if (levelDatas.Length <= level) { break; }
                 
-                _levelSliderItems[i].SetLevelText((LevelType)levelDatas[i].LevelType, i, _levelManager.CurrentStage);
+                _levelSliderItems[i].SetLevelText((LevelType)levelDatas[level].LevelType, level, _levelManager.CurrentStage);
             }
         }
 

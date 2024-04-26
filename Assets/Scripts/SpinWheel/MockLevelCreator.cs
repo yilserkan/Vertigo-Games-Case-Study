@@ -7,7 +7,7 @@ namespace CardGame.SpinWheel
     public class MockLevelCreator
     {
         private ItemContainers _itemContainers;
-        private int _levelCount = 50;
+        private int _levelCount = 60;
         
         public MockLevelCreator()
         {

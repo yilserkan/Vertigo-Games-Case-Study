@@ -4,17 +4,32 @@ using CardGame.Utils;
 using TMPro;
 using UnityEngine;
 
-public class ZoneCardManager : MonoBehaviour, IObserver<int>
+namespace CardGame.Zones
 {
-    [SerializeField] private TextMeshProUGUI _zoneLevelText;
+    public class ZoneCardManager : MonoBehaviour, IObserver<int>
+    {
+        [SerializeField] private TextMeshProUGUI _zoneLevelText;
     
-    public void Notify(int value)
-    {
-        SetLevelText(value);
-    }
+        public void Notify(int value)
+        {
+            SetLevelText(value);
+        }
 
-    private void SetLevelText(int value)
-    {
-        _zoneLevelText.text = $"{value}";
+        private void SetLevelText(int value)
+        {
+            if (value == ZonePanelManager.ZONE_NOT_FOUND)
+            {
+                EnableZoneCard(false);
+                return;
+            }
+            
+            EnableZoneCard(true);
+            _zoneLevelText.text = $"{value}";
+        }
+
+        private void EnableZoneCard(bool enable)
+        {
+            gameObject.SetActive(enable);
+        }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using CardGame.Items;
 using CardGame.ServiceManagement;
 using CardGame.Utils;
+using CardGame.Zones;
 using UnityEngine;
 
 namespace CardGame.SpinWheel
