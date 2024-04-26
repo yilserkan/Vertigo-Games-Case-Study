@@ -18,6 +18,7 @@ namespace CardGame.SpinWheel
         public static event Action OnPlayerHasLostEvent;
         public static event Action<int> OnShowNextStage;
         public static event Action OnStartGame;
+        public static event Action OnShowZonePanel;
         
         private void OnEnable()
         {
@@ -67,6 +68,14 @@ namespace CardGame.SpinWheel
                 return;
             }
             // TODO : Show UI Animation
+
+            // TODO : Check for game end
+            
+            if (IsAtZoneLevel())
+            {
+                OnShowZonePanel?.Invoke();
+                return;
+            }
             
             ShowNextStage();
         }
@@ -112,7 +121,8 @@ namespace CardGame.SpinWheel
             //TODO : Show Rewards
             StartGame();
         }
-        
+
+        private bool IsAtZoneLevel() => (LevelType)LevelData.Levels[_currentStage.Value].LevelType is LevelType.SafeZone or LevelType.SuperZone; 
         
         private void AddListeners()
         {
@@ -120,6 +130,7 @@ namespace CardGame.SpinWheel
             LostPanelUIManager.OnRestartButtonClickedEvent += HandleOnRestartButtonClicked;
             LostPanelUIManager.OnReviveButtonClickedEvent += HandleOnReviveButtonClicked;
             ZonePanelUIManager.OnClaimRewardsButtonClicked += HandleOnClaimRewardsButtonClicked;
+            ZonePanelUIManager.OnContinuButtonClicked += ShowNextStage;
         }
 
         private void RemoveListeners()
@@ -128,6 +139,7 @@ namespace CardGame.SpinWheel
             LostPanelUIManager.OnRestartButtonClickedEvent -= HandleOnRestartButtonClicked;
             LostPanelUIManager.OnReviveButtonClickedEvent -= HandleOnReviveButtonClicked;
             ZonePanelUIManager.OnClaimRewardsButtonClicked -= HandleOnClaimRewardsButtonClicked;
+            ZonePanelUIManager.OnContinuButtonClicked -= ShowNextStage;
         }
     }
 }

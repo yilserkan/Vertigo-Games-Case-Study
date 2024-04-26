@@ -46,14 +46,12 @@ namespace CardGame.Zones
         SetNextZoneLevel(LevelType.SuperZone, _levelManager.CurrentStage);
     }
 
-    private void HandleOnShowNextStage(int level)
+    private void HandleOnShowZonePanel()
     {
+        var level = _levelManager.CurrentStage;
         LevelType currentLevelType = (LevelType)_levelManager.LevelData.Levels[level].LevelType;
-        if (currentLevelType is LevelType.SafeZone or LevelType.SuperZone)
-        {
-            _zonePanelUIManager.ShowZonePanel(currentLevelType);
-            SetNextZoneLevel(currentLevelType, level);
-        }
+        _zonePanelUIManager.ShowZonePanel(currentLevelType);
+        SetNextZoneLevel(currentLevelType, level);
     }
 
     private void SetNextZoneLevel(LevelType type, int currentLevel)
@@ -85,13 +83,13 @@ namespace CardGame.Zones
     private void AddListeners()
     {
         LevelManager.OnStartGame += Initialize;
-        LevelManager.OnShowNextStage += HandleOnShowNextStage;
+        LevelManager.OnShowZonePanel += HandleOnShowZonePanel;
     }
 
     private void RemoveListeners()
     {
         LevelManager.OnStartGame -= Initialize;
-        LevelManager.OnShowNextStage -= HandleOnShowNextStage;
+        LevelManager.OnShowZonePanel -= HandleOnShowZonePanel;
     }
 }
 

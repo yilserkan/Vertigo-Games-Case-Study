@@ -20,6 +20,7 @@ namespace CardGame.Zones
         [SerializeField] private ZonePanelUIAssets zonePanelUIAssets;
     
         public static event Action OnClaimRewardsButtonClicked;
+        public static event Action OnContinuButtonClicked;
         
         private void OnEnable()
         {
@@ -39,6 +40,7 @@ namespace CardGame.Zones
         private void HandleOnContinueButtonClicked()
         {
             EnableClaimRewardsPanel(false);
+            OnContinuButtonClicked?.Invoke();
         }
     
         private void HandleOnClaimRewardsButtonClicked()
