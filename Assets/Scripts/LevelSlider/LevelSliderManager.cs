@@ -63,7 +63,7 @@ namespace CardGame.LevelSlider
             {
                 var instantiated = Instantiate(_levelSliderData.LevelSliderItemPrefab, _levelParentRect);
                 instantiated.SetAnchoredPosition(new Vector2(i * _levelSliderData.SingleItemWidth, 0));
-                instantiated.SetLevelText((LevelType)levelDatas[i].LevelType, i);
+                instantiated.SetLevelText((LevelType)levelDatas[i].LevelType, i, _levelManager.CurrentStage);
                 _levelSliderItems[i] = instantiated;
             }
         }
@@ -76,7 +76,7 @@ namespace CardGame.LevelSlider
             {
                 if (levelDatas.Length <= i) { break; }
                 
-                _levelSliderItems[i].SetLevelText((LevelType)levelDatas[i].LevelType, i);
+                _levelSliderItems[i].SetLevelText((LevelType)levelDatas[i].LevelType, i, _levelManager.CurrentStage);
             }
         }
 
@@ -95,7 +95,11 @@ namespace CardGame.LevelSlider
         
         private void CheckIfNeedToReAdjustPosition()
         {
-            if (_levelParentRect.anchoredPosition.x > -(_maxLevelCount/2f * _levelSliderData.SingleItemWidth) + 5 || _reachedMaxLevel ) { return; }
+            if (_levelParentRect.anchoredPosition.x > -(_maxLevelCount / 2f * _levelSliderData.SingleItemWidth) + 5 || _reachedMaxLevel)
+            {
+                UpdateLevelTextAlphas();
+                return;
+            }
 
             var newAnchoredPosition = _levelParentRect.anchoredPosition;
             newAnchoredPosition.x += _levelSliderData.SingleItemWidth;
@@ -109,12 +113,21 @@ namespace CardGame.LevelSlider
             {
                 var newLevel = _levelSliderItems[i].LevelIndex + 1;
                 var levelType = _levelManager.LevelData.Levels[newLevel].LevelType;
-                _levelSliderItems[i].SetLevelText((LevelType)levelType, newLevel);
+                _levelSliderItems[i].SetLevelText((LevelType)levelType, newLevel, _levelManager.CurrentStage);
             }
 
             CheckIfReachedMaxLevel();
         }
 
+        private void UpdateLevelTextAlphas()
+        {
+            for (int i = 0; i < _levelSliderItems.Length; i++)
+            {
+                var newLevel = _levelSliderItems[i].LevelIndex;
+                _levelSliderItems[i].UpdateTextAlpha(newLevel, _levelManager.CurrentStage);
+            }
+        }
+        
         private void CheckIfReachedMaxLevel()
         {
             if (_levelSliderItems[^1].LevelIndex + 1 == _levelManager.LevelData.Levels.Length)

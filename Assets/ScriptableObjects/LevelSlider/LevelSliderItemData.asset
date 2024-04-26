@@ -15,3 +15,5 @@ MonoBehaviour:
   _defualtTextColor: {r: 1, g: 1, b: 1, a: 1}
   _safeZoneTextColor: {r: 0.69411767, g: 1, b: 0.1764706, a: 1}
   _superZoneTextColor: {r: 1, g: 0.7607843, b: 0.2509804, a: 1}
+  _defaultTextAlpha: 1
+  _levelCompletedTextAlpha: 0.1

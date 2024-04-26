@@ -18,11 +18,21 @@ namespace CardGame.LevelSlider
             _rect.anchoredPosition = anchoredPos;
         }
         
-        public void SetLevelText(LevelType levelType, int levelIndex)
+        public void SetLevelText(LevelType levelType, int levelIndex, int currentLevel)
         {
             _levelIndex = levelIndex;
-            _levelText.color = _sliderItemData.GetTextColor(levelType);
+            _levelText.color = _sliderItemData.GetTextColor(levelType);;
             _levelText.text = $"{levelIndex + 1}";
+            
+            UpdateTextAlpha(levelIndex, currentLevel);
+        }
+
+        public void UpdateTextAlpha(int levelIndex, int currentLevel)
+        {
+            var levelCompleted = levelIndex < currentLevel;
+            var col = _levelText.color;
+            col.a = _sliderItemData.GetTextAlpha(levelCompleted);
+            _levelText.color = col;
         }
     }
 }
