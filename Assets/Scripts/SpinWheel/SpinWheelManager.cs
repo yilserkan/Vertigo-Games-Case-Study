@@ -11,15 +11,25 @@ namespace CardGame.SpinWheel
     public class SpinWheelManager : MonoBehaviour
     {
         [SerializeField] private SpinWheelSlotManager[] _slots;
-        [SerializeField] private SpinWheelUIManager _spinWheelUIManager;
         [SerializeField] private ItemContainers _itemContainers;
-        
-        private GetLevelResponse _levelData;
+
+        private LevelManager _levelManager;
         private SpinWheelResponse _spinWheelResponse;
         private SpinWheelAnimationController _spinWheelAnimationController;
-        // private SpinWheelUIManager _spinWheelUIManager;
+        private SpinWheelUIManager _spinWheelUIManager;
         
         public static event Action<int> OnSpinAnimationCompleted;
+
+        private void OnEnable()
+        {
+            AddListeners();
+        }
+        
+        private void OnDisable()
+        {
+            RemoveListeners();
+        }
+
         private void Awake()
         {
             ServiceLocator.For(this).Register<SpinWheelManager>(this);
@@ -28,13 +38,14 @@ namespace CardGame.SpinWheel
         private void Start()
         {
             ServiceLocator.For(this)
-                .Get(out _spinWheelAnimationController);
-            // .Get(out _spinWheelUIManager);
+                .Get(out _spinWheelAnimationController)
+                .Get(out _spinWheelUIManager)
+                .Get(out _levelManager);
         }
-
-        public void InitializeLevel(GetLevelResponse levelData)
+        
+        private void StartGame()
         {
-            _levelData = levelData;
+            ShowStage(0);
         }
         
         public void ShowStage(int stage)
@@ -44,7 +55,7 @@ namespace CardGame.SpinWheel
        
         private void InitializeSlots(int stage)
         {
-            var datas = _levelData.LevelData[stage];
+            var datas = _levelManager.LevelData.Levels[stage];
             for (int i = 0; i < _slots.Length; i++)
             {
                 if (datas.SlotDatas.Length <= i) { break; }
@@ -72,6 +83,17 @@ namespace CardGame.SpinWheel
         }
 
         public int GetSlotCount() => _slots.Length;
+        
+        private void AddListeners()
+        {
+            LevelManager.OnStartGame += StartGame;
+            LevelManager.OnShowNextStage += ShowStage;
+        }
+        private void RemoveListeners()
+        {
+            LevelManager.OnStartGame -= StartGame;
+            LevelManager.OnShowNextStage -= ShowStage;
+        }
     }
     
     public enum LevelType

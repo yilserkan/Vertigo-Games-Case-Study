@@ -1,21 +1,21 @@
 using System;
 using CardGame.Items;
+using CardGame.ServiceManagement;
 using CardGame.Utils;
 using UnityEngine;
 
 namespace CardGame.SpinWheel
 {
-    public class LevelManager : MonoBehaviour
+    public class LevelManager : PostStartMono
     {
-        [SerializeField] private SpinWheelManager _spinWheelManager;
-        [SerializeField] private ZonePanelManager _zonePanelManager;
         private GetLevelResponse _levelData;
-        private int _currentStage;
+        private Observable<int> _currentStage;
 
+        public GetLevelResponse LevelData => _levelData;
+        
         public static event Action OnPlayerHasLostEvent;
         public static event Action<int> OnShowNextStage;
-
-        private Observable<int> _nextSafeZone;
+        public static event Action OnStartGame;
         
         private void OnEnable()
         {
@@ -27,8 +27,20 @@ namespace CardGame.SpinWheel
             RemoveListeners();
         }
 
-        private void Start()
+        private void Awake()
         {
+            ServiceLocator.Global.Register(this);
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+            _currentStage = new Observable<int>(0);
+        }
+
+        protected override void PostStart()
+        {
+            base.PostStart();
             StartGame();
         }
 
@@ -36,14 +48,12 @@ namespace CardGame.SpinWheel
         {
             ResetLevel();
             _levelData = await SpinWheelCloudRequests.GetLevelData();
-            _spinWheelManager.InitializeLevel(_levelData);
-            _zonePanelManager.Initialize(_levelData);
-            _spinWheelManager.ShowStage(_currentStage);
+            OnStartGame?.Invoke();
         }
 
         private void ResetLevel()
         {
-            _currentStage = 0;
+            _currentStage.Value = 0;
         }
         
         private void HandleOnSpinWheelAnimCompleted(int slotIndex)
@@ -61,14 +71,14 @@ namespace CardGame.SpinWheel
 
         private void ShowNextStage()
         {
-            _currentStage++;
-            _spinWheelManager.ShowStage(_currentStage);
-            OnShowNextStage?.Invoke(_currentStage);
+            _currentStage.Value++;
+            // _spinWheelManager.ShowStage(_currentStage.Value);
+            OnShowNextStage?.Invoke(_currentStage.Value);
         }
      
         private bool HasPlayerLost(int slotIndex)
         {
-            var slotData = _levelData.LevelData[_currentStage].SlotDatas[slotIndex];
+            var slotData = _levelData.Levels[_currentStage.Value].SlotDatas[slotIndex];
             Debug.Log("Item ID : " + slotData.ID);
             return (ItemType)slotData.Type == ItemType.Bomb;
         }

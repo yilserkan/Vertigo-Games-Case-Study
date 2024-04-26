@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CardGame.ServiceManagement;
 using CardGame.SpinWheel;
 using TMPro;
 using UnityEngine;
@@ -26,6 +27,11 @@ public class ZonePanelUIManager : MonoBehaviour
     private void OnDisable()
     {
         RemoveListeners();
+    }
+
+    private void Awake()
+    {
+        ServiceLocator.For(this).Register(this);
     }
 
     private void HandleOnContinueButtonClicked()

@@ -1,19 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CardGame.ServiceManagement;
 using CardGame.SpinWheel;
 using CardGame.Utils;
 using UnityEngine;
 
 public class ZonePanelManager : MonoBehaviour
 {
-    [SerializeField] private ZonePanelUIManager _zonePanelUIManager;
     [SerializeField] private ZoneCardManager _safeZoneCardManager;
     [SerializeField] private ZoneCardManager _superZoneCardManager;
-    
+
+    private LevelManager _levelManager;
+    private ZonePanelUIManager _zonePanelUIManager;
     private Observable<int> _safeZoneLevel;
     private Observable<int> _superZoneLevel;
-    private GetLevelResponse _levelData;
     
     private void OnEnable()
     {
@@ -26,18 +27,28 @@ public class ZonePanelManager : MonoBehaviour
         RemoveListeners();
     }
 
-    public void Initialize(GetLevelResponse levelData)
+    private void Awake()
     {
         _safeZoneLevel = new Observable<int>(0, _safeZoneCardManager);
         _superZoneLevel = new Observable<int>(0, _superZoneCardManager);
-        _levelData = levelData;
+    }
+
+    private void Start()
+    {
+        ServiceLocator.Global
+            .Get(out _levelManager)
+            .Get(out _zonePanelUIManager);
+    }
+
+    public void Initialize()
+    {
         SetNextZoneLevel(LevelType.SafeZone, 0);
         SetNextZoneLevel(LevelType.SuperZone, 0);
     }
 
     private void HandleOnShowNextStage(int level)
     {
-        LevelType currentLevelType = (LevelType)_levelData.LevelData[level].LevelType;
+        LevelType currentLevelType = (LevelType)_levelManager.LevelData.Levels[level].LevelType;
         if (currentLevelType is LevelType.SafeZone or LevelType.SuperZone)
         {
             _zonePanelUIManager.ShowZonePanel(currentLevelType);
@@ -60,9 +71,9 @@ public class ZonePanelManager : MonoBehaviour
 
     private int FindNextZoneLevel(LevelType type, int currentLevel)
     {
-        for (int i = currentLevel + 1; i < _levelData.LevelData.Length; i++)
+        for (int i = currentLevel + 1; i < _levelManager.LevelData.Levels.Length; i++)
         {
-            if (_levelData.LevelData[i].LevelType == (int)type)
+            if (_levelManager.LevelData.Levels[i].LevelType == (int)type)
             {
                 return i + 1;
             }
@@ -73,11 +84,13 @@ public class ZonePanelManager : MonoBehaviour
     
     private void AddListeners()
     {
+        LevelManager.OnStartGame += Initialize;
         LevelManager.OnShowNextStage += HandleOnShowNextStage;
     }
 
     private void RemoveListeners()
     {
+        LevelManager.OnStartGame -= Initialize;
         LevelManager.OnShowNextStage -= HandleOnShowNextStage;
     }
 }
