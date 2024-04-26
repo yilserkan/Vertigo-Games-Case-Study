@@ -35,9 +35,8 @@ public class ZonePanelManager : MonoBehaviour
 
     private void Start()
     {
-        ServiceLocator.Global
-            .Get(out _levelManager)
-            .Get(out _zonePanelUIManager);
+        ServiceLocator.Global.Get(out _levelManager);
+        ServiceLocator.For(this).Get(out _zonePanelUIManager);
     }
 
     public void Initialize()
