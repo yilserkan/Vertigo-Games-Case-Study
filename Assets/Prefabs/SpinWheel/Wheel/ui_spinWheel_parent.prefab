@@ -74,64 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 85396138021712682}
   _spinWheelParentTransform: {fileID: 2111236418780910342}
-  _startAnimCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.5
-      value: 0.5
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -1
-      outSlope: -1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _startLoopCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  responseArrived: 0
+  _animationData: {fileID: 11400000, guid: c4f55b4db7b7ba44da23c18924f8dfcc, type: 2}
 --- !u!1 &628581517245133836
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,14 +164,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slots:
-  - {fileID: 1338804945969703814}
-  - {fileID: 7500328309628667383}
-  - {fileID: 4664160499148189457}
-  - {fileID: 7096762916654702219}
-  - {fileID: 5262616681725346308}
-  - {fileID: 2562444277634232293}
-  - {fileID: 1268560066555143000}
   - {fileID: 7718770041889698403}
+  - {fileID: 1268560066555143000}
+  - {fileID: 2562444277634232293}
+  - {fileID: 5262616681725346308}
+  - {fileID: 7096762916654702219}
+  - {fileID: 4664160499148189457}
+  - {fileID: 7500328309628667383}
+  - {fileID: 1338804945969703814}
+  _spinWheelUIManager: {fileID: 8160573235343033115}
   _itemContainers: {fileID: 11400000, guid: d9c4390b51fc74b40a5c16f06a73a648, type: 2}
 --- !u!114 &8160573235343033115
 MonoBehaviour:
@@ -243,6 +187,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spinButton: {fileID: 1359574673047898420}
+  _wheelBodyImage: {fileID: 3274731732228174471}
+  _wheeIndicatorImage: {fileID: 2536726811261663932}
+  _wheelUIAssets: {fileID: 11400000, guid: ff41e300e54b01a40a2a257986a85bbb, type: 2}
 --- !u!114 &654581788623377140
 MonoBehaviour:
   m_ObjectHideFlags: 0
