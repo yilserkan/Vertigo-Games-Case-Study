@@ -14,7 +14,7 @@ namespace CardGame.SpinWheel
             ServiceLocator.Global.Get(out _itemContainers);
         }
 
-        public WheelLevel GetMockLevelData()
+        public GetLevelResponse GetMockLevelData()
         {
             var levelDatas = new LevelData[_levelCount];
             for (int i = 0; i < _levelCount; i++)
@@ -22,7 +22,7 @@ namespace CardGame.SpinWheel
                 levelDatas[i] = CreateLevelData(i + 1);
             }
 
-            var lvl = new WheelLevel();
+            var lvl = new GetLevelResponse();
             lvl.LevelData = levelDatas;
             return lvl;
         }
@@ -58,6 +58,7 @@ namespace CardGame.SpinWheel
             var slotData = new LevelSlotData();
             slotData.Type = (int)itemData.Type;
             slotData.ID = itemData.ID;
+            slotData.Amount = Random.Range(0, 10);
 
             return slotData;
         }
@@ -69,7 +70,8 @@ namespace CardGame.SpinWheel
             var slotData = new LevelSlotData();
             slotData.Type = (int)itemData.Type;
             slotData.ID = itemData.ID;
-
+            slotData.Amount = Random.Range(0, 10);
+            
             return slotData;
         }
 
@@ -90,13 +92,6 @@ namespace CardGame.SpinWheel
             }
 
             return LevelType.Default;
-        }
-        
-        private enum LevelType
-        {
-            Default,
-            SafeZone,
-            SuperZone
         }
     }
 }
