@@ -20,6 +20,22 @@ namespace CardGame.SpinWheel
             var json = await _cloudService.SpinWheel();
             return JsonUtility.FromJson<SpinWheelResponse>(json);
         }
+
+        public static async Task<RevivePlayerResponse> Revive()
+        {
+            var json = await _cloudService.Revive();
+            return JsonUtility.FromJson<RevivePlayerResponse>(json);
+        }
+
+        public static async Task GiveUp()
+        {
+            await _cloudService.GiveUp();
+        }
+
+        public static async Task ClaimRewards()
+        {
+            await _cloudService.ClaimRewards();
+        }
     }
 
     public class MockSpinWheelCloudService : ISpinWheelCloudService
@@ -37,14 +53,48 @@ namespace CardGame.SpinWheel
             var response = new SpinWheelResponse(){SlotIndex = randIndex};
             return Task.FromResult(JsonUtility.ToJson(response));
         }
+
+        public Task<string> Revive()
+        {
+            //TODO:
+            // Set player state from death to alive   
+            // Decrease Player Money
+            var response = new RevivePlayerResponse() { ReviveSuccessfull = true };
+            return Task.FromResult(JsonUtility.ToJson(response));
+        }
+
+        public Task GiveUp()
+        {
+            //TODO:
+            // Reset all cached player earnings
+            
+            return Task.CompletedTask;
+        }
+
+        public Task ClaimRewards()
+        {
+            // TODO
+            // Give rewards to player
+
+            return Task.CompletedTask;
+        }
     }
 
     public interface ISpinWheelCloudService
     {
         public Task<string> GetLevelData();
         public Task<string> SpinWheel();
+
+        public Task<string> Revive();
+        public Task GiveUp();
+        public Task ClaimRewards();
     }
-    
+
+    [Serializable]
+    public class RevivePlayerResponse
+    {
+        public bool ReviveSuccessfull;
+    }
     
     [Serializable]
     public class GetLevelResponse
