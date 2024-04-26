@@ -11,6 +11,7 @@ namespace CardGame.SpinWheel
         private GetLevelResponse _levelData;
         private Observable<int> _currentStage;
 
+        public int CurrentStage => _currentStage.Value;
         public GetLevelResponse LevelData => _levelData;
         
         public static event Action OnPlayerHasLostEvent;

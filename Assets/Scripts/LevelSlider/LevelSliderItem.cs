@@ -8,7 +8,8 @@ namespace CardGame.LevelSlider
     {
         [SerializeField] private RectTransform _rect;
         [SerializeField] private TextMeshProUGUI _levelText;
-
+        [SerializeField] private LevelSliderItemData _sliderItemData;
+        
         private int _levelIndex;
         public int LevelIndex => _levelIndex;
         
@@ -20,23 +21,8 @@ namespace CardGame.LevelSlider
         public void SetLevelText(LevelType levelType, int levelIndex)
         {
             _levelIndex = levelIndex;
-            _levelText.color = GetTextColor(levelType);
+            _levelText.color = _sliderItemData.GetTextColor(levelType);
             _levelText.text = $"{levelIndex + 1}";
-        }
-
-        private Color GetTextColor(LevelType levelType)
-        {
-            if (levelType == LevelType.Default)
-            {
-                return Color.white;
-            }
-
-            if (levelType == LevelType.SafeZone)
-            {
-                return Color.green;
-            }
-            
-            return Color.yellow;
         }
     }
 }

@@ -6,6 +6,7 @@ using CardGame.SpinWheel;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CardGame.LevelSlider
 {
@@ -13,13 +14,12 @@ namespace CardGame.LevelSlider
     {
         [SerializeField] private RectTransform _levelSliderRect;
         [SerializeField] private RectTransform _levelParentRect;
-        [SerializeField] private LevelSliderItem _levelPrefab;
-        [SerializeField] private float _singleLevelWidth;
-
+        [SerializeField] private Image _currentLevelBgImage;
+        [SerializeField] private LevelSliderData _levelSliderData;
+        
         private LevelManager _levelManager;
         private float _levelSliderWidth;
         private int _maxLevelCount;
-        private int _levelCount = 50;
         private bool _reachedMaxLevel;
 
         private LevelSliderItem[] _levelSliderItems;
@@ -61,8 +61,8 @@ namespace CardGame.LevelSlider
             _levelSliderItems = new LevelSliderItem[levelCount];
             for (int i = 0; i < levelCount; i++)
             {
-                var instantiated = Instantiate(_levelPrefab, _levelParentRect);
-                instantiated.SetAnchoredPosition(new Vector2(i * _singleLevelWidth, 0));
+                var instantiated = Instantiate(_levelSliderData.LevelSliderItemPrefab, _levelParentRect);
+                instantiated.SetAnchoredPosition(new Vector2(i * _levelSliderData.SingleItemWidth, 0));
                 instantiated.SetLevelText((LevelType)levelDatas[i].LevelType, i);
                 _levelSliderItems[i] = instantiated;
             }
@@ -82,16 +82,23 @@ namespace CardGame.LevelSlider
 
         private void AnimateToNextLevel()
         {
-            var targetPos = _levelParentRect.anchoredPosition.x -_singleLevelWidth;
-            _levelParentRect.DOAnchorPosX(targetPos, .2f).OnComplete(CheckIfNeedToReAdjustPosition);
+            var targetPos = _levelParentRect.anchoredPosition.x -_levelSliderData.SingleItemWidth;
+            _levelParentRect.DOAnchorPosX(targetPos, _levelSliderData.AnimDuration).OnComplete(CheckIfNeedToReAdjustPosition);
         }
 
+        private void AnimateBgColor()
+        {
+            var levelType = (LevelType)_levelManager.LevelData.Levels[_levelManager.CurrentStage].LevelType;
+            var targetColor = _levelSliderData.GetLevelBgColor(levelType);
+            _currentLevelBgImage.DOColor(targetColor, _levelSliderData.AnimDuration);
+        }
+        
         private void CheckIfNeedToReAdjustPosition()
         {
-            if (_levelParentRect.anchoredPosition.x > -(_maxLevelCount/2f * _singleLevelWidth) + 5 || _reachedMaxLevel ) { return; }
+            if (_levelParentRect.anchoredPosition.x > -(_maxLevelCount/2f * _levelSliderData.SingleItemWidth) + 5 || _reachedMaxLevel ) { return; }
 
             var newAnchoredPosition = _levelParentRect.anchoredPosition;
-            newAnchoredPosition.x += _singleLevelWidth;
+            newAnchoredPosition.x += _levelSliderData.SingleItemWidth;
             _levelParentRect.anchoredPosition = newAnchoredPosition;
             UpdateLevelTexts();
         }
@@ -127,11 +134,12 @@ namespace CardGame.LevelSlider
         private void HandleOnShowNextStage(int level)
         {
             AnimateToNextLevel();
+            AnimateBgColor();
         }
 
         private int CalculateTotalAmountOfVisibleLevels()
         {
-            return (int)(_levelSliderWidth / _singleLevelWidth) + 1;
+            return (int)(_levelSliderWidth / _levelSliderData.SingleItemWidth) + 1;
         }
         private void AddListeners()
         {

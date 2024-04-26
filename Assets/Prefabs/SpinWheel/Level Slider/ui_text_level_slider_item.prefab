@@ -151,3 +151,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rect: {fileID: 5421269798772111317}
   _levelText: {fileID: 5454705081603404641}
+  _sliderItemData: {fileID: 11400000, guid: c55970c810d66674098c712b35c5ceef, type: 2}
