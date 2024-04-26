@@ -11,7 +11,7 @@ namespace CardGame.AddressablesManagement
 {
     public static class AddressableExtensions 
     {
-        public static void InstantiateAsyncT<T>(this AssetReferenceT<T> reference, Transform parent = null, Action<GameObject> onInstantiated = null, Action onFailed = null) where T : Object
+        public static void InstantiateAsyncAction<T>(this AssetReferenceT<T> reference, Transform parent = null, Action<GameObject> onInstantiated = null, Action onFailed = null) where T : Object
         {
             reference.InstantiateAsync(parent).Completed += (operationHandle) =>
             {
@@ -26,7 +26,7 @@ namespace CardGame.AddressablesManagement
             };
         }
     
-        public static void LoadAsyncT<T>(this AssetReferenceT<T> reference, Action<T> onLoaded, Action onFailed = null) where T : Object
+        public static void LoadAddressableAction<T>(this AssetReferenceT<T> reference, Action<T> onLoaded, Action onFailed = null) where T : Object
         {
             reference.LoadAssetAsync<T>().Completed += (operationHandle) =>
             {
@@ -41,13 +41,13 @@ namespace CardGame.AddressablesManagement
             };
         }
     
-        public static async Task<GameObject> InstantiateAsyncTask<T>(this AssetReferenceT<T> reference, Transform parent = null) where T : Object
+        public static async Task<GameObject> InstantiateAddressableAsync<T>(this AssetReferenceT<T> reference, Transform parent = null) where T : Object
         {
             var gameObject = await reference.InstantiateAsync(parent).Task;
             return gameObject;
         }
     
-        public static async Task<T> LoadAsyncTask<T>(this AssetReferenceT<T> reference) where T : Object
+        public static async Task<T> LoadAddressableAsync<T>(this AssetReferenceT<T> reference) where T : Object
         {
             var obj = await reference.LoadAssetAsync<T>().Task;
             return obj;

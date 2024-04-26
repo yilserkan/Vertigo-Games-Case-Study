@@ -11,15 +11,14 @@ namespace CardGame.SpinWheel
     {
         private GetLevelResponse _levelData;
         private Observable<int> _currentStage;
-
         public int CurrentStage => _currentStage.Value;
         public GetLevelResponse LevelData => _levelData;
         
+        public static event Action OnStartGame;
+        public static event Action OnQuitGame;
         public static event Action OnPlayerHasLostEvent;
         public static event Action<int> OnShowNextStage;
-        public static event Action OnStartGame;
         public static event Action OnShowZonePanel;
-        public static event Action OnQuitGame;
         
         private void OnEnable()
         {
@@ -87,14 +86,7 @@ namespace CardGame.SpinWheel
             // _spinWheelManager.ShowStage(_currentStage.Value);
             OnShowNextStage?.Invoke(_currentStage.Value);
         }
-     
-        private bool HasPlayerLost(int slotIndex)
-        {
-            var slotData = _levelData.Levels[_currentStage.Value].SlotDatas[slotIndex];
-            Debug.Log("Item ID : " + slotData.ID);
-            return (ItemType)slotData.Type == ItemType.Bomb;
-        }
-
+        
         private async void HandleOnRestartButtonClicked()
         {
             await SpinWheelCloudRequests.GiveUp();
@@ -123,6 +115,13 @@ namespace CardGame.SpinWheel
             StartGame();
         }
 
+        private bool HasPlayerLost(int slotIndex)
+        {
+            var slotData = _levelData.Levels[_currentStage.Value].SlotDatas[slotIndex];
+            Debug.Log("Item ID : " + slotData.ID);
+            return (ItemType)slotData.Type == ItemType.Bomb;
+        }
+        
         private bool IsAtZoneLevel() => (LevelType)LevelData.Levels[_currentStage.Value].LevelType is LevelType.SafeZone or LevelType.SuperZone; 
         
         private void AddListeners()
