@@ -41,8 +41,8 @@ public class ZonePanelManager : MonoBehaviour
 
     public void Initialize()
     {
-        SetNextZoneLevel(LevelType.SafeZone, 0);
-        SetNextZoneLevel(LevelType.SuperZone, 0);
+        SetNextZoneLevel(LevelType.SafeZone, _levelManager.CurrentStage);
+        SetNextZoneLevel(LevelType.SuperZone, _levelManager.CurrentStage);
     }
 
     private void HandleOnShowNextStage(int level)

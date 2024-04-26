@@ -45,7 +45,7 @@ namespace CardGame.SpinWheel
         
         private void StartGame()
         {
-            ShowStage(0);
+            ShowStage(_levelManager.CurrentStage);
         }
         
         public void ShowStage(int stage)
