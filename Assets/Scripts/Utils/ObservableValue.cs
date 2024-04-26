@@ -13,7 +13,7 @@ namespace CardGame.Utils
             set => Set(value);
         }
 
-        public Observable(T value, IObserver<T> action)
+        public Observable(T value, IObserver<T> action = null)
         {
             AddListener(action);
             _value = value;
@@ -35,11 +35,15 @@ namespace CardGame.Utils
 
         public void AddListener(IObserver<T> action)
         {
+            if (action == null) { return; }
+            
             onValueChanged += action.Notify;
         }
 
         public void RemoveListener(IObserver<T> action)
         {
+            if (action == null) { return; }
+
             onValueChanged -= action.Notify;
         }
     }
