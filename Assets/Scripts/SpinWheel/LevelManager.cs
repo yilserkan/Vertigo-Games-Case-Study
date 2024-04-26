@@ -9,7 +9,10 @@ namespace CardGame.SpinWheel
         [SerializeField] private SpinWheelManager _spinWheelManager;
         private GetLevelResponse _levelData;
         private int _currentStage;
+
         public static event Action OnPlayerHasLostEvent;
+        public static event Action<LevelType> OnShowClaimRewardsPanel;
+        
         private void OnEnable()
         {
             AddListeners();
@@ -55,6 +58,7 @@ namespace CardGame.SpinWheel
         {
             _currentStage++;
             _spinWheelManager.ShowStage(_currentStage);
+            TryShowClaimRewardsPanel();
         }
      
         private bool HasPlayerLost(int slotIndex)
@@ -83,11 +87,30 @@ namespace CardGame.SpinWheel
                 StartGame();
             }
         }
+
+        private async void HandleOnClaimRewardsButtonClicked()
+        {
+            await SpinWheelCloudRequests.ClaimRewards();
+            
+            //TODO : Show Rewards
+            StartGame();
+        }
+
+        private void TryShowClaimRewardsPanel()
+        {
+            LevelType currentLevelType = (LevelType)_levelData.LevelData[_currentStage].LevelType;
+            if (currentLevelType is LevelType.SafeZone or LevelType.SuperZone)
+            {
+                OnShowClaimRewardsPanel?.Invoke(currentLevelType);
+            }
+        }
+        
         private void AddListeners()
         {
             SpinWheelManager.OnSpinAnimationCompleted += HandleOnSpinWheelAnimCompleted;
             LostPanelUIManager.OnRestartButtonClickedEvent += HandleOnRestartButtonClicked;
             LostPanelUIManager.OnReviveButtonClickedEvent += HandleOnReviveButtonClicked;
+            ZonePanelUIManager.OnClaimRewardsButtonClicked += HandleOnClaimRewardsButtonClicked;
         }
 
         private void RemoveListeners()
@@ -95,6 +118,7 @@ namespace CardGame.SpinWheel
             SpinWheelManager.OnSpinAnimationCompleted -= HandleOnSpinWheelAnimCompleted;
             LostPanelUIManager.OnRestartButtonClickedEvent -= HandleOnRestartButtonClicked;
             LostPanelUIManager.OnReviveButtonClickedEvent -= HandleOnReviveButtonClicked;
+            ZonePanelUIManager.OnClaimRewardsButtonClicked -= HandleOnClaimRewardsButtonClicked;
         }
     }
 }
