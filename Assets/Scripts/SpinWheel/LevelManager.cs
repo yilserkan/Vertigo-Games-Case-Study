@@ -1,5 +1,6 @@
 using System;
 using CardGame.Items;
+using CardGame.Utils;
 using UnityEngine;
 
 namespace CardGame.SpinWheel
@@ -7,11 +8,14 @@ namespace CardGame.SpinWheel
     public class LevelManager : MonoBehaviour
     {
         [SerializeField] private SpinWheelManager _spinWheelManager;
+        [SerializeField] private ZonePanelManager _zonePanelManager;
         private GetLevelResponse _levelData;
         private int _currentStage;
 
         public static event Action OnPlayerHasLostEvent;
-        public static event Action<LevelType> OnShowClaimRewardsPanel;
+        public static event Action<int> OnShowNextStage;
+
+        private Observable<int> _nextSafeZone;
         
         private void OnEnable()
         {
@@ -33,6 +37,7 @@ namespace CardGame.SpinWheel
             ResetLevel();
             _levelData = await SpinWheelCloudRequests.GetLevelData();
             _spinWheelManager.InitializeLevel(_levelData);
+            _zonePanelManager.Initialize(_levelData);
             _spinWheelManager.ShowStage(_currentStage);
         }
 
@@ -58,7 +63,7 @@ namespace CardGame.SpinWheel
         {
             _currentStage++;
             _spinWheelManager.ShowStage(_currentStage);
-            TryShowClaimRewardsPanel();
+            OnShowNextStage?.Invoke(_currentStage);
         }
      
         private bool HasPlayerLost(int slotIndex)
@@ -95,15 +100,7 @@ namespace CardGame.SpinWheel
             //TODO : Show Rewards
             StartGame();
         }
-
-        private void TryShowClaimRewardsPanel()
-        {
-            LevelType currentLevelType = (LevelType)_levelData.LevelData[_currentStage].LevelType;
-            if (currentLevelType is LevelType.SafeZone or LevelType.SuperZone)
-            {
-                OnShowClaimRewardsPanel?.Invoke(currentLevelType);
-            }
-        }
+        
         
         private void AddListeners()
         {

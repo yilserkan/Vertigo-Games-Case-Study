@@ -39,7 +39,7 @@ public class ZonePanelUIManager : MonoBehaviour
         EnableClaimRewardsPanel(false);
     }
     
-    private void HandleOnShowClaimRewardsPanel(LevelType levelType)
+    public void ShowZonePanel(LevelType levelType)
     {
         SetUI(levelType);
         EnableClaimRewardsPanel(true);
@@ -61,13 +61,11 @@ public class ZonePanelUIManager : MonoBehaviour
     {
         _claimRewardsButton.onClick.AddListener(HandleOnClaimRewardsButtonClicked);
         _continueButton.onClick.AddListener(HandleOnContinueButtonClicked);
-        LevelManager.OnShowClaimRewardsPanel += HandleOnShowClaimRewardsPanel;
     }
 
     private void RemoveListeners()
     {
         _claimRewardsButton.onClick.RemoveListener(HandleOnClaimRewardsButtonClicked);
         _continueButton.onClick.RemoveListener(HandleOnContinueButtonClicked);
-        LevelManager.OnShowClaimRewardsPanel -= HandleOnShowClaimRewardsPanel;
     }
 }
