@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using CardGame.AddressablesManagement;
 using CardGame.ServiceManagement;
 using CardGame.SpinWheel;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
 namespace CardGame.LevelSlider
@@ -40,11 +43,11 @@ namespace CardGame.LevelSlider
             _maxLevelCount = CalculateTotalAmountOfVisibleLevels();
         }
 
-        private void Initialize()
+        private async void Initialize()
         {
             if (_levelSliderItems == null)
             {
-                InstantiateLevels();
+                await InstantiateLevels();
             }
             else
             {
@@ -54,7 +57,7 @@ namespace CardGame.LevelSlider
             CheckIfReachedMaxLevel();
         }
         
-        private void InstantiateLevels()
+        private async Task InstantiateLevels()
         {
             var levelDatas = _levelManager.LevelData.Levels;
             int levelCount = Mathf.Min(levelDatas.Length, _maxLevelCount);
@@ -62,10 +65,14 @@ namespace CardGame.LevelSlider
             for (int i = 0; i < levelCount; i++)
             {
                 var level = _levelManager.CurrentStage + i;
-                var instantiated = Instantiate(_levelSliderData.LevelSliderItemPrefab, _levelParentRect);
-                instantiated.SetAnchoredPosition(new Vector2(i * _levelSliderData.SingleItemWidth, 0));
-                instantiated.SetLevelText((LevelType)levelDatas[level].LevelType, level, _levelManager.CurrentStage);
-                _levelSliderItems[i] = instantiated;
+                var i1 = i;
+                var instantiated = await _levelSliderData.LevelSliderItemPrefab.InstantiateAsyncTask(_levelParentRect);
+                if (instantiated != null && instantiated.TryGetComponent(out LevelSliderItem levelItem))
+                {
+                    levelItem.SetAnchoredPosition(new Vector2(i1 * _levelSliderData.SingleItemWidth, 0));
+                    levelItem.SetLevelText((LevelType)levelDatas[level].LevelType, level, _levelManager.CurrentStage);
+                    _levelSliderItems[i1] = levelItem;
+                }
             }
         }
 
@@ -137,14 +144,6 @@ namespace CardGame.LevelSlider
                 _reachedMaxLevel = true;
             }
         }
-        
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                AnimateToNextLevel();
-            }
-        }
 
         private void HandleOnShowNextStage(int level)
         {
@@ -156,16 +155,29 @@ namespace CardGame.LevelSlider
         {
             return (int)(_levelSliderWidth / _levelSliderData.SingleItemWidth) + 1;
         }
+
+        public void ReleaseLevels()
+        {
+            for (int i = _levelSliderItems.Length - 1; i >= 0; i--)
+            {
+                Addressables.ReleaseInstance(_levelSliderItems[i].gameObject);
+            }
+
+            _levelSliderItems = null;
+        }
+        
         private void AddListeners()
         {
             LevelManager.OnStartGame += Initialize;
             LevelManager.OnShowNextStage += HandleOnShowNextStage;
+            LevelManager.OnQuitGame += ReleaseLevels;
         }
 
         private void RemoveListeners()
         {
             LevelManager.OnStartGame -= Initialize;
             LevelManager.OnShowNextStage -= HandleOnShowNextStage;
+            LevelManager.OnQuitGame -= ReleaseLevels;
         }
     }
 }

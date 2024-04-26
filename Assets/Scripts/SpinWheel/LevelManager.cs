@@ -19,6 +19,7 @@ namespace CardGame.SpinWheel
         public static event Action<int> OnShowNextStage;
         public static event Action OnStartGame;
         public static event Action OnShowZonePanel;
+        public static event Action OnQuitGame;
         
         private void OnEnable()
         {

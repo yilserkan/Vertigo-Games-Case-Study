@@ -1,12 +1,13 @@
 using CardGame.SpinWheel;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace CardGame.LevelSlider
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/LevelSlider/Data", fileName = "LevelSliderData", order = 0)]
     public class LevelSliderData : ScriptableObject
     {
-        [SerializeField] private LevelSliderItem _levelSliderItemPrefab;
+        [SerializeField] private AssetReferenceGameObject _levelSliderItemPrefab;
         [SerializeField] private float _singleItemWidth;
         [SerializeField] private float _animDuration;
 
@@ -14,7 +15,7 @@ namespace CardGame.LevelSlider
         [SerializeField] private Color _safeZoneLevelBgColor;
         [SerializeField] private Color _superZoneLevelBgColor;
 
-        public LevelSliderItem LevelSliderItemPrefab => _levelSliderItemPrefab;
+        public AssetReferenceGameObject LevelSliderItemPrefab => _levelSliderItemPrefab;
         public float SingleItemWidth => _singleItemWidth;
         public float AnimDuration => _animDuration;
         
