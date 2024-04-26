@@ -172,7 +172,6 @@ MonoBehaviour:
   - {fileID: 4664160499148189457}
   - {fileID: 7500328309628667383}
   - {fileID: 1338804945969703814}
-  _spinWheelUIManager: {fileID: 8160573235343033115}
   _itemContainers: {fileID: 11400000, guid: d9c4390b51fc74b40a5c16f06a73a648, type: 2}
 --- !u!114 &8160573235343033115
 MonoBehaviour:
@@ -250,7 +249,7 @@ GameObject:
   - component: {fileID: 5657503664935316181}
   - component: {fileID: 2536726811261663932}
   m_Layer: 0
-  m_Name: ui_image_spinWheel_indicator
+  m_Name: ui_image_spinWheel_indicator_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,7 +324,7 @@ GameObject:
   - component: {fileID: 8833915120182812456}
   - component: {fileID: 3274731732228174471}
   m_Layer: 0
-  m_Name: ui_image_spinWheel
+  m_Name: ui_image_spinWheel_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

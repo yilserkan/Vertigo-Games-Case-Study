@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 410113998}
   - component: {fileID: 410113997}
   m_Layer: 0
-  m_Name: ui_text_safe_nextLevel
+  m_Name: ui_text_safe_nextLevel_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1719,7 +1719,7 @@ GameObject:
   - component: {fileID: 1153314301}
   - component: {fileID: 1153314300}
   m_Layer: 0
-  m_Name: ui_text_zone_name
+  m_Name: ui_text_zone_name_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2308,7 +2308,7 @@ GameObject:
   - component: {fileID: 1320606819}
   - component: {fileID: 1320606818}
   m_Layer: 0
-  m_Name: ui_text_super_nextLevel
+  m_Name: ui_text_super_nextLevel_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3179,7 +3179,7 @@ GameObject:
   - component: {fileID: 1782810062}
   - component: {fileID: 1782810061}
   m_Layer: 0
-  m_Name: 'ui_image_zone_panel_card_bg '
+  m_Name: ui_image_zone_panel_card_bg_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

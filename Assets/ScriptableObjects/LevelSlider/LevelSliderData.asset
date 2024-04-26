@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94869627e80e49399cc2a480b1760d11, type: 3}
   m_Name: LevelSliderData
   m_EditorClassIdentifier: 
-  _levelSliderItemPrefab: {fileID: 2256987782942408586, guid: 1bac4d0c90ccc7d41bea32ced31fd3fe,
-    type: 3}
+  _levelSliderItemPrefab:
+    m_AssetGUID: 1bac4d0c90ccc7d41bea32ced31fd3fe
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   _singleItemWidth: 100
   _animDuration: 0.2
   _defaultLevelBgColor: {r: 0.48235294, g: 0.48235294, b: 0.48235294, a: 1}

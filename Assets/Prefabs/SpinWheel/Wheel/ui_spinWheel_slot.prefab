@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 8098462933844950042}
   - component: {fileID: 8206288662327812678}
   m_Layer: 0
-  m_Name: ui_text_spinWheel_item_amount
+  m_Name: ui_text_spinWheel_item_amount_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 2984224786844544215}
   - component: {fileID: 9054511591510484555}
   m_Layer: 0
-  m_Name: ui_image_spinWheel_item
+  m_Name: ui_image_spinWheel_item_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

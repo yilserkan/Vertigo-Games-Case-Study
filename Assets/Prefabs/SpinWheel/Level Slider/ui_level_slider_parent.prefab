@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 885867960299630029}
   - component: {fileID: 1865891397662618179}
   m_Layer: 0
-  m_Name: ui_image_currentLevel_bg
+  m_Name: ui_image_currentLevel_bg_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

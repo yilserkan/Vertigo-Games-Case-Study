@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5454705081603404641}
   - component: {fileID: 2256987782942408586}
   m_Layer: 0
-  m_Name: ui_text_level_slider_item
+  m_Name: ui_text_level_slider_item_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
