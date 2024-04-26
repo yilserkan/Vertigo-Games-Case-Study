@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CardGame.ServiceManagement
 {
     public class ServiceLocator : MonoBehaviour
     {
         private static ServiceLocator _global;
+        private static Dictionary<Scene, ServiceLocator> _sceneContainers = new Dictionary<Scene, ServiceLocator>();
         private ServiceManager _serviceManager = new ServiceManager();
     
         public static ServiceLocator Global
@@ -31,19 +34,64 @@ namespace CardGame.ServiceManagement
             {
                 return serviceLocator;
             }
+
+            // Try get Scene scoped service locator
+            var sceneServiceLocator = ForScene(mb, false);
+            if (sceneServiceLocator != null)
+            {
+                return sceneServiceLocator;
+            }
             
-            // Try get global scoped service locator
+            // Try get Global scoped service locator
             if (Global != null)  return Global; 
             
             return null;
+        }
+
+        public static ServiceLocator ForScene(MonoBehaviour mb, bool createIfNotExists = true)
+        {
+            Scene scene = mb.gameObject.scene;
+            if (_sceneContainers.TryGetValue(scene, out var sceneServiceLocator))
+            {
+                if (sceneServiceLocator != null)
+                {
+                    return sceneServiceLocator;
+                }
+
+                _sceneContainers.Remove(scene);
+            }
+
+            if (!createIfNotExists) { return null; }
+            
+            var gameObject = new GameObject($"{scene.name} Service Locator");
+            var serviceLocator = gameObject.AddComponent<ServiceLocator>();
+            _sceneContainers.Add(scene, serviceLocator);
+
+            return serviceLocator;
+        }
+        
+        public static void RemoveScene(Scene scene)
+        {
+            if (!_sceneContainers.ContainsKey(scene)) { return; }
+
+            _sceneContainers.Remove(scene);
         }
         
         public ServiceLocator Get<T>(out T service) where T : class
         {
             // GameObject scoped service locator
             if (_serviceManager.TryGet<T>(out service)) return this;
+
+            // Scene Scoped Service Locator
+            var sceneServiceLocator = ForScene(this, false);
+            if (sceneServiceLocator != null && sceneServiceLocator.TryGet(out service))
+            {
+                return sceneServiceLocator;
+            }
+            
             // Global scoped service locator
             if (Global != null && Global.TryGet(out service)) return Global;
+            
             return null;
         }
         

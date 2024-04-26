@@ -37,10 +37,10 @@ namespace CardGame.SpinWheel
 
         private void Start()
         {
+            ServiceLocator.ForScene(this).Get(out _levelManager);
             ServiceLocator.For(this)
                 .Get(out _spinWheelAnimationController)
-                .Get(out _spinWheelUIManager)
-                .Get(out _levelManager);
+                .Get(out _spinWheelUIManager);
         }
         
         private void StartGame()

@@ -38,12 +38,17 @@ namespace CardGame.LevelSlider
 
         private void Start()
         {
-            ServiceLocator.Global.Get(out _levelManager);
+            ServiceLocator.ForScene(this).Get(out _levelManager);
+            Initialize();
+        }
+
+        private void Initialize()
+        {
             _levelSliderWidth = _levelSliderRect.sizeDelta.x;
             _maxLevelCount = CalculateTotalAmountOfVisibleLevels();
         }
 
-        private async void Initialize()
+        private async void SetLevels()
         {
             if (_levelSliderItems == null)
             {
@@ -65,13 +70,12 @@ namespace CardGame.LevelSlider
             for (int i = 0; i < levelCount; i++)
             {
                 var level = _levelManager.CurrentStage + i;
-                var i1 = i;
                 var instantiated = await _levelSliderData.LevelSliderItemPrefab.InstantiateAsyncTask(_levelParentRect);
                 if (instantiated != null && instantiated.TryGetComponent(out LevelSliderItem levelItem))
                 {
-                    levelItem.SetAnchoredPosition(new Vector2(i1 * _levelSliderData.SingleItemWidth, 0));
+                    levelItem.SetAnchoredPosition(new Vector2(i * _levelSliderData.SingleItemWidth, 0));
                     levelItem.SetLevelText((LevelType)levelDatas[level].LevelType, level, _levelManager.CurrentStage);
-                    _levelSliderItems[i1] = levelItem;
+                    _levelSliderItems[i] = levelItem;
                 }
             }
         }
@@ -168,14 +172,14 @@ namespace CardGame.LevelSlider
         
         private void AddListeners()
         {
-            LevelManager.OnStartGame += Initialize;
+            LevelManager.OnStartGame += SetLevels;
             LevelManager.OnShowNextStage += HandleOnShowNextStage;
             LevelManager.OnQuitGame += ReleaseLevels;
         }
 
         private void RemoveListeners()
         {
-            LevelManager.OnStartGame -= Initialize;
+            LevelManager.OnStartGame -= SetLevels;
             LevelManager.OnShowNextStage -= HandleOnShowNextStage;
             LevelManager.OnQuitGame -= ReleaseLevels;
         }

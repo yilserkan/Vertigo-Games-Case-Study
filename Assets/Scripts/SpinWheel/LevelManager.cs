@@ -33,7 +33,7 @@ namespace CardGame.SpinWheel
 
         private void Awake()
         {
-            ServiceLocator.Global.Register(this);
+            ServiceLocator.ForScene(this).Register(this);
         }
 
         protected override void Start()

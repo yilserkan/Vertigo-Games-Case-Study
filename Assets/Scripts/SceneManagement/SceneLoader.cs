@@ -88,6 +88,7 @@ namespace CardGame.SceneManagement
 
         public async Task UnloadScene(Scene scene)
         {
+            ServiceLocator.RemoveScene(scene);
             if (scene.name.Equals(INITIALIZATION_SCENE_NAME) || scene.name.Equals("Test 2"))
             {
                 await UnloadInitialScene();    
