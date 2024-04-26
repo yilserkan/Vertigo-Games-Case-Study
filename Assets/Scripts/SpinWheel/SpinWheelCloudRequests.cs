@@ -99,7 +99,7 @@ namespace CardGame.SpinWheel
     [Serializable]
     public class GetLevelResponse
     {
-        public LevelData[] LevelData;
+        public LevelData[] Levels;
     }
 
     [Serializable]

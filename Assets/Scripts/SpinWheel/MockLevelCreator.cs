@@ -23,7 +23,7 @@ namespace CardGame.SpinWheel
             }
 
             var lvl = new GetLevelResponse();
-            lvl.LevelData = levelDatas;
+            lvl.Levels = levelDatas;
             return lvl;
         }
         
