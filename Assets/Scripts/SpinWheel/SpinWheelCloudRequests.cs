@@ -9,17 +9,18 @@ namespace CardGame.SpinWheel
     {
         private static ISpinWheelCloudService _cloudService = new MockSpinWheelCloudService();
         
-        public static async Task<string> GetLevelData()
+        public static async Task<GetLevelResponse> GetLevelData()
         {
-            return await _cloudService.GetLevelData();
+            var json = await _cloudService.GetLevelData();
+            return JsonUtility.FromJson<GetLevelResponse>(json);
         }
 
-        public static async Task<string> SpinWheel()
+        public static async Task<SpinWheelResponse> SpinWheel()
         {
-            return await _cloudService.SpinWheel();
+            var json = await _cloudService.SpinWheel();
+            return JsonUtility.FromJson<SpinWheelResponse>(json);
         }
     }
-
 
     public class MockSpinWheelCloudService : ISpinWheelCloudService
     {
@@ -43,7 +44,29 @@ namespace CardGame.SpinWheel
         public Task<string> GetLevelData();
         public Task<string> SpinWheel();
     }
+    
+    
+    [Serializable]
+    public class GetLevelResponse
+    {
+        public LevelData[] LevelData;
+    }
 
+    [Serializable]
+    public class LevelData
+    {
+        public LevelSlotData[] SlotDatas;
+        public int LevelType;
+    }
+
+    [Serializable]
+    public class LevelSlotData
+    {
+        public int Type;
+        public string ID;
+        public int Amount;
+    }
+    
     [Serializable]
     public class SpinWheelResponse
     {

@@ -11,9 +11,10 @@ namespace CardGame.SpinWheel
         [SerializeField] private Image _slotIcon;
         [SerializeField] private TextMeshProUGUI _amountText;
 
-        public void InitializeSlot(ItemData data)
+        public void InitializeSlot(ItemData data, int amount)
         {
             _slotIcon.sprite = data.Sprite;
+            _amountText.text = amount.ToString();
         }
     }
 }

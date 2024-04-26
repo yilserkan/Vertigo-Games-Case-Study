@@ -4,141 +4,19 @@ using DG.Tweening;
 using UnityEngine;
 
 namespace CardGame.SpinWheel
-{
-//     public class SpinWheelAnimationController : MonoBehaviour
-//     {
-//         [SerializeField] private Transform _spinWheelParentTransform;
-//         [SerializeField] private SpinWheelAnimationData _animationData;
-//         
-//         private SpinWheelManager _spinWheelManager;
-//         
-//         private const int _slotCount = 8;
-//         public bool responseArrived;
-//
-//         public static event Action OnSpinAnimationCompleted;
-//         private bool _hasCloudResponseArrived;
-//         private int _loopCount;
-//         public int TestIndex;
-//
-//         private void Awake()
-//         {
-//             ServiceLocator.For(this).Register<SpinWheelAnimationController>(this);
-//         }
-//
-//         private void Start()
-//         {
-//             ServiceLocator.For(this).Get(out _spinWheelManager);
-//         }
-//
-//         public void StartSpinAnimation()
-//         {
-//             ResetParams();
-//             _spinWheelParentTransform.eulerAngles = Vector3.zero;
-//             _spinWheelParentTransform
-//                 .DORotate(_animationData.StartAnimationTargetRotation, _animationData.StartAnimationDuration, RotateMode.WorldAxisAdd)
-//                 .SetEase(_animationData.StartAnimationEaseCurve)
-//                 .OnComplete(LoopDoTweenAnimation);
-//         }
-//
-//         private void LoopDoTweenAnimation()
-//         {
-//             _spinWheelParentTransform
-//                 .DORotate(_animationData.LoopAnimationTargetRotation, _animationData.LoopAnimationDuration, RotateMode.WorldAxisAdd)
-//                 .SetLoops(_animationData.LoopAnimationLoopAmount)
-//                 .SetEase(_animationData.LoopAnimationEaseCurve)
-//                 .OnComplete(OnLoopAnimationCompleted);
-//         }
-//
-//         private void OnLoopAnimationCompleted()
-//         {
-//             if (_loopCount < _animationData.MinLoopAmount || !_hasCloudResponseArrived)
-//             {
-//                 _loopCount++;
-//                 LoopDoTweenAnimation();
-//                 return;
-//             }
-//             
-//             PlayEndAnimation();
-//         }
-//
-//         private void PlayEndAnimation()
-//         {
-//             _spinWheelParentTransform
-//                 .DORotate(GetTargetRotation(), GetEndAnimDuration(), RotateMode.WorldAxisAdd)
-//                 .SetEase(_animationData.EndAnimationEaseCurve)
-//                 .OnComplete(OnSpinWheelAnimationCompleted);
-//         }
-//
-//         private void ResetParams()
-//         {
-//             SetGotCloudResponse(false);
-//             _loopCount = 0;
-//         }
-//         
-//         private void OnSpinWheelAnimationCompleted()
-//         {
-//             OnSpinAnimationCompleted?.Invoke();
-//         }
-//
-//         private Vector3 GetTargetRotation()
-//         {
-//             float wheelSliceAngle = 360 / (float)_slotCount;
-//             float zAngle = wheelSliceAngle * TestIndex;
-//             // if (Math.Abs(zAngle) < 1 )
-//             // {
-//             //     zAngle = 360;
-//             // }
-//
-//             // if (TestIndex <= 6)
-//             // {
-//             //     zAngle += 360;
-//             // }
-//             zAngle += 360;
-//             return new Vector3(0, 0, zAngle);
-//         }
-//
-//         private float GetEndAnimDuration()
-//         {
-//             return _animationData.EndAnimationMaxDuration;
-//             return _animationData.EndAnimationMaxDuration + (_animationData.EndAnimationMaxDuration / 2 ) * ( TestIndex / 8f);
-//             
-//             if (TestIndex == 0 ) return _animationData.EndAnimationMaxDuration;
-//
-//             return _animationData.EndAnimationMaxDuration / 8 * TestIndex;
-//         }
-//
-//         public void SetGotCloudResponse(bool gotResponse)
-//         {
-//             _hasCloudResponseArrived = gotResponse;
-//         }
-//     }
-// }
-
-
- public class SpinWheelAnimationController : MonoBehaviour
+{ 
+    public class SpinWheelAnimationController : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private Transform _spinWheelParentTransform;
-    
-        [SerializeField] private AnimationCurve _startAnimCurve;
-        [SerializeField] private AnimationCurve _startLoopCurve;
-        
-        
+        [SerializeField] private SpinWheelAnimationData _animationData;
         
         private SpinWheelManager _spinWheelManager;
-        
-        private readonly int START_SPIN_ANIM_HASH = Animator.StringToHash("Animation_SpinWheel_Start");
-        private readonly int LOOP_SPIN_ANIM_HASH = Animator.StringToHash("Animation_SpinWheel_Loop");
-        private readonly int END_SPIN_ANIM_HASH = Animator.StringToHash("Animation_SpinWheel_End");
-    
-        private readonly string CLOUD_RESPONSE_ARRIVED_PARAM = "CloudResponseArrived";
-        private const int _slotCount = 8;
-        public bool responseArrived;
-    
-        public static event Action OnSpinAnimationCompleted;
-        private bool _hasCloudResponseArrived;
+       
         private int _loopCount;
-        private const int MIN_LOOP_COUNT = 3;
+        private int _targetSlotIndex;
+        private const int SLOT_INDEX_NOT_SET = -1;
+        
         
         private void Awake()
         {
@@ -152,45 +30,47 @@ namespace CardGame.SpinWheel
         
         public void StartSpinAnimation()
         {
-            SetGotCloudResponse(false);
+            SetTargetSlotIndex(SLOT_INDEX_NOT_SET);
             SetCloudResponseArrivedParam(false);
             _loopCount = 0;
-            _animator.Play(START_SPIN_ANIM_HASH);
+            _animator.Play(_animationData.StartSpinAnimationHash);
         }
     
         public void AnimEvent_OnCheckForResponse()
         {
-            if (_loopCount < MIN_LOOP_COUNT)
+            if (_loopCount < _animationData.MinLoopCount)
             {
                 _loopCount++;
                 return;
             }
             
-            if (!_hasCloudResponseArrived) { return; }
+            if (!HasCloudResponseArrived()) { return; }
             
-            SetParentRotation(_spinWheelManager.SpinWheelResponse.SlotIndex);
+            SetParentRotation();
             SetCloudResponseArrivedParam(true);
         }
         
         public void AnimEvent_OnSpinAnimationCompleted()
         {
-            OnSpinAnimationCompleted?.Invoke();
+            _spinWheelManager.OnSpinWheelAnimationCompleted();
         }
         
         public void SetCloudResponseArrivedParam(bool hasArrived)
         {
-            _animator.SetBool(CLOUD_RESPONSE_ARRIVED_PARAM, hasArrived);
+            _animator.SetBool(_animationData.CloudResponseArrivedParamName, hasArrived);
         }
     
-        public void SetParentRotation(int slotIndex)
+        public void SetParentRotation()
         {
-            var angle = 360 / (float)_slotCount;
-            _spinWheelParentTransform.eulerAngles = new Vector3(0, 0, angle * slotIndex);
+            var angle = 360 / (float)_spinWheelManager.GetSlotCount();
+            _spinWheelParentTransform.eulerAngles = new Vector3(0, 0, angle * _targetSlotIndex);
         }
     
-        public void SetGotCloudResponse(bool gotResponse)
+        public void SetTargetSlotIndex(int slotIndex)
         {
-            _hasCloudResponseArrived = gotResponse;
+            _targetSlotIndex = slotIndex;
         }
+
+        private bool HasCloudResponseArrived() => _targetSlotIndex != SLOT_INDEX_NOT_SET;
     }
 }

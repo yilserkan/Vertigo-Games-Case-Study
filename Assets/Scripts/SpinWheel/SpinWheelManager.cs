@@ -11,15 +11,15 @@ namespace CardGame.SpinWheel
     public class SpinWheelManager : MonoBehaviour
     {
         [SerializeField] private SpinWheelSlotManager[] _slots;
+        [SerializeField] private SpinWheelUIManager _spinWheelUIManager;
         [SerializeField] private ItemContainers _itemContainers;
         
-        private WheelLevel _leveData;
-        private int _currentIndex;
+        private GetLevelResponse _levelData;
         private SpinWheelResponse _spinWheelResponse;
-        public SpinWheelResponse SpinWheelResponse { get => _spinWheelResponse; }
-        
         private SpinWheelAnimationController _spinWheelAnimationController;
-
+        // private SpinWheelUIManager _spinWheelUIManager;
+        
+        public static event Action<int> OnSpinAnimationCompleted;
         private void Awake()
         {
             ServiceLocator.For(this).Register<SpinWheelManager>(this);
@@ -27,37 +27,33 @@ namespace CardGame.SpinWheel
 
         private void Start()
         {
-            _currentIndex = 0;
-            InitializeLevel();
-            ServiceLocator.For(this).Get(out _spinWheelAnimationController);
+            ServiceLocator.For(this)
+                .Get(out _spinWheelAnimationController);
+            // .Get(out _spinWheelUIManager);
         }
 
-        public async void InitializeLevel()
+        public void InitializeLevel(GetLevelResponse levelData)
         {
-            var levelJson = await SpinWheelCloudRequests.GetLevelData();
-            _leveData = JsonUtility.FromJson<WheelLevel>(levelJson);
-            _currentIndex = 0;
-            ShowNextStage();
+            _levelData = levelData;
         }
-
-        [ContextMenu("Next")]
-        public void ShowNextStage()
+        
+        public void ShowStage(int stage)
         {
-            InitializeSlots();
-            _currentIndex++;
+            InitializeSlots(stage);
         }
        
-        private void InitializeSlots()
+        private void InitializeSlots(int stage)
         {
-            var datas = _leveData.LevelData[_currentIndex];
+            var datas = _levelData.LevelData[stage];
             for (int i = 0; i < _slots.Length; i++)
             {
                 if (datas.SlotDatas.Length <= i) { break; }
 
                 if (_itemContainers.TryGetItemData((ItemType)datas.SlotDatas[i].Type, datas.SlotDatas[i].ID, out var data));
                 {
-                    _slots[i].InitializeSlot(data);
+                    _slots[i].InitializeSlot(data, datas.SlotDatas[i].Amount);
                 }
+                _spinWheelUIManager.SetWheelUI((LevelType)datas.LevelType);
             }
         }
 
@@ -65,30 +61,24 @@ namespace CardGame.SpinWheel
         public async void SpinWheel()
         {
             _spinWheelAnimationController.StartSpinAnimation();
-            var spinWheelResponse = await SpinWheelCloudRequests.SpinWheel();
-            _spinWheelResponse = JsonUtility.FromJson<SpinWheelResponse>(spinWheelResponse);
-            _spinWheelAnimationController.SetGotCloudResponse(true);
+            _spinWheelResponse = await SpinWheelCloudRequests.SpinWheel();
+            _spinWheelAnimationController.SetTargetSlotIndex(_spinWheelResponse.SlotIndex);
         }
-    }
 
-    [Serializable]
-    public class WheelLevel
-    {
-        public LevelData[] LevelData;
+        public void OnSpinWheelAnimationCompleted()
+        {
+            _spinWheelUIManager.SetSpinButtonInteractable(true);
+            OnSpinAnimationCompleted?.Invoke(_spinWheelResponse.SlotIndex);
+        }
+
+        public int GetSlotCount() => _slots.Length;
     }
     
-    [Serializable]
-    public class LevelData
+    public enum LevelType
     {
-        public LevelSlotData[] SlotDatas;
-        public int LevelType;
-    }
-
-    [Serializable]
-    public class LevelSlotData
-    {
-        public int Type;
-        public string ID;
+        Default,
+        SafeZone,
+        SuperZone
     }
 }
 

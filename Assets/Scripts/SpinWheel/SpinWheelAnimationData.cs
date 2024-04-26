@@ -1,22 +1,36 @@
+using System;
+using CardGame.Utils;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/SpinWheelAnimationData", fileName = "SpinWheelAnimationData", order = 0)]
-public class SpinWheelAnimationData : ScriptableObject
+namespace CardGame.SpinWheel
 {
-    [Header("Start Animation")] 
-    public float StartAnimationDuration;
-    public Vector3 StartAnimationTargetRotation;
-    public AnimationCurve StartAnimationEaseCurve;
     
-    [Header("Loop Animation")] 
-    public float LoopAnimationDuration;
-    public Vector3 LoopAnimationTargetRotation;
-    public AnimationCurve LoopAnimationEaseCurve;
-    public int LoopAnimationLoopAmount;
-    public int MinLoopAmount;
-    
-    [Header("End Animation")] 
-    public float EndAnimationMaxDuration;
-    public AnimationCurve EndAnimationEaseCurve;
+    [CreateAssetMenu(menuName = "ScriptableObjects/SpinWheelAnimationData", fileName = "SpinWheelAnimationData", order = 0)]
+    public class SpinWheelAnimationData : AbstractScriptableManagerBase
+    {
+        [SerializeField] private AnimationClip _startSpinAnimation;
+        [SerializeField] private AnimationClip _loopSpinAnimation;
+        [SerializeField] private AnimationClip _endSpinAnimation;
+        [SerializeField] private string _cloudResponseArrivedParamName;
+        [SerializeField] private int _minLoopCount;
+        
+        private int _startSpinAnimationHash;
+        private int _loopSpinAnimationHash;
+        private int _endSpinAnimationHash;
+        
+        public override void Initialize()
+        {
+            base.Initialize();
+            _startSpinAnimationHash = Animator.StringToHash(_startSpinAnimation.name);
+            _loopSpinAnimationHash = Animator.StringToHash(_loopSpinAnimation.name);
+            _endSpinAnimationHash = Animator.StringToHash(_endSpinAnimation.name);
+        }
+
+        public int StartSpinAnimationHash => _startSpinAnimationHash;
+        public int LoopSpinAnimationHash => _loopSpinAnimationHash;
+        public int EndSpinAnimationHash => _endSpinAnimationHash;
+        public string CloudResponseArrivedParamName => _cloudResponseArrivedParamName;
+        public int MinLoopCount => _minLoopCount;
+    }
 }
