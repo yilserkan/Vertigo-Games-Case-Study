@@ -1,4 +1,6 @@
 using System;
+using CardGame.CloudServices.InventoryService;
+using CardGame.Inventory;
 using CardGame.Items;
 using CardGame.ServiceManagement;
 using CardGame.Utils;
@@ -63,6 +65,7 @@ namespace CardGame.SpinWheel
         private void ResetLevel()
         {
             _currentStage.Value = 0;
+            PlayerInventory.ClearWheelRewards();
         }
         
         private void HandleOnSpinWheelAnimCompleted(int slotIndex)
@@ -121,6 +124,7 @@ namespace CardGame.SpinWheel
         private async void HandleOnClaimRewardsButtonClicked()
         {
             await SpinWheelCloudRequests.ClaimRewards();
+            PlayerInventory.ClaimRewardsLocally();
             
             //TODO : Show Rewards
             StartGame();

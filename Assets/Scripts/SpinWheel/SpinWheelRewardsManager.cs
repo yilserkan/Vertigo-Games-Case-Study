@@ -77,14 +77,25 @@ namespace CardGame.SpinWheel
             UpdateReward(data);
             OnRewardParticlesCompleted?.Invoke();
         }
+
+        private void ClearRewards()
+        {
+            foreach (var reward in _wheelRewards)
+            {
+                Destroy(reward.Value.gameObject);
+            }
+            _wheelRewards.Clear();
+        }
         
         private void AddListeners()
         {
+            LevelManager.OnStartGame += ClearRewards;
             LevelManager.OnRewardClaimed += AddReward;
         }
 
         private void RemoveListeners()
         {
+            LevelManager.OnStartGame -= ClearRewards;
             LevelManager.OnRewardClaimed -= AddReward;
         }
     }
