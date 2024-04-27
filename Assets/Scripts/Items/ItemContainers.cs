@@ -73,7 +73,26 @@ namespace CardGame.Items
                 for (int i = 0; i <  _datasDict[ItemType.Currency].Datas.Length; i++)
                 {
                     var data = _datasDict[ItemType.Currency].Datas[i] as CurrencyItemData;
-                    if (data.CurrencyType == currencyType)
+                    if (data != null && data.CurrencyType == currencyType)
+                    {
+                        currencyItemData = data;
+                        return true;
+                    }
+                }
+            }
+
+            currencyItemData = null;
+            return false;
+        }
+        
+        public bool TryGetCurrencyItem(string id, out ItemData currencyItemData)
+        {
+            if (_datasDict.ContainsKey(ItemType.Currency))
+            {
+                for (int i = 0; i <  _datasDict[ItemType.Currency].Datas.Length; i++)
+                {
+                    var data = _datasDict[ItemType.Currency].Datas[i] as CurrencyItemData;
+                    if (data != null && data.ID == id)
                     {
                         currencyItemData = data;
                         return true;

@@ -127,6 +127,28 @@ namespace CardGame.Inventory
 
             return "";
         }
+
+        public static float GetCurrencyAmount(CurrencyType currencyType)
+        {
+            var currencyKey = GetCurrencyID(currencyType);
+            if (_currencies.ContainsKey(currencyKey))
+            {
+                return _currencies[currencyKey].Value;
+            }
+
+            return 0;
+        }
+
+        public static void DecreaseCurrencyLocally(CurrencyType currencyType, float amount)
+        {
+            var currencyKey = GetCurrencyID(currencyType);
+            if (_currencies.ContainsKey(currencyKey))
+            {
+                var decreasedAmount = Mathf.Max(0, _currencies[currencyKey].Value - amount);
+                
+                _currencies[currencyKey].Value = decreasedAmount;
+            }
+        }
     }
     
     public class InventoryItemData

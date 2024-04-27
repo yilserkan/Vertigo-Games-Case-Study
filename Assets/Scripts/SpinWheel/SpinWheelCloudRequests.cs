@@ -7,6 +7,7 @@ using CardGame.CloudServices.InventoryService;
 using CardGame.Inventory;
 using CardGame.Items;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace CardGame.SpinWheel
@@ -60,13 +61,17 @@ namespace CardGame.SpinWheel
             return Task.FromResult(JsonUtility.ToJson(response));
         }
 
-        public Task<string> Revive()
+        public async Task<string> Revive()
         {
             //TODO:
             // Set player state from death to alive   
             // Decrease Player Money
-            var response = new RevivePlayerResponse() { ReviveSuccessfull = true };
-            return Task.FromResult(JsonUtility.ToJson(response));
+
+            var respond = await EconomyCloudRequests.GetCurrency(PlayerInventory.GetCurrencyID(CurrencyType.Gold));
+            var hasPlayerEnoughMoney = respond.Balance >= LostPanelUIManager.REVIVE_COST;
+            await EconomyCloudRequests.DecreaseCurrency(CurrencyType.Gold,LostPanelUIManager.REVIVE_COST);
+            var response = new RevivePlayerResponse() { ReviveSuccessful = hasPlayerEnoughMoney };
+            return JsonUtility.ToJson(response);
         }
 
         public Task GiveUp()
@@ -114,7 +119,7 @@ namespace CardGame.SpinWheel
     [Serializable]
     public class RevivePlayerResponse
     {
-        public bool ReviveSuccessfull;
+        [FormerlySerializedAs("ReviveSuccessfull")] public bool ReviveSuccessful;
     }
     
     [Serializable]
@@ -143,4 +148,5 @@ namespace CardGame.SpinWheel
     {
         public int SlotIndex;
     }
+
 }

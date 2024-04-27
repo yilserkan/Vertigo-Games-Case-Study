@@ -529,6 +529,7 @@ MonoBehaviour:
   _parent: {fileID: 1345143804}
   _reviveButton: {fileID: 808809787}
   _restartButton: {fileID: 1957891179}
+  _reviveCurrencyAmountText: {fileID: 1161989645}
 --- !u!1 &379658704
 GameObject:
   m_ObjectHideFlags: 0

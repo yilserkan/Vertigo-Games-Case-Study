@@ -45,7 +45,6 @@ namespace CardGame.SpinWheel
                 {
                     levelData.SlotDatas[i] = GetRandomSlotData();
                 }
-              
             }
             
             return levelData;

@@ -109,9 +109,10 @@ namespace CardGame.SpinWheel
 
         private async void HandleOnReviveButtonClicked()
         {
+            PlayerInventory.DecreaseCurrencyLocally(CurrencyType.Gold, LostPanelUIManager.REVIVE_COST);
             var revivePlayerResponse = await SpinWheelCloudRequests.Revive();
 
-            if (revivePlayerResponse.ReviveSuccessfull)
+            if (revivePlayerResponse.ReviveSuccessful)
             {
                 ShowNextStage();
             }
@@ -123,9 +124,9 @@ namespace CardGame.SpinWheel
 
         private async void HandleOnClaimRewardsButtonClicked()
         {
-            await SpinWheelCloudRequests.ClaimRewards();
             PlayerInventory.ClaimRewardsLocally();
-            
+            await SpinWheelCloudRequests.ClaimRewards();
+
             //TODO : Show Rewards
             StartGame();
         }
