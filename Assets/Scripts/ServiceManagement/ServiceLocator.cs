@@ -12,7 +12,7 @@ namespace CardGame.ServiceManagement
         private static Dictionary<Scene, ServiceLocator> _sceneContainers = new Dictionary<Scene, ServiceLocator>();
         private ServiceManager _serviceManager = new ServiceManager();
     
-        public static ServiceLocator Global
+        public static ServiceLocator LazyGlobal
         {
             get
             {
@@ -26,7 +26,9 @@ namespace CardGame.ServiceManagement
             }
         }
 
-        public static ServiceLocator For(MonoBehaviour mb)
+        public static ServiceLocator Global => _global;
+
+        public static ServiceLocator For(MonoBehaviour mb, bool createGlobalIfNotExists = true)
         {
             // Try get GameObject scoped service locator
             var serviceLocator = mb.GetComponentInParent<ServiceLocator>();
@@ -43,9 +45,12 @@ namespace CardGame.ServiceManagement
             }
             
             // Try get Global scoped service locator
-            if (Global != null)  return Global; 
-            
-            return null;
+            if (createGlobalIfNotExists && LazyGlobal != null)
+            {
+                  return LazyGlobal; 
+            }
+
+            return Global;
         }
 
         public static ServiceLocator ForScene(MonoBehaviour mb, bool createIfNotExists = true)
@@ -70,6 +75,8 @@ namespace CardGame.ServiceManagement
             return serviceLocator;
         }
         
+   
+        
         public static void RemoveScene(Scene scene)
         {
             if (!_sceneContainers.ContainsKey(scene)) { return; }
@@ -90,7 +97,7 @@ namespace CardGame.ServiceManagement
             }
             
             // Global scoped service locator
-            if (Global != null && Global.TryGet(out service)) return Global;
+            if (LazyGlobal != null && LazyGlobal.TryGet(out service)) return LazyGlobal;
             
             return null;
         }
