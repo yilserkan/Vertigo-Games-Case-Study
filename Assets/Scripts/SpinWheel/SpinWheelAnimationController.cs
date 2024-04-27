@@ -20,14 +20,19 @@ namespace CardGame.SpinWheel
         
         private void Awake()
         {
-            ServiceLocator.For(this).Register<SpinWheelAnimationController>(this);
+            ServiceLocator.For(this)?.Register<SpinWheelAnimationController>(this);
         }
     
         private void Start()
         {
-            ServiceLocator.For(this).Get(out _spinWheelManager);
+            ServiceLocator.For(this)?.Get(out _spinWheelManager);
         }
-        
+
+        private void OnDestroy()
+        {
+            ServiceLocator.For(this, false)?.Unregister(this);
+        }
+
         public void StartSpinAnimation()
         {
             SetTargetSlotIndex(SLOT_INDEX_NOT_SET);

@@ -16,7 +16,7 @@ namespace CardGame.Initialization
     {
         private void Start()
         {
-            ServiceLocator.Global.Get(out SceneLoader sceneLoader);
+            ServiceLocator.LazyGlobal.Get(out SceneLoader sceneLoader);
             if (sceneLoader != null) sceneLoader.LoadScene(SceneType.GameScene);
         }
     }

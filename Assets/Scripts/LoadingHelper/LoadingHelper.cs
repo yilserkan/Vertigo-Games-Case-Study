@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CardGame.Extensions;
 using CardGame.ServiceManagement;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,10 +14,15 @@ namespace CardGame.SceneManagement
 
         private void Awake()
         {
-            ServiceLocator.Global.Register(this);
+            ServiceLocator.LazyGlobal.OrNull()?.Register(this);
             EnableLoadingPanel(false);
         }
-   
+
+        private void OnDestroy()
+        {
+            ServiceLocator.Global.OrNull()?.Unregister(this);
+        }
+
         public void EnableLoadingPanel(bool enabled)
         {
             gameObject.SetActive(enabled);

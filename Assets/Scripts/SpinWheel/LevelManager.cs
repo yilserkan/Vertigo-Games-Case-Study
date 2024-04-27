@@ -32,7 +32,12 @@ namespace CardGame.SpinWheel
 
         private void Awake()
         {
-            ServiceLocator.ForScene(this).Register(this);
+            ServiceLocator.ForScene(this)?.Register(this);
+        }
+
+        private void OnDestroy()
+        {
+            ServiceLocator.ForScene(this, false)?.Unregister(this);
         }
 
         protected override void Start()

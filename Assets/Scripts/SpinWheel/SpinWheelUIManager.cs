@@ -16,12 +16,17 @@ namespace CardGame.SpinWheel
         
         private void Awake()
         {
-            ServiceLocator.For(this).Register<SpinWheelUIManager>(this);
+            ServiceLocator.For(this)?.Register<SpinWheelUIManager>(this);
         }
 
         private void Start()
         {
-            ServiceLocator.For(this).Get(out _spinWheelManager);
+            ServiceLocator.For(this)?.Get(out _spinWheelManager);
+        }
+
+        private void OnDestroy()
+        {
+            ServiceLocator.For(this, false)?.Unregister(this);
         }
 
         private void OnEnable()

@@ -32,17 +32,22 @@ namespace CardGame.SpinWheel
 
         private void Awake()
         {
-            ServiceLocator.For(this).Register<SpinWheelManager>(this);
+            ServiceLocator.For(this)?.Register<SpinWheelManager>(this);
         }
 
         private void Start()
         {
-            ServiceLocator.ForScene(this).Get(out _levelManager);
-            ServiceLocator.For(this)
+            ServiceLocator.ForScene(this)?.Get(out _levelManager);
+            ServiceLocator.For(this)?
                 .Get(out _spinWheelAnimationController)
                 .Get(out _spinWheelUIManager);
         }
-        
+
+        private void OnDestroy()
+        {
+            ServiceLocator.For(this, false)?.Unregister(this);
+        }
+
         private void StartGame()
         {
             ShowStage(_levelManager.CurrentStage);

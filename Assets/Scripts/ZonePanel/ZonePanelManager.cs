@@ -36,8 +36,8 @@ namespace CardGame.Zones
 
     private void Start()
     {
-        ServiceLocator.ForScene(this).Get(out _levelManager);
-        ServiceLocator.For(this).Get(out _zonePanelUIManager);
+        ServiceLocator.ForScene(this)?.Get(out _levelManager);
+        ServiceLocator.For(this)?.Get(out _zonePanelUIManager);
     }
 
     public void Initialize()

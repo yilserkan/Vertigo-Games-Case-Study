@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CardGame.Extensions;
 using CardGame.ServiceManagement;
 using CardGame.Utils;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace CardGame.Items
         private ItemType[] _itemTypesWithoutBomb;
         public override void Initialize()
         {
-            ServiceLocator.Global.Register(this);
+            ServiceLocator.LazyGlobal.OrNull()?.Register(this);
             _itemTypesWithoutBomb = new[] { ItemType.Chest, ItemType.Costume, ItemType.Equipment, ItemType.Weapon };
             _datasDict = new Dictionary<ItemType, ItemDataContainer>();
             for (int i = 0; i < Datas.Length; i++)

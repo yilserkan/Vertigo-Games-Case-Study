@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using CardGame.Extensions;
 using CardGame.ServiceManagement;
 using CardGame.Singleton;
 using UnityEngine;
@@ -20,7 +21,12 @@ namespace CardGame.SceneManagement
         private const string INITIALIZATION_SCENE_NAME = "InitializationScene"; 
         public void Awake()
         {
-            ServiceLocator.Global.Register(this);
+            ServiceLocator.LazyGlobal.OrNull()?.Register(this);
+        }
+
+        private void OnDestroy()
+        {
+            ServiceLocator.Global.OrNull()?.Unregister(this);
         }
 
         [ContextMenu("LoadGameScene")]
@@ -41,7 +47,7 @@ namespace CardGame.SceneManagement
 
         public async Task LoadScene(SceneType type)
         {
-            ServiceLocator.Global.Get<LoadingHelper>(out var loadingHelper);
+            ServiceLocator.LazyGlobal.Get<LoadingHelper>(out var loadingHelper);
             loadingHelper.EnableLoadingPanel(true);
             
             Scene prevScene = SceneManager.GetActiveScene();

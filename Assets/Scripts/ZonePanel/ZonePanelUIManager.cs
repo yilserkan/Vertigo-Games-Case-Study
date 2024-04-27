@@ -34,9 +34,14 @@ namespace CardGame.Zones
     
         private void Awake()
         {
-            ServiceLocator.For(this).Register(this);
+            ServiceLocator.For(this)?.Register(this);
         }
-    
+
+        private void OnDestroy()
+        {
+            ServiceLocator.For(this, false)?.Unregister(this);
+        }
+
         private void HandleOnContinueButtonClicked()
         {
             EnableClaimRewardsPanel(false);

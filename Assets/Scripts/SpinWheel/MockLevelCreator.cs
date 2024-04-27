@@ -11,7 +11,7 @@ namespace CardGame.SpinWheel
         
         public MockLevelCreator()
         {
-            ServiceLocator.Global.Get(out _itemContainers);
+            ServiceLocator.LazyGlobal.Get(out _itemContainers);
         }
 
         public GetLevelResponse GetMockLevelData()
