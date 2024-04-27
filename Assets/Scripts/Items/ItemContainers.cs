@@ -12,11 +12,11 @@ namespace CardGame.Items
         public ItemDataContainer[] Datas;
         private Dictionary<ItemType, ItemDataContainer> _datasDict;
 
-        private ItemType[] _itemTypesWithoutBomb;
+        private List<ItemType> _itemTypesWithoutBomb;
         public override void Initialize()
         {
             ServiceLocator.LazyGlobal.OrNull()?.Register(this);
-            _itemTypesWithoutBomb = new[] { ItemType.Chest, ItemType.Costume, ItemType.Equipment, ItemType.Weapon };
+            _itemTypesWithoutBomb = new List<ItemType>();
             _datasDict = new Dictionary<ItemType, ItemDataContainer>();
             for (int i = 0; i < Datas.Length; i++)
             {
@@ -24,6 +24,11 @@ namespace CardGame.Items
                 {
                     Datas[i].Initialize();
                     _datasDict.Add(Datas[i].Type, Datas[i]);
+                }
+
+                if (Datas[i].Type != ItemType.Bomb && !_itemTypesWithoutBomb.Contains(Datas[i].Type))
+                {
+                    _itemTypesWithoutBomb.Add(Datas[i].Type);
                 }
             }
         }
@@ -41,7 +46,7 @@ namespace CardGame.Items
 
         public ItemData GetRandomItemData()
         {
-            var index = Random.Range(0, _itemTypesWithoutBomb.Length);
+            var index = Random.Range(0, _itemTypesWithoutBomb.Count);
             var type = _itemTypesWithoutBomb[index];
             if (_datasDict.TryGetValue(type, out var container))
             {
@@ -59,6 +64,25 @@ namespace CardGame.Items
             }
 
             return null;
+        }
+
+        public bool TryGetCurrencyItem(CurrencyType currencyType, out ItemData currencyItemData)
+        {
+            if (_datasDict.ContainsKey(ItemType.Currency))
+            {
+                for (int i = 0; i <  _datasDict[ItemType.Currency].Datas.Length; i++)
+                {
+                    var data = _datasDict[ItemType.Currency].Datas[i] as CurrencyItemData;
+                    if (data.CurrencyType == currencyType)
+                    {
+                        currencyItemData = data;
+                        return true;
+                    }
+                }
+            }
+
+            currencyItemData = null;
+            return false;
         }
     }
 }

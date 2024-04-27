@@ -11,14 +11,15 @@ namespace CardGame.Items
         public ItemRarity Rarity;
         public string ID;
     }
-    
+
     public enum ItemType
     {
         Costume,
         Equipment,
         Weapon,
         Chest,
-        Bomb
+        Bomb,
+        Currency
     }
 
     public enum ItemRarity
