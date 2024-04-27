@@ -66,7 +66,7 @@ namespace CardGame.SpinWheel
             {
                 if (datas.SlotDatas.Length <= i) { break; }
 
-                if (_itemContainers.TryGetItemData((ItemType)datas.SlotDatas[i].Type, datas.SlotDatas[i].ID, out var data));
+                if (_itemContainers.TryGetItemData((ItemType)datas.SlotDatas[i].Type, datas.SlotDatas[i].ID, out var data))
                 {
                     _slots[i].InitializeSlot(data, datas.SlotDatas[i].Amount);
                 }

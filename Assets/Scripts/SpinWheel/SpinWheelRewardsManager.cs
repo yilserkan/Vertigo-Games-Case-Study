@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CardGame.CloudServices.InventoryService;
+using CardGame.Inventory;
 using CardGame.Items;
 using CardGame.ServiceManagement;
 using UnityEngine;
@@ -61,6 +63,7 @@ namespace CardGame.SpinWheel
         private void UpdateReward(LevelSlotData data)
         {
             _wheelRewards[data.ID].UpdateAmount(data.Amount);
+            PlayerInventory.AddToWheelRewards(new PlayerInventoryData(){ID = data.ID, Amount = data.Amount, Type = data.Type});
         }
 
         private void SpawnParticles(LevelSlotData data, ItemData itemData)

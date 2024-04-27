@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CardGame.Inventory;
 using CardGame.SceneManagement;
 using CardGame.ServiceManagement;
 using CardGame.Singleton;
@@ -18,6 +19,8 @@ namespace CardGame.Initialization
         {
             ServiceLocator.LazyGlobal.Get(out SceneLoader sceneLoader);
             if (sceneLoader != null) sceneLoader.LoadScene(SceneType.GameScene);
+            
+            PlayerInventory.Initialize();
         }
     }
 }

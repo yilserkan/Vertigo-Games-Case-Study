@@ -1,5 +1,11 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using CardGame.CloudServices.EconomyService;
+using CardGame.CloudServices.InventoryService;
+using CardGame.Inventory;
+using CardGame.Items;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -65,18 +71,33 @@ namespace CardGame.SpinWheel
 
         public Task GiveUp()
         {
-            //TODO:
-            // Reset all cached player earnings
-            
+            PlayerInventory.ClearWheelRewards();
             return Task.CompletedTask;
         }
 
-        public Task ClaimRewards()
+        public async Task ClaimRewards()
         {
-            // TODO
-            // Give rewards to player
+            var inventoryItemRewards =
+                PlayerInventory.WheelRewards.Where(kv => kv.Value.Type != (int)ItemType.Currency); 
+            await InventoryCloudRequests.AddToPlayerInventory(inventoryItemRewards);
+            
+            var currencyRewards =
+                PlayerInventory.WheelRewards.Where(kv => kv.Value.Type == (int)ItemType.Currency);
+            await EconomyCloudRequests.IncreaseCurrency(ConvertDictionaryForCurrencyRequest(currencyRewards));
+        }
 
-            return Task.CompletedTask;
+        private Dictionary<string, float> ConvertDictionaryForCurrencyRequest(IEnumerable<KeyValuePair<string, PlayerInventoryData>> datas)
+        {
+            var newDict = new Dictionary<string, float>();
+            foreach (var kv in datas)
+            {
+                if (!newDict.ContainsKey(kv.Key))
+                {
+                    newDict.Add(kv.Key, kv.Value.Amount);
+                }
+            }
+
+            return newDict;
         }
     }
 

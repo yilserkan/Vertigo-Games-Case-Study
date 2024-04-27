@@ -52,6 +52,8 @@ MonoBehaviour:
   _rectTransform: {fileID: 318676534952164908}
   _particleImage: {fileID: 8020031240569281997}
   _radius: 100
+  _scaleAnimDuration: 0.5
+  _moveToTargerRewardAnimDuration: 0.5
 --- !u!1 &5420703773171634185
 GameObject:
   m_ObjectHideFlags: 0
