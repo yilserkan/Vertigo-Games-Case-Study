@@ -10,7 +10,21 @@ namespace CardGame.CloudServices.EconomyService
     public class MockEconomyCloudService : IEconomyCloudService
     {
         private const string PLAYER_PREF_CURRENCY_PREFIX = "PREF_CURRENY_";
-        
+
+        public Task<string> GetCurrency(string currencyID)
+        {
+            ServiceLocator.Global.Get(out ItemContainers itemContainers);
+            if (itemContainers == null) { return Task.FromResult(JsonUtility.ToJson("{}")); }
+            var respond = new GetCurrencyRespond() { Balance = 0 };
+            if (itemContainers.TryGetCurrencyItem(currencyID, out var currencyItem))
+            {
+                var balance = PlayerPrefs.GetFloat($"{PLAYER_PREF_CURRENCY_PREFIX}{currencyItem.ID}", 0);
+                respond.Balance = balance;
+            }
+            
+            return Task.FromResult(JsonUtility.ToJson(respond));
+        }
+
         public Task<string> GetCurrencies()
         {
             ServiceLocator.Global.Get(out ItemContainers itemContainers);
@@ -27,7 +41,7 @@ namespace CardGame.CloudServices.EconomyService
                 currencyDataList.Add(new CurrencyData(){CurrencyID = moneyItem.ID, Balance = money});
             }
 
-            var response = new GetCurrencyRespond()
+            var response = new GetCurrenciesRespond()
             {
                 CurrencyDatas = currencyDataList.ToArray()
             };
@@ -35,12 +49,24 @@ namespace CardGame.CloudServices.EconomyService
             return Task.FromResult(JsonUtility.ToJson(response));
         }
 
-        public Task<string> IncrementCurrency(IEnumerable<KeyValuePair<string, float>> currencies)
+        public Task<string> IncreaseCurrency(IEnumerable<KeyValuePair<string, float>> currencies)
         {
             foreach (var currency in currencies)
             {
                 var currentAmount = PlayerPrefs.GetFloat($"{PLAYER_PREF_CURRENCY_PREFIX}{currency.Key}", 0);
                 PlayerPrefs.SetFloat($"{PLAYER_PREF_CURRENCY_PREFIX}{currency.Key}", currentAmount + currency.Value);
+            }
+            
+            return Task.FromResult(JsonUtility.ToJson(true));
+        }
+
+        public Task<string> DecreaseCurrency(IEnumerable<KeyValuePair<string, float>> currencies)
+        {
+            foreach (var currency in currencies)
+            {
+                var currentAmount = PlayerPrefs.GetFloat($"{PLAYER_PREF_CURRENCY_PREFIX}{currency.Key}", 0);
+                var decreasedAmount = Mathf.Max(0, currentAmount - currency.Value);
+                PlayerPrefs.SetFloat($"{PLAYER_PREF_CURRENCY_PREFIX}{currency.Key}", decreasedAmount);
             }
             
             return Task.FromResult(JsonUtility.ToJson(true));
