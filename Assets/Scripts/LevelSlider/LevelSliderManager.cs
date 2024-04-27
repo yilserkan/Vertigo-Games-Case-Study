@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CardGame.AddressablesManagement;
+using CardGame.Extensions;
 using CardGame.ServiceManagement;
 using CardGame.SpinWheel;
 using DG.Tweening;

@@ -3809,30 +3809,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1818416229}
     m_Modifications:
-    - target: {fileID: 1036737128603967086, guid: 5dc636a559d6a134886715f35456ac7f,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1036737128603967086, guid: 5dc636a559d6a134886715f35456ac7f,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1036737128603967086, guid: 5dc636a559d6a134886715f35456ac7f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1036737128603967086, guid: 5dc636a559d6a134886715f35456ac7f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3122776599851296218, guid: 5dc636a559d6a134886715f35456ac7f,
         type: 3}
       propertyPath: m_Name
       value: ui_rewards_parent
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001374632856647032, guid: 5dc636a559d6a134886715f35456ac7f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8602716463266465126, guid: 5dc636a559d6a134886715f35456ac7f,
         type: 3}

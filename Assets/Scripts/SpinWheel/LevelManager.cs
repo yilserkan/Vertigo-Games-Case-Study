@@ -19,6 +19,7 @@ namespace CardGame.SpinWheel
         public static event Action OnPlayerHasLostEvent;
         public static event Action<int> OnShowNextStage;
         public static event Action OnShowZonePanel;
+        public static event Action<LevelSlotData> OnRewardClaimed; 
         
         private void OnEnable()
         {
@@ -66,14 +67,19 @@ namespace CardGame.SpinWheel
         
         private void HandleOnSpinWheelAnimCompleted(int slotIndex)
         {
-            if (HasPlayerLost(slotIndex))
+            var slotData = _levelData.Levels[_currentStage.Value].SlotDatas[slotIndex];
+            if (HasPlayerLost(slotData))
             {
                 Debug.Log("Player Has Lost");
                 OnPlayerHasLostEvent?.Invoke();
                 return;
             }
-            // TODO : Show UI Animation
+            
+            OnRewardClaimed?.Invoke(slotData);
+        }
 
+        private void HandleOnRewardParticlesCompleted()
+        {
             // TODO : Check for game end
             
             if (IsAtZoneLevel())
@@ -120,9 +126,8 @@ namespace CardGame.SpinWheel
             StartGame();
         }
 
-        private bool HasPlayerLost(int slotIndex)
+        private bool HasPlayerLost(LevelSlotData slotData)
         {
-            var slotData = _levelData.Levels[_currentStage.Value].SlotDatas[slotIndex];
             Debug.Log("Item ID : " + slotData.ID);
             return (ItemType)slotData.Type == ItemType.Bomb;
         }
@@ -132,6 +137,7 @@ namespace CardGame.SpinWheel
         private void AddListeners()
         {
             SpinWheelManager.OnSpinAnimationCompleted += HandleOnSpinWheelAnimCompleted;
+            SpinWheelRewardsManager.OnRewardParticlesCompleted += HandleOnRewardParticlesCompleted;
             LostPanelUIManager.OnRestartButtonClickedEvent += HandleOnRestartButtonClicked;
             LostPanelUIManager.OnReviveButtonClickedEvent += HandleOnReviveButtonClicked;
             ZonePanelUIManager.OnClaimRewardsButtonClicked += HandleOnClaimRewardsButtonClicked;
@@ -141,6 +147,7 @@ namespace CardGame.SpinWheel
         private void RemoveListeners()
         {
             SpinWheelManager.OnSpinAnimationCompleted -= HandleOnSpinWheelAnimCompleted;
+            SpinWheelRewardsManager.OnRewardParticlesCompleted -= HandleOnRewardParticlesCompleted;
             LostPanelUIManager.OnRestartButtonClickedEvent -= HandleOnRestartButtonClicked;
             LostPanelUIManager.OnReviveButtonClickedEvent -= HandleOnReviveButtonClicked;
             ZonePanelUIManager.OnClaimRewardsButtonClicked -= HandleOnClaimRewardsButtonClicked;

@@ -56,6 +56,7 @@ namespace CardGame.SpinWheel
         public void ShowStage(int stage)
         {
             InitializeSlots(stage);
+            _spinWheelUIManager.SetSpinButtonInteractable(true);
         }
        
         private void InitializeSlots(int stage)
@@ -83,7 +84,6 @@ namespace CardGame.SpinWheel
 
         public void OnSpinWheelAnimationCompleted()
         {
-            _spinWheelUIManager.SetSpinButtonInteractable(true);
             OnSpinAnimationCompleted?.Invoke(_spinWheelResponse.SlotIndex);
         }
 
