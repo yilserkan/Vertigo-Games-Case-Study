@@ -7,7 +7,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 
-namespace CardGame.AddressablesManagement
+namespace CardGame.Extensions
 {
     public static class AddressableExtensions 
     {
