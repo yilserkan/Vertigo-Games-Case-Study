@@ -6,7 +6,7 @@ namespace CardGame.Utils
     {
         [SerializeField] private AbstractScriptableManagerBase[] _abstractScriptableManagerArray;
 
-        private void Start()
+        private void Awake()
         {
             for (int i = 0; i < _abstractScriptableManagerArray.Length; i++)
             {
