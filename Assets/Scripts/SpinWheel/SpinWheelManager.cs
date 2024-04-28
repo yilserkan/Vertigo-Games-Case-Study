@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CardGame.Extensions;
 using CardGame.Items;
 using CardGame.ServiceManagement;
 using UnityEngine;
@@ -11,13 +12,13 @@ namespace CardGame.SpinWheel
     public class SpinWheelManager : MonoBehaviour
     {
         [SerializeField] private SpinWheelSlotManager[] _slots;
-        [SerializeField] private ItemContainers _itemContainers;
-
-        private LevelManager _levelManager;
-        private SpinWheelResponse _spinWheelResponse;
-        private SpinWheelAnimationController _spinWheelAnimationController;
-        private SpinWheelUIManager _spinWheelUIManager;
         
+        private LevelManager _levelManager;
+        private ItemContainers _itemContainers;
+        private SpinWheelResponse _spinWheelResponse;
+        private SpinWheelUIManager _spinWheelUIManager;
+        private SpinWheelAnimationController _spinWheelAnimationController;
+
         public static event Action<int> OnSpinAnimationCompleted;
 
         private void OnEnable()
@@ -37,6 +38,7 @@ namespace CardGame.SpinWheel
 
         private void Start()
         {
+            ServiceLocator.Global.OrNull()?.Get(out _itemContainers);
             ServiceLocator.ForScene(this)?.Get(out _levelManager);
             ServiceLocator.For(this)?
                 .Get(out _spinWheelAnimationController)

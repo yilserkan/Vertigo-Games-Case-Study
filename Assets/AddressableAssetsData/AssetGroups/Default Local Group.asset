@@ -16,7 +16,47 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 45cbcc300949c594398462d1f92e86f3
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 99c9720ab356a0642a771bea13969a05
+    m_Address: Assets/Scenes/GameScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1bac4d0c90ccc7d41bea32ced31fd3fe
+    m_Address: Assets/Prefabs/SpinWheel/Level Slider/ui_text_level_slider_item.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff41e300e54b01a40a2a257986a85bbb
+    m_Address: Assets/ScriptableObjects/SpinWheel/SpinWheelUIAssets.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c4f55b4db7b7ba44da23c18924f8dfcc
+    m_Address: Assets/ScriptableObjects/SpinWheel/SpinWheelAnimationData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1cffad4f9c6ce1247827fd68592e31c4
+    m_Address: Assets/Animations/Animations/SpinWheel/Animation_SpinWheel_Start.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e61f05a206ee7c4b8a37d550353d60e
+    m_Address: Assets/Animations/Animations/SpinWheel/Animation_SpinWheel_Loop.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 289f72fbceeaac2448b0c82a8cfd0f48
+    m_Address: Assets/Animations/Animations/SpinWheel/Animation_SpinWheel_End.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d9c4390b51fc74b40a5c16f06a73a648
+    m_Address: Assets/ScriptableObjects/Items/ItemContainers.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b80173dc628bd0742ac65f79fb1e9796, type: 2}
   m_SchemaSet:
