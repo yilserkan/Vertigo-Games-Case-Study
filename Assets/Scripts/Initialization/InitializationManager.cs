@@ -25,11 +25,6 @@ namespace CardGame.Initialization
         public struct userAttributes {}
         public struct appAttributes {}
         
-        private readonly Dictionary<Environments, string> _environments = new Dictionary<Environments, string>()
-        {
-            { Environments.Production, "production" }
-        };
-        
         private void Start()
         {
             Initialize();
@@ -50,10 +45,8 @@ namespace CardGame.Initialization
         
         async Task InitializeRemoteConfigAsync()
         {
-            var options = new InitializationOptions().SetEnvironmentName(_environments[Environments.Production]);
-        
             // initialize handlers for unity game services
-            await UnityServices.InitializeAsync(options);
+            await UnityServices.InitializeAsync();
             
             // remote config requires authentication for managing environment information
             if (!AuthenticationService.Instance.IsSignedIn)
@@ -61,7 +54,7 @@ namespace CardGame.Initialization
                 await AuthenticationService.Instance.SignInAnonymouslyAsync();
             }
         }
-
+        
         async void ApplyRemoteSettings(ConfigResponse configResponse)
         {
             Debug.Log("RemoteConfigService.Instance.appConfig fetched: " + RemoteConfigService.Instance.appConfig.config);
@@ -81,11 +74,6 @@ namespace CardGame.Initialization
             await PlayerInventory.Initialize();
                 
             sceneLoader.OrNull()?.LoadScene(SceneType.GameScene);
-        }
-        
-        public enum Environments
-        {
-            Production
         }
     }
 }
