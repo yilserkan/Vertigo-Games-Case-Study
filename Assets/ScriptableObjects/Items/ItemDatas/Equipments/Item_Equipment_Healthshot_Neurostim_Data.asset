@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_Equipment_Healthshot_Neurostim_Data
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 94ee6f3fbe0654f40a00497a7c87dda2, type: 3}
-  Name: 
+  Name: Neurostim
   Type: 1
   Rarity: 0
   ID: ITEM_EQUIPMENT_HEALTSHOT_NEUROSTIM

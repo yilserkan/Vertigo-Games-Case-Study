@@ -15,5 +15,5 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: 15d6d7a58e5b2cf488a442895e9a1bca, type: 3}
   Name: Summer Vice Bayonet
   Type: 2
-  Rarity: 0
+  Rarity: 2
   ID: ITEM_WEAPON_BAYONET_SUMMER_VICE

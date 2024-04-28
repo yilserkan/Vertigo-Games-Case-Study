@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_Equipment_Grenade_M67_Data
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 0e8570e67dad5eb44b044bbb0fb876e6, type: 3}
-  Name: 
+  Name: M67 Grenade
   Type: 4
   Rarity: 0
   ID: ITEM_BOMB_GRENADE_M67

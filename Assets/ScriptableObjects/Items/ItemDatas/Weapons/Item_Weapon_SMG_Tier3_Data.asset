@@ -15,5 +15,5 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: 432ece45a25e51e489512f0759618986, type: 3}
   Name: SMG
   Type: 2
-  Rarity: 0
+  Rarity: 2
   ID: ITEM_WEAPON_SMG_TIER3

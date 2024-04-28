@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_Chest_Big_Data
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: c67d09b96e04d564b85a7c4d221ee7bb, type: 3}
-  Name: 
+  Name: Big Chest
   Type: 3
-  Rarity: 0
+  Rarity: 2
   ID: ITEM_CHEST_BIG_DATA

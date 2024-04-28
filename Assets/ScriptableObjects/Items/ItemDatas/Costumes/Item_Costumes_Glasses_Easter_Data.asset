@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_Costumes_Glasses_Easter_Data
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: d2851c609b25ad1479123fe0710226f0, type: 3}
-  Name: 
+  Name: Easter Glasses
   Type: 0
-  Rarity: 0
+  Rarity: 2
   ID: ITEM_COSTUME_GLASSESS_EASTER

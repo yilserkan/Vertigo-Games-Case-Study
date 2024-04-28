@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_Equipment_Healthshot_Regenerator_Data
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: d0ce4bbd154dde146abc99c8b6f5503f, type: 3}
-  Name: 
+  Name: Regenerator
   Type: 1
   Rarity: 0
   ID: ITEM_EQUIPMENT_HEALTSHOT_REGENERATOR

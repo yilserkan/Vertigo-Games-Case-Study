@@ -15,5 +15,5 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: 35280c01512c31a419f8b0925ecd455a, type: 3}
   Name: Shotgun
   Type: 2
-  Rarity: 0
+  Rarity: 1
   ID: ITEM_WEAPON_SHOTGUN_TIER3

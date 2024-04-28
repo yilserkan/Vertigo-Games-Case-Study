@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_Equipment_Molotov_Data
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 77002fda9e89df745af26024a3a4b83c, type: 3}
-  Name: 
+  Name: Molotov
   Type: 4
   Rarity: 0
   ID: ITEM_BOMB_MOLOTOV

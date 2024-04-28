@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_Costumes_Helmet_Pumpkin_Data
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 758e66ec81c238342b10dfcfb0d6ed90, type: 3}
-  Name: 
+  Name: Pumpkin Helmet
   Type: 0
-  Rarity: 0
+  Rarity: 3
   ID: ITEM_COSTUME_HELMET_PUMPKIN

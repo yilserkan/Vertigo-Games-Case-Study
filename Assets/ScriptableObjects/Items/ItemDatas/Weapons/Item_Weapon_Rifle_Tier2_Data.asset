@@ -15,5 +15,5 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: 58916c7d899849b43a0ee6e663828692, type: 3}
   Name: Rifle
   Type: 2
-  Rarity: 0
+  Rarity: 3
   ID: ITEM_WEAPON_RIFLE_TIER2
