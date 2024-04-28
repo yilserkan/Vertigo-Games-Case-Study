@@ -8,7 +8,8 @@ namespace CardGame.CloudServices.InventoryService
 {
     public static class InventoryCloudRequests
     {
-        private static IInventoryCloudService _cloudService = new MockInventoryCloudService();
+        // private static IInventoryCloudService _cloudService = new MockInventoryCloudService();
+        private static IInventoryCloudService _cloudService = new UGSInventoryCloudService();
 
         public static async Task<GetPlayerInventoryResponse> GetPlayerInventory()
         {
@@ -16,10 +17,10 @@ namespace CardGame.CloudServices.InventoryService
             return JsonUtility.FromJson<GetPlayerInventoryResponse>(json);
         }
         
-        public static async Task<bool> AddToPlayerInventory(IEnumerable<KeyValuePair<string, PlayerInventoryData>> items)
+        public static async Task<AddToInventoryRespond> AddToPlayerInventory(IEnumerable<KeyValuePair<string, PlayerInventoryData>> items)
         {
              var json = await _cloudService.AddToPlayerInventory(items);
-             return JsonUtility.FromJson<bool>(json);
+             return JsonUtility.FromJson<AddToInventoryRespond>(json);
         }
         
     }
@@ -29,6 +30,12 @@ namespace CardGame.CloudServices.InventoryService
     {
         public PlayerInventoryData[] InventoryDatas;
     }
+    
+    [Serializable]
+    public class AddToInventoryRespond
+    {
+        public bool Successful;
+    }
 
     [Serializable]
     public class PlayerInventoryData
@@ -37,6 +44,5 @@ namespace CardGame.CloudServices.InventoryService
         public float Amount;
         public int Type;
     }
-    
 }
 

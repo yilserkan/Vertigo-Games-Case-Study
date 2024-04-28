@@ -84,13 +84,27 @@ namespace CardGame.SpinWheel
         {
             var inventoryItemRewards =
                 PlayerInventory.WheelRewards.Where(kv => kv.Value.Type != (int)ItemType.Currency); 
-            await InventoryCloudRequests.AddToPlayerInventory(inventoryItemRewards);
+            await InventoryCloudRequests.AddToPlayerInventory(ConvertDictionaryForInventoryRequest(inventoryItemRewards));
             
             var currencyRewards =
                 PlayerInventory.WheelRewards.Where(kv => kv.Value.Type == (int)ItemType.Currency);
             await EconomyCloudRequests.IncreaseCurrency(ConvertDictionaryForCurrencyRequest(currencyRewards));
         }
 
+        private Dictionary<string, PlayerInventoryData> ConvertDictionaryForInventoryRequest(IEnumerable<KeyValuePair<string, PlayerInventoryData>> datas)
+        {
+            var newDict = new Dictionary<string, PlayerInventoryData>();
+            foreach (var kv in datas)
+            {
+                if (!newDict.ContainsKey(kv.Key))
+                {
+                    newDict.Add(kv.Key, kv.Value);
+                }
+            }
+
+            return newDict;
+        }
+        
         private Dictionary<string, float> ConvertDictionaryForCurrencyRequest(IEnumerable<KeyValuePair<string, PlayerInventoryData>> datas)
         {
             var newDict = new Dictionary<string, float>();

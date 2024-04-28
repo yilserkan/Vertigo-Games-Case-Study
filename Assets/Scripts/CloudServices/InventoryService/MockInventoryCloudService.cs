@@ -23,7 +23,8 @@ namespace CardGame.CloudServices.InventoryService
             }
             
             SaveInventory();
-            return Task.FromResult(JsonUtility.ToJson(true));
+            var respond = new AddToInventoryRespond() { Successful = true };
+            return Task.FromResult(JsonUtility.ToJson(respond));
         }
 
         private void SaveInventory()
