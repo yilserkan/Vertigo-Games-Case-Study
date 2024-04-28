@@ -663,9 +663,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b1b37196dd4583a48d49986a393815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _abstractScriptableManagerArray:
-  - {fileID: 11400000, guid: d9c4390b51fc74b40a5c16f06a73a648, type: 2}
-  - {fileID: 11400000, guid: c4f55b4db7b7ba44da23c18924f8dfcc, type: 2}
+  _abstractScriptableManagerArray: []
+  _addressableScriptableManagerArray:
+  - m_AssetGUID: d9c4390b51fc74b40a5c16f06a73a648
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: c4f55b4db7b7ba44da23c18924f8dfcc
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
 --- !u!1 &1960262241
 GameObject:
   m_ObjectHideFlags: 0

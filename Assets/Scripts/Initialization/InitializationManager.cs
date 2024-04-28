@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CardGame.Extensions;
 using CardGame.Inventory;
 using CardGame.SceneManagement;
 using CardGame.ServiceManagement;
 using CardGame.Singleton;
+using CardGame.Utils;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
@@ -17,8 +19,21 @@ namespace CardGame.Initialization
     {
         private void Start()
         {
-            ServiceLocator.LazyGlobal.Get(out SceneLoader sceneLoader);
-            if (sceneLoader != null) sceneLoader.LoadScene(SceneType.GameScene);
+            Initialize();
+        }
+
+        private async void Initialize()
+        {
+            ServiceLocator.LazyGlobal
+                .Get(out SceneLoader sceneLoader)
+                .Get(out ScriptableManagerInitializerMono scriptableManagerInitializer);
+
+            if (scriptableManagerInitializer != null)
+            {
+                await scriptableManagerInitializer.InitializeScriptableManagers();
+            }
+       
+            sceneLoader.OrNull()?.LoadScene(SceneType.GameScene);
             
             PlayerInventory.Initialize();
         }
