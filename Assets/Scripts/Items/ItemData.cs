@@ -10,6 +10,13 @@ namespace CardGame.Items
         public ItemType Type;
         public ItemRarity Rarity;
         public string ID;
+
+        public void SetRemoteConfigData(RemoteConfigItemData data)
+        {
+            Name = data.Name;
+            Type = (ItemType)data.Type;
+            Rarity = (ItemRarity)data.Rarity;
+        }
     }
 
     public enum ItemType

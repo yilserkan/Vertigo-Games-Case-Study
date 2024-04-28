@@ -59,9 +59,6 @@ namespace CardGame.Initialization
         {
             Debug.Log("RemoteConfigService.Instance.appConfig fetched: " + RemoteConfigService.Instance.appConfig.config);
             Debug.Log("PlayerId : " + AuthenticationService.Instance.PlayerId);
-            // RemoteConfigService.Instance.GetConfig("Test");
-            // RemoteConfigService.Instance.appConfig.GetFloat("TEST");
-            
             ServiceLocator.LazyGlobal
                 .Get(out SceneLoader sceneLoader)
                 .Get(out ScriptableManagerInitializerMono scriptableManagerInitializer);

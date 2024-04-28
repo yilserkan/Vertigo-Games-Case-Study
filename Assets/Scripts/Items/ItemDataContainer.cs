@@ -22,6 +22,14 @@ namespace CardGame.Items
             }
         }
 
+        public void SetRemoteConfigData(RemoteConfigItemData data)
+        {
+            if (_datasDict.ContainsKey(data.ID))
+            {
+                _datasDict[data.ID].SetRemoteConfigData(data);
+            }
+        }
+        
         public bool TryGetItemData(string id, out ItemData data)
         {
             if (_datasDict.TryGetValue(id, out var value))

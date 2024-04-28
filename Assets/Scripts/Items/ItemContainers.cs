@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using CardGame.Extensions;
 using CardGame.ServiceManagement;
 using CardGame.Utils;
+using Unity.Services.RemoteConfig;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace CardGame.Items
 {
@@ -18,6 +21,7 @@ namespace CardGame.Items
             ServiceLocator.LazyGlobal.OrNull()?.Register(this);
             _itemTypesWithoutBomb = new List<ItemType>();
             _datasDict = new Dictionary<ItemType, ItemDataContainer>();
+            
             for (int i = 0; i < Datas.Length; i++)
             {
                 if (!_datasDict.ContainsKey(Datas[i].Type))
@@ -29,6 +33,18 @@ namespace CardGame.Items
                 if (Datas[i].Type != ItemType.Bomb && !_itemTypesWithoutBomb.Contains(Datas[i].Type))
                 {
                     _itemTypesWithoutBomb.Add(Datas[i].Type);
+                }
+            }
+                        
+            var items = RemoteConfigService.Instance.appConfig.GetJson("ITEMS");
+            var remoteConfigItems = JsonUtility.FromJson<RemoteConfigItems>(items);
+            for (int i = 0; i < remoteConfigItems.Items.Length; i++)
+            {
+                var item = remoteConfigItems.Items[i];
+                var type = (ItemType)item.Type;
+                if (_datasDict.ContainsKey(type))
+                {
+                    _datasDict[type].SetRemoteConfigData(item);
                 }
             }
         }
@@ -103,5 +119,20 @@ namespace CardGame.Items
             currencyItemData = null;
             return false;
         }
+    }
+    
+    [Serializable]
+    public class RemoteConfigItems
+    {
+        public RemoteConfigItemData[] Items;
+    }
+    
+    [Serializable]
+    public class RemoteConfigItemData
+    {
+        public string ID;
+        public string Name;
+        public int Type;
+        public int Rarity;
     }
 }
