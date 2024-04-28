@@ -9,7 +9,8 @@ namespace CardGame.CloudServices.EconomyService
 {
     public static class EconomyCloudRequests
     {
-        private static IEconomyCloudService _economyService = new MockEconomyCloudService();
+        // private static IEconomyCloudService _economyService = new MockEconomyCloudService();
+        private static IEconomyCloudService _economyService = new UGSEconomyCloudService();
 
         public static async Task<GetCurrencyRespond> GetCurrency(string currencyID)
         {

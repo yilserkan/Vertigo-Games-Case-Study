@@ -30,7 +30,7 @@ namespace CardGame.Inventory
         private static async Task InitializeInventoryItems()
         {
             var datas = await InventoryCloudRequests.GetPlayerInventory();
-            if (datas == null) { return; }
+            if (datas == null || datas.InventoryDatas == null) { return; }
             
             for (int i = 0; i < datas.InventoryDatas.Length; i++)
             {
