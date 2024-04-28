@@ -56,8 +56,9 @@ namespace CardGame.CloudServices.EconomyService
                 var currentAmount = PlayerPrefs.GetFloat($"{PLAYER_PREF_CURRENCY_PREFIX}{currency.Key}", 0);
                 PlayerPrefs.SetFloat($"{PLAYER_PREF_CURRENCY_PREFIX}{currency.Key}", currentAmount + currency.Value);
             }
-            
-            return Task.FromResult(JsonUtility.ToJson(true));
+
+            var response = new UpdateCurrencyResponse() { Successful = true };
+            return Task.FromResult(JsonUtility.ToJson(response));
         }
 
         public Task<string> DecreaseCurrency(IEnumerable<KeyValuePair<string, float>> currencies)
@@ -69,7 +70,8 @@ namespace CardGame.CloudServices.EconomyService
                 PlayerPrefs.SetFloat($"{PLAYER_PREF_CURRENCY_PREFIX}{currency.Key}", decreasedAmount);
             }
             
-            return Task.FromResult(JsonUtility.ToJson(true));
+            var response = new UpdateCurrencyResponse() { Successful = true };
+            return Task.FromResult(JsonUtility.ToJson(response));
         }
     }
 }

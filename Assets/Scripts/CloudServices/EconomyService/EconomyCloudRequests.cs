@@ -24,16 +24,16 @@ namespace CardGame.CloudServices.EconomyService
             return JsonUtility.FromJson<GetCurrenciesRespond>(json);
         }
 
-        public static async Task<bool> IncreaseCurrency(IEnumerable<KeyValuePair<string, float>> currencies)
+        public static async Task<UpdateCurrencyResponse> IncreaseCurrency(IEnumerable<KeyValuePair<string, float>> currencies)
         {
             var json = await _economyService.IncreaseCurrency(currencies);
-            return JsonUtility.FromJson<bool>(json);
+            return JsonUtility.FromJson<UpdateCurrencyResponse>(json);
         }
 
-        public static async Task<bool> DecreaseCurrency(IEnumerable<KeyValuePair<string, float>> currencies)
+        public static async Task<UpdateCurrencyResponse> DecreaseCurrency(IEnumerable<KeyValuePair<string, float>> currencies)
         {
             var json = await _economyService.DecreaseCurrency(currencies);
-            return JsonUtility.FromJson<bool>(json);
+            return JsonUtility.FromJson<UpdateCurrencyResponse>(json);
         }
         
         public static async Task<bool> DecreaseCurrency(CurrencyType id, float amount)
@@ -49,6 +49,12 @@ namespace CardGame.CloudServices.EconomyService
     public class GetCurrencyRespond
     {
         public float Balance;
+    }
+
+    [Serializable]
+    public class UpdateCurrencyResponse
+    {
+        public bool Successful;
     }
     
     [Serializable]
