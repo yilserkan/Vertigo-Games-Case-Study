@@ -57,6 +57,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2f02f4dceeeee4842b96fe6c64161f77
+    m_Address: Assets/ScriptableObjects/Config/SpinWheelConfigData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b80173dc628bd0742ac65f79fb1e9796, type: 2}
   m_SchemaSet:

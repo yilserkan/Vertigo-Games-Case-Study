@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"95080135-8abf-44c9-a102-11959a96733e\"\r\n   
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"77483391-9511-42a6-8558-157879609a31\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"ITEMS\",\r\n      \"type\": \"json\",\r\n     
     \"schemaId\": null,\r\n      \"value\": {\r\n        \"Items\": [\r\n         
     {\r\n            \"ID\": \"ITEM_COSTUME_GLASSESS_EASTER\",\r\n            \"Name\":
@@ -66,13 +66,13 @@ MonoBehaviour:
     },\r\n          {\r\n            \"ID\": \"ITEM_CURRENCY_MONEY\",\r\n           
     \"Name\": \"Money\",\r\n            \"Type\": 5,\r\n            \"Rarity\": 0\r\n         
     }\r\n        ]\r\n      }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"621b1430-c06e-400b-9543-2764e2347455\"\r\n    },\r\n    \"rs\":
+    \"entityId\": \"25a6d4e0-cb4d-4fbf-9dea-b8c7372ed292\"\r\n    },\r\n    \"rs\":
     {\r\n      \"key\": \"SPIN_WHEEL_CONFIG\",\r\n      \"type\": \"json\",\r\n     
     \"schemaId\": null,\r\n      \"value\": {\r\n        \"Config\": {\r\n         
     \"SafeZoneInterval\": 5,\r\n          \"SuperZoneInterval\": 30,\r\n         
     \"LevelCount\": 60,\r\n          \"SliceCount\": 8,\r\n          \"ReviveCost\":
-    50\r\n        }\r\n      }\r\n    }\r\n  }\r\n]"
-  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"95080135-8abf-44c9-a102-11959a96733e\"\r\n   
+    10\r\n        }\r\n      }\r\n    }\r\n  }\r\n]"
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"77483391-9511-42a6-8558-157879609a31\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"ITEMS\",\r\n      \"type\": \"json\",\r\n     
     \"schemaId\": null,\r\n      \"value\": {\r\n        \"Items\": [\r\n         
     {\r\n            \"ID\": \"ITEM_COSTUME_GLASSESS_EASTER\",\r\n            \"Name\":
@@ -126,12 +126,12 @@ MonoBehaviour:
     },\r\n          {\r\n            \"ID\": \"ITEM_CURRENCY_MONEY\",\r\n           
     \"Name\": \"Money\",\r\n            \"Type\": 5,\r\n            \"Rarity\": 0\r\n         
     }\r\n        ]\r\n      }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"621b1430-c06e-400b-9543-2764e2347455\"\r\n    },\r\n    \"rs\":
+    \"entityId\": \"25a6d4e0-cb4d-4fbf-9dea-b8c7372ed292\"\r\n    },\r\n    \"rs\":
     {\r\n      \"key\": \"SPIN_WHEEL_CONFIG\",\r\n      \"type\": \"json\",\r\n     
     \"schemaId\": null,\r\n      \"value\": {\r\n        \"Config\": {\r\n         
     \"SafeZoneInterval\": 5,\r\n          \"SuperZoneInterval\": 30,\r\n         
     \"LevelCount\": 60,\r\n          \"SliceCount\": 8,\r\n          \"ReviveCost\":
-    50\r\n        }\r\n      }\r\n    }\r\n  }\r\n]"
+    10\r\n        }\r\n      }\r\n    }\r\n  }\r\n]"
   _environments: "[\r\n  {\r\n    \"projectId\": \"73ff6ec6-8909-496f-a199-8435f4659e0e\",\r\n   
     \"name\": \"production\",\r\n    \"id\": \"bb63b945-4384-4192-aad0-8eda07b64d31\",\r\n   
     \"isDefault\": true,\r\n    \"createdAt\": \"2024-04-24T15:42:45Z\",\r\n    \"updatedAt\":
