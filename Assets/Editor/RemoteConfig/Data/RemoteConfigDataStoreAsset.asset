@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"77483391-9511-42a6-8558-157879609a31\"\r\n   
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"e827933b-48be-4ad3-874d-b559091512c4\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"ITEMS\",\r\n      \"type\": \"json\",\r\n     
     \"schemaId\": null,\r\n      \"value\": {\r\n        \"Items\": [\r\n         
     {\r\n            \"ID\": \"ITEM_COSTUME_GLASSESS_EASTER\",\r\n            \"Name\":
@@ -66,13 +66,13 @@ MonoBehaviour:
     },\r\n          {\r\n            \"ID\": \"ITEM_CURRENCY_MONEY\",\r\n           
     \"Name\": \"Money\",\r\n            \"Type\": 5,\r\n            \"Rarity\": 0\r\n         
     }\r\n        ]\r\n      }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"25a6d4e0-cb4d-4fbf-9dea-b8c7372ed292\"\r\n    },\r\n    \"rs\":
+    \"entityId\": \"37385187-78ea-48bc-a38d-94ed6f9bd75f\"\r\n    },\r\n    \"rs\":
     {\r\n      \"key\": \"SPIN_WHEEL_CONFIG\",\r\n      \"type\": \"json\",\r\n     
     \"schemaId\": null,\r\n      \"value\": {\r\n        \"Config\": {\r\n         
     \"SafeZoneInterval\": 5,\r\n          \"SuperZoneInterval\": 30,\r\n         
     \"LevelCount\": 60,\r\n          \"SliceCount\": 8,\r\n          \"ReviveCost\":
     10\r\n        }\r\n      }\r\n    }\r\n  }\r\n]"
-  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"77483391-9511-42a6-8558-157879609a31\"\r\n   
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"e827933b-48be-4ad3-874d-b559091512c4\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"ITEMS\",\r\n      \"type\": \"json\",\r\n     
     \"schemaId\": null,\r\n      \"value\": {\r\n        \"Items\": [\r\n         
     {\r\n            \"ID\": \"ITEM_COSTUME_GLASSESS_EASTER\",\r\n            \"Name\":
@@ -126,7 +126,7 @@ MonoBehaviour:
     },\r\n          {\r\n            \"ID\": \"ITEM_CURRENCY_MONEY\",\r\n           
     \"Name\": \"Money\",\r\n            \"Type\": 5,\r\n            \"Rarity\": 0\r\n         
     }\r\n        ]\r\n      }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"25a6d4e0-cb4d-4fbf-9dea-b8c7372ed292\"\r\n    },\r\n    \"rs\":
+    \"entityId\": \"37385187-78ea-48bc-a38d-94ed6f9bd75f\"\r\n    },\r\n    \"rs\":
     {\r\n      \"key\": \"SPIN_WHEEL_CONFIG\",\r\n      \"type\": \"json\",\r\n     
     \"schemaId\": null,\r\n      \"value\": {\r\n        \"Config\": {\r\n         
     \"SafeZoneInterval\": 5,\r\n          \"SuperZoneInterval\": 30,\r\n         
