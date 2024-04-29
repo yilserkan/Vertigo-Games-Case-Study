@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CardGame.CloudServices;
 using CardGame.Extensions;
 using CardGame.Items;
 using CardGame.ServiceManagement;

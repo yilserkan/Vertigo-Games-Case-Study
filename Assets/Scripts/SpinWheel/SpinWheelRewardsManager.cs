@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CardGame.CloudServices;
 using CardGame.CloudServices.InventoryService;
 using CardGame.Inventory;
 using CardGame.Items;

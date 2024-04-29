@@ -1,8 +1,10 @@
 using CardGame.Items;
 using CardGame.ServiceManagement;
+using CardGame.SpinWheel;
 using UnityEngine;
 
-namespace CardGame.SpinWheel
+namespace CardGame.CloudServices
+
 {
     public class MockLevelCreator
     {
