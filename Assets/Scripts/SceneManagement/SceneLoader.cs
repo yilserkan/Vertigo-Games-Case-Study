@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using CardGame.Extensions;
 using CardGame.ServiceManagement;
 using CardGame.Singleton;
+using CardGame.Utils;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -13,7 +14,7 @@ namespace CardGame.SceneManagement
 {
     public class SceneLoader : MonoBehaviour
     {
-        [SerializeField] private SceneData[] _sceneDatas;
+        [SerializeField] private AssetReferenceScriptableObject[] _sceneDatas;
 
         private AsyncOperationHandle<SceneInstance> _activeAddressableSceneHandle;
         private AsyncOperationHandle<SceneInstance> _prevAddressableSceneHandle;
@@ -81,7 +82,8 @@ namespace CardGame.SceneManagement
 
         private async Task LoadAddressableScene(SceneType type, IProgress<float> progress)
         {
-            if (!TryGetAddressableSceneReference(type, out var sceneReference)) { return; }
+            var sceneReference = await GetAddressableSceneReference(type);
+            if (sceneReference == null) { return; }
             
             _activeAddressableSceneHandle = sceneReference.LoadSceneAsync(LoadSceneMode.Additive);
 
@@ -131,19 +133,18 @@ namespace CardGame.SceneManagement
             Resources.UnloadUnusedAssets();
         }
 
-        private bool TryGetAddressableSceneReference(SceneType type, out AssetReference reference)
+        private async Task<AssetReference> GetAddressableSceneReference(SceneType type)
         {
             for (int i = 0; i < _sceneDatas.Length; i++)
             {
-                if (_sceneDatas[i].SceneType == type)
+                var sceneData = await _sceneDatas[i].LoadAddressableAsync() as SceneData;
+                if (sceneData != null && sceneData.SceneType == type)
                 {
-                    reference = _sceneDatas[i].SceneReference;
-                    return true;
+                    return sceneData.SceneReference;
                 }
             }
 
-            reference = null;
-            return false;
+            return null;
         }
     }
     
