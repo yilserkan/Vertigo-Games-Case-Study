@@ -6,8 +6,8 @@ using CardGame.CloudServices.InventoryService;
 using CardGame.Extensions;
 using CardGame.Inventory;
 using CardGame.Items;
-using CardGame.RemoteConfig;
 using CardGame.ServiceManagement;
+using CardGame.SpinWheel;
 using UnityEngine;
 
 namespace CardGame.CloudServices
@@ -35,11 +35,11 @@ namespace CardGame.CloudServices
             // Set player state from death to alive   
             // Decrease Player Money
             int reviveCost = 0;
-            SpinWheelConfigData configData = null;
-            ServiceLocator.Global.OrNull()?.Get(out configData);
-            if (configData != null)
+            LevelManager levelManager = null;
+            ServiceLocator.Global.OrNull()?.Get(out levelManager);
+            if (levelManager != null)
             {
-                reviveCost = configData.ConfigData.ReviveCost;
+                reviveCost = levelManager.GetReviveCost();
             }
             
             var respond = await EconomyCloudRequests.GetCurrency(PlayerInventory.GetCurrencyID(CurrencyType.Gold));

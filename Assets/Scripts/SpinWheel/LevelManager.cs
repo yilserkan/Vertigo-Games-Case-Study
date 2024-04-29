@@ -29,6 +29,7 @@ namespace CardGame.SpinWheel
         public static event Action<LevelSlotData> OnRewardClaimed; 
         
         private int _reviveCost;
+        private int _revivedAmount;
         
         private void OnEnable()
         {
@@ -78,6 +79,7 @@ namespace CardGame.SpinWheel
 
         private void ResetLevel()
         {
+            _revivedAmount = 0;
             _currentStage.Value = 0;
             PlayerInventory.ClearWheelRewards();
         }
@@ -128,6 +130,7 @@ namespace CardGame.SpinWheel
 
             if (revivePlayerResponse.ReviveSuccessful)
             {
+                _revivedAmount++;
                 ShowNextStage();
             }
             else
@@ -150,7 +153,27 @@ namespace CardGame.SpinWheel
             Debug.Log("Item ID : " + slotData.ID);
             return (ItemType)slotData.Type == ItemType.Bomb;
         }
-        
+
+        [ContextMenu("Increas")]
+        public void TestIncreaseCurrencies()
+        {
+            var currencies = new Dictionary<string, float>();
+            currencies.Add(PlayerInventory.GetCurrencyID(CurrencyType.Money), 10);
+            currencies.Add(PlayerInventory.GetCurrencyID(CurrencyType.Gold), 5);
+            EconomyCloudRequests.DecreaseCurrency(currencies);
+        }
+
+        [ContextMenu("GetCurrency")]
+        public void GetCurrency()
+        {
+            EconomyCloudRequests.GetCurrency(PlayerInventory.GetCurrencyID(CurrencyType.Money));
+        }
+
+        public int GetReviveCost()
+        {
+            return _reviveCost * (_revivedAmount + 1);
+        }
+
         private bool IsAtZoneLevel() => (LevelType)LevelData.Levels[_currentStage.Value].LevelType is LevelType.SafeZone or LevelType.SuperZone; 
         
         private void AddListeners()

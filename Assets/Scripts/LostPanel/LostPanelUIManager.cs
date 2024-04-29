@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using CardGame.Extensions;
 using CardGame.Inventory;
 using CardGame.Items;
-using CardGame.RemoteConfig;
 using CardGame.ServiceManagement;
 using CardGame.SpinWheel;
 using TMPro;
@@ -35,11 +34,11 @@ public class LostPanelUIManager : MonoBehaviour
 
     private void Start()
     {
-        SpinWheelConfigData wheelData = null;
-        ServiceLocator.Global.OrNull()?.Get(out wheelData);
-        if (wheelData != null)
+        LevelManager levelManager = null;
+        ServiceLocator.Global.OrNull()?.Get(out levelManager);
+        if (levelManager != null)
         {
-            _reviveCost = wheelData.ConfigData.ReviveCost;
+            _reviveCost = levelManager.GetReviveCost();
         }
     }
 
