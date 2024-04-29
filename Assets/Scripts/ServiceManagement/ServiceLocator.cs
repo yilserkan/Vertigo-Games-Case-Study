@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -56,6 +57,17 @@ namespace CardGame.ServiceManagement
         public static ServiceLocator ForScene(MonoBehaviour mb, bool createIfNotExists = true)
         {
             Scene scene = mb.gameObject.scene;
+            return ForScene(scene, createIfNotExists);
+        }
+        
+        public static ServiceLocator ForActiveScene()
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            return ForScene(scene, false);
+        }
+        
+        private static ServiceLocator ForScene(Scene scene, bool createIfNotExists = true)
+        {
             if (_sceneContainers.TryGetValue(scene, out var sceneServiceLocator))
             {
                 if (sceneServiceLocator != null)
@@ -74,9 +86,7 @@ namespace CardGame.ServiceManagement
 
             return serviceLocator;
         }
-        
-   
-        
+
         public static void RemoveScene(Scene scene)
         {
             if (!_sceneContainers.ContainsKey(scene)) { return; }
