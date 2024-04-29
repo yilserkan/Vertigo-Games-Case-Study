@@ -67,8 +67,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 73d2b804cd8c0fd49ab40654b93f947a, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -256,7 +256,6 @@ MonoBehaviour:
   _rewardItemPrefab: {fileID: -3827802207532081860, guid: a1051cf2f9266dd47aa46bb21a5ebfa1,
     type: 3}
   _rewardItemParent: {fileID: 5001374632856647032}
-  _particleManager: {fileID: 3393099028481491973}
   _verticalLayoutRect: {fileID: 5001374632856647032}
 --- !u!114 &3393099028481491973
 MonoBehaviour:
@@ -509,7 +508,6 @@ GameObject:
   - component: {fileID: 6753042125531890413}
   - component: {fileID: 594017306660709229}
   - component: {fileID: 4117820285708293848}
-  - component: {fileID: 7508171253548834521}
   m_Layer: 0
   m_Name: ui_image_rewards_background
   m_TagString: Untagged
@@ -576,19 +574,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7508171253548834521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5300318756900018189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 1
 --- !u!1 &7393552653175917576
 GameObject:
   m_ObjectHideFlags: 0
