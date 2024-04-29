@@ -1,4 +1,6 @@
+using CardGame.Extensions;
 using CardGame.Items;
+using CardGame.RemoteConfig;
 using CardGame.ServiceManagement;
 using CardGame.SpinWheel;
 using UnityEngine;
@@ -9,17 +11,19 @@ namespace CardGame.CloudServices
     public class MockLevelCreator
     {
         private ItemContainers _itemContainers;
-        private int _levelCount = 60;
+        private SpinWheelConfigData _wheelConfigData;
         
         public MockLevelCreator()
         {
-            ServiceLocator.LazyGlobal.Get(out _itemContainers);
+            ServiceLocator.Global.OrNull()?
+                .Get(out _itemContainers)
+                .Get(out _wheelConfigData);
         }
 
         public GetLevelResponse GetMockLevelData()
         {
-            var levelDatas = new LevelData[_levelCount];
-            for (int i = 0; i < _levelCount; i++)
+            var levelDatas = new LevelData[_wheelConfigData.ConfigData.LevelCount];
+            for (int i = 0; i < _wheelConfigData.ConfigData.LevelCount; i++)
             {
                 levelDatas[i] = CreateLevelData(i + 1);
             }
@@ -32,7 +36,7 @@ namespace CardGame.CloudServices
         private LevelData CreateLevelData(int level)
         {
             var levelData = new LevelData();
-            levelData.SlotDatas = new LevelSlotData[8];
+            levelData.SlotDatas = new LevelSlotData[_wheelConfigData.ConfigData.SliceCount];
             levelData.LevelType = (int)GetLevelType(level);
 
             bool containsBomb = levelData.LevelType == (int)LevelType.Default;
@@ -83,11 +87,11 @@ namespace CardGame.CloudServices
                 return LevelType.Default;
             }
             
-            if (level % 30 == 0)
+            if (level % _wheelConfigData.ConfigData.SuperZoneInterval == 0)
             {
                 return LevelType.SuperZone;
             }
-            if (level % 5 == 0)
+            if (level % _wheelConfigData.ConfigData.SafeZoneInterval == 0)
             {
                 return LevelType.SafeZone;
             }

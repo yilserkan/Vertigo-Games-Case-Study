@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using CardGame.CloudServices.EconomyService;
 using CardGame.CloudServices.InventoryService;
+using CardGame.Extensions;
 using CardGame.Items;
 using CardGame.ServiceManagement;
 using CardGame.SpinWheel;
@@ -119,7 +120,8 @@ namespace CardGame.Inventory
 
         public static string GetCurrencyID(CurrencyType currencyType)
         {
-            ServiceLocator.Global.Get(out ItemContainers itemContainers);
+            ItemContainers itemContainers = null;
+            ServiceLocator.Global.OrNull()?.Get(out itemContainers);
             if (itemContainers != null && itemContainers.TryGetCurrencyItem(currencyType, out var item))
             {
                 return item.ID;

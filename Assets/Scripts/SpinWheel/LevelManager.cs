@@ -1,7 +1,12 @@
 using System;
+using System.Collections.Generic;
+using CardGame.CloudServices;
+using CardGame.CloudServices.EconomyService;
 using CardGame.CloudServices.InventoryService;
+using CardGame.Extensions;
 using CardGame.Inventory;
 using CardGame.Items;
+using CardGame.RemoteConfig;
 using CardGame.ServiceManagement;
 using CardGame.Utils;
 using CardGame.Zones;
@@ -22,6 +27,8 @@ namespace CardGame.SpinWheel
         public static event Action<int> OnShowNextStage;
         public static event Action OnShowZonePanel;
         public static event Action<LevelSlotData> OnRewardClaimed; 
+        
+        private int _reviveCost;
         
         private void OnEnable()
         {
@@ -47,6 +54,13 @@ namespace CardGame.SpinWheel
         {
             base.Start();
             _currentStage = new Observable<int>(0);
+            
+            SpinWheelConfigData wheelData = null;
+            ServiceLocator.Global.OrNull()?.Get(out wheelData);
+            if (wheelData != null)
+            {
+                _reviveCost = wheelData.ConfigData.ReviveCost;
+            }
         }
 
         protected override void PostStart()
@@ -109,7 +123,7 @@ namespace CardGame.SpinWheel
 
         private async void HandleOnReviveButtonClicked()
         {
-            PlayerInventory.DecreaseCurrencyLocally(CurrencyType.Gold, LostPanelUIManager.REVIVE_COST);
+            PlayerInventory.DecreaseCurrencyLocally(CurrencyType.Gold, _reviveCost);
             var revivePlayerResponse = await SpinWheelCloudRequests.Revive();
 
             if (revivePlayerResponse.ReviveSuccessful)

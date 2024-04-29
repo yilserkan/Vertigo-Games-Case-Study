@@ -18,6 +18,7 @@ namespace CardGame.Items
         private List<ItemType> _itemTypesWithoutBomb;
         public override void Initialize()
         {
+            base.Initialize();
             ServiceLocator.LazyGlobal.OrNull()?.Register(this);
             _itemTypesWithoutBomb = new List<ItemType>();
             _datasDict = new Dictionary<ItemType, ItemDataContainer>();

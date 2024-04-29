@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
+  m_Name: RemoteConfigDataStoreAsset
+  m_EditorClassIdentifier: 
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"95080135-8abf-44c9-a102-11959a96733e\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"ITEMS\",\r\n      \"type\": \"json\",\r\n     
+    \"schemaId\": null,\r\n      \"value\": {\r\n        \"Items\": [\r\n         
+    {\r\n            \"ID\": \"ITEM_COSTUME_GLASSESS_EASTER\",\r\n            \"Name\":
+    \"Easter Glassess\",\r\n            \"Type\": 0,\r\n            \"Rarity\": 2\r\n         
+    },\r\n          {\r\n            \"ID\": \"ITEM_COSTUME_HELMET_BASEBALL_CAP\",\r\n           
+    \"Name\": \"Baseball Cap\",\r\n            \"Type\": 0,\r\n            \"Rarity\":
+    1\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_COSTUME_HELMET_PUMPKIN\",\r\n           
+    \"Name\": \"Pumpkin Helmet\",\r\n            \"Type\": 0,\r\n            \"Rarity\":
+    3\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_EQUIPMENT_HEALTSHOT_NEUROSTIM\",\r\n           
+    \"Name\": \"Neurostim\",\r\n            \"Type\": 1,\r\n            \"Rarity\":
+    0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_EQUIPMENT_HEALTSHOT_REGENERATOR\",\r\n           
+    \"Name\": \"Regenerator\",\r\n            \"Type\": 1,\r\n            \"Rarity\":
+    0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_WEAPON_BAYONET_EASTER_TIME\",\r\n           
+    \"Name\": \"Easter Time Bayonet\",\r\n            \"Type\": 2,\r\n           
+    \"Rarity\": 0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_WEAPON_BAYONET_SUMMER_VICE\",\r\n           
+    \"Name\": \"Summer Vice Bayonet Time Bayonet\",\r\n            \"Type\": 2,\r\n           
+    \"Rarity\": 2\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_WEAPON_MELEE_TIER2\",\r\n           
+    \"Name\": \"Melee\",\r\n            \"Type\": 2,\r\n            \"Rarity\": 1\r\n         
+    },\r\n          {\r\n            \"ID\": \"ITEM_WEAPON_RIFLE_TIER2\",\r\n           
+    \"Name\": \"Rifle\",\r\n            \"Type\": 2,\r\n            \"Rarity\": 3\r\n         
+    },\r\n          {\r\n            \"ID\": \"ITEM_WEAPON_SHOTGUN_TIER1\",\r\n           
+    \"Name\": \"Double Barrel Shotgun\",\r\n            \"Type\": 2,\r\n           
+    \"Rarity\": 0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_WEAPON_SHOTGUN_TIER3\",\r\n           
+    \"Name\": \"Shotgun\",\r\n            \"Type\": 2,\r\n            \"Rarity\":
+    1\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_WEAPON_SMG_TIER3\",\r\n           
+    \"Name\": \"SMG\",\r\n            \"Type\": 2,\r\n            \"Rarity\": 2\r\n         
+    },\r\n          {\r\n            \"ID\": \"ITEM_WEAPON_SNIPER_TIER3\",\r\n           
+    \"Name\": \"Sniper\",\r\n            \"Type\": 2,\r\n            \"Rarity\":
+    3\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_CHEST_BIG_DATA\",\r\n           
+    \"Name\": \"Big Chest\",\r\n            \"Type\": 3,\r\n            \"Rarity\":
+    2\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_CHEST_BRONZE_DATA\",\r\n           
+    \"Name\": \"Bronze Chest\",\r\n            \"Type\": 3,\r\n            \"Rarity\":
+    0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_CHEST_GOLD_DATA\",\r\n           
+    \"Name\": \"Gold Chest\",\r\n            \"Type\": 3,\r\n            \"Rarity\":
+    3\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_CHEST_SILVER_DATA\",\r\n           
+    \"Name\": \"Silver Chest\",\r\n            \"Type\": 3,\r\n            \"Rarity\":
+    1\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_CHEST_SMALL_DATA\",\r\n           
+    \"Name\": \"Small Chest\",\r\n            \"Type\": 3,\r\n            \"Rarity\":
+    0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_CHEST_STANDART_DATA\",\r\n           
+    \"Name\": \"Standart Chest\",\r\n            \"Type\": 3,\r\n            \"Rarity\":
+    1\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_CHEST_SUPER_DATA\",\r\n           
+    \"Name\": \"Standart Chest\",\r\n            \"Type\": 3,\r\n            \"Rarity\":
+    3\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_BOMB_GRENADE_M26\",\r\n           
+    \"Name\": \"M26 Grenade\",\r\n            \"Type\": 4,\r\n            \"Rarity\":
+    0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_BOMB_GRENADE_M67\",\r\n           
+    \"Name\": \"M67 Grenade\",\r\n            \"Type\": 4,\r\n            \"Rarity\":
+    0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_BOMB_MOLOTOV\",\r\n           
+    \"Name\": \"Molotov\",\r\n            \"Type\": 4,\r\n            \"Rarity\":
+    0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_CURRENCY_GOLD\",\r\n           
+    \"Name\": \"Gold\",\r\n            \"Type\": 5,\r\n            \"Rarity\": 0\r\n         
+    },\r\n          {\r\n            \"ID\": \"ITEM_CURRENCY_MONEY\",\r\n           
+    \"Name\": \"Money\",\r\n            \"Type\": 5,\r\n            \"Rarity\": 0\r\n         
+    }\r\n        ]\r\n      }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"621b1430-c06e-400b-9543-2764e2347455\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"SPIN_WHEEL_CONFIG\",\r\n      \"type\": \"json\",\r\n     
+    \"schemaId\": null,\r\n      \"value\": {\r\n        \"Config\": {\r\n         
+    \"SafeZoneInterval\": 5,\r\n          \"SuperZoneInterval\": 30,\r\n         
+    \"LevelCount\": 60,\r\n          \"SliceCount\": 8,\r\n          \"ReviveCost\":
+    50\r\n        }\r\n      }\r\n    }\r\n  }\r\n]"
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"95080135-8abf-44c9-a102-11959a96733e\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"ITEMS\",\r\n      \"type\": \"json\",\r\n     
+    \"schemaId\": null,\r\n      \"value\": {\r\n        \"Items\": [\r\n         
+    {\r\n            \"ID\": \"ITEM_COSTUME_GLASSESS_EASTER\",\r\n            \"Name\":
+    \"Easter Glassess\",\r\n            \"Type\": 0,\r\n            \"Rarity\": 2\r\n         
+    },\r\n          {\r\n            \"ID\": \"ITEM_COSTUME_HELMET_BASEBALL_CAP\",\r\n           
+    \"Name\": \"Baseball Cap\",\r\n            \"Type\": 0,\r\n            \"Rarity\":
+    1\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_COSTUME_HELMET_PUMPKIN\",\r\n           
+    \"Name\": \"Pumpkin Helmet\",\r\n            \"Type\": 0,\r\n            \"Rarity\":
+    3\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_EQUIPMENT_HEALTSHOT_NEUROSTIM\",\r\n           
+    \"Name\": \"Neurostim\",\r\n            \"Type\": 1,\r\n            \"Rarity\":
+    0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_EQUIPMENT_HEALTSHOT_REGENERATOR\",\r\n           
+    \"Name\": \"Regenerator\",\r\n            \"Type\": 1,\r\n            \"Rarity\":
+    0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_WEAPON_BAYONET_EASTER_TIME\",\r\n           
+    \"Name\": \"Easter Time Bayonet\",\r\n            \"Type\": 2,\r\n           
+    \"Rarity\": 0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_WEAPON_BAYONET_SUMMER_VICE\",\r\n           
+    \"Name\": \"Summer Vice Bayonet Time Bayonet\",\r\n            \"Type\": 2,\r\n           
+    \"Rarity\": 2\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_WEAPON_MELEE_TIER2\",\r\n           
+    \"Name\": \"Melee\",\r\n            \"Type\": 2,\r\n            \"Rarity\": 1\r\n         
+    },\r\n          {\r\n            \"ID\": \"ITEM_WEAPON_RIFLE_TIER2\",\r\n           
+    \"Name\": \"Rifle\",\r\n            \"Type\": 2,\r\n            \"Rarity\": 3\r\n         
+    },\r\n          {\r\n            \"ID\": \"ITEM_WEAPON_SHOTGUN_TIER1\",\r\n           
+    \"Name\": \"Double Barrel Shotgun\",\r\n            \"Type\": 2,\r\n           
+    \"Rarity\": 0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_WEAPON_SHOTGUN_TIER3\",\r\n           
+    \"Name\": \"Shotgun\",\r\n            \"Type\": 2,\r\n            \"Rarity\":
+    1\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_WEAPON_SMG_TIER3\",\r\n           
+    \"Name\": \"SMG\",\r\n            \"Type\": 2,\r\n            \"Rarity\": 2\r\n         
+    },\r\n          {\r\n            \"ID\": \"ITEM_WEAPON_SNIPER_TIER3\",\r\n           
+    \"Name\": \"Sniper\",\r\n            \"Type\": 2,\r\n            \"Rarity\":
+    3\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_CHEST_BIG_DATA\",\r\n           
+    \"Name\": \"Big Chest\",\r\n            \"Type\": 3,\r\n            \"Rarity\":
+    2\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_CHEST_BRONZE_DATA\",\r\n           
+    \"Name\": \"Bronze Chest\",\r\n            \"Type\": 3,\r\n            \"Rarity\":
+    0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_CHEST_GOLD_DATA\",\r\n           
+    \"Name\": \"Gold Chest\",\r\n            \"Type\": 3,\r\n            \"Rarity\":
+    3\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_CHEST_SILVER_DATA\",\r\n           
+    \"Name\": \"Silver Chest\",\r\n            \"Type\": 3,\r\n            \"Rarity\":
+    1\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_CHEST_SMALL_DATA\",\r\n           
+    \"Name\": \"Small Chest\",\r\n            \"Type\": 3,\r\n            \"Rarity\":
+    0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_CHEST_STANDART_DATA\",\r\n           
+    \"Name\": \"Standart Chest\",\r\n            \"Type\": 3,\r\n            \"Rarity\":
+    1\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_CHEST_SUPER_DATA\",\r\n           
+    \"Name\": \"Standart Chest\",\r\n            \"Type\": 3,\r\n            \"Rarity\":
+    3\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_BOMB_GRENADE_M26\",\r\n           
+    \"Name\": \"M26 Grenade\",\r\n            \"Type\": 4,\r\n            \"Rarity\":
+    0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_BOMB_GRENADE_M67\",\r\n           
+    \"Name\": \"M67 Grenade\",\r\n            \"Type\": 4,\r\n            \"Rarity\":
+    0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_BOMB_MOLOTOV\",\r\n           
+    \"Name\": \"Molotov\",\r\n            \"Type\": 4,\r\n            \"Rarity\":
+    0\r\n          },\r\n          {\r\n            \"ID\": \"ITEM_CURRENCY_GOLD\",\r\n           
+    \"Name\": \"Gold\",\r\n            \"Type\": 5,\r\n            \"Rarity\": 0\r\n         
+    },\r\n          {\r\n            \"ID\": \"ITEM_CURRENCY_MONEY\",\r\n           
+    \"Name\": \"Money\",\r\n            \"Type\": 5,\r\n            \"Rarity\": 0\r\n         
+    }\r\n        ]\r\n      }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"621b1430-c06e-400b-9543-2764e2347455\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"SPIN_WHEEL_CONFIG\",\r\n      \"type\": \"json\",\r\n     
+    \"schemaId\": null,\r\n      \"value\": {\r\n        \"Config\": {\r\n         
+    \"SafeZoneInterval\": 5,\r\n          \"SuperZoneInterval\": 30,\r\n         
+    \"LevelCount\": 60,\r\n          \"SliceCount\": 8,\r\n          \"ReviveCost\":
+    50\r\n        }\r\n      }\r\n    }\r\n  }\r\n]"
+  _environments: "[\r\n  {\r\n    \"projectId\": \"73ff6ec6-8909-496f-a199-8435f4659e0e\",\r\n   
+    \"name\": \"production\",\r\n    \"id\": \"bb63b945-4384-4192-aad0-8eda07b64d31\",\r\n   
+    \"isDefault\": true,\r\n    \"createdAt\": \"2024-04-24T15:42:45Z\",\r\n    \"updatedAt\":
+    \"2024-04-24T15:42:45Z\"\r\n  }\r\n]"

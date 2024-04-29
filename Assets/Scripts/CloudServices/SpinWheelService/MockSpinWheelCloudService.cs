@@ -3,8 +3,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using CardGame.CloudServices.EconomyService;
 using CardGame.CloudServices.InventoryService;
+using CardGame.Extensions;
 using CardGame.Inventory;
 using CardGame.Items;
+using CardGame.RemoteConfig;
+using CardGame.ServiceManagement;
 using UnityEngine;
 
 namespace CardGame.CloudServices
@@ -12,6 +15,7 @@ namespace CardGame.CloudServices
     public class MockSpinWheelCloudService : ISpinWheelCloudService
     {
         private static MockLevelCreator _levelCreator = new();
+        
         
         public Task<string> GetLevelData()
         {
@@ -30,10 +34,17 @@ namespace CardGame.CloudServices
             //TODO:
             // Set player state from death to alive   
             // Decrease Player Money
-
+            int reviveCost = 0;
+            SpinWheelConfigData configData = null;
+            ServiceLocator.Global.OrNull()?.Get(out configData);
+            if (configData != null)
+            {
+                reviveCost = configData.ConfigData.ReviveCost;
+            }
+            
             var respond = await EconomyCloudRequests.GetCurrency(PlayerInventory.GetCurrencyID(CurrencyType.Gold));
-            var hasPlayerEnoughMoney = respond.Balance >= LostPanelUIManager.REVIVE_COST;
-            await EconomyCloudRequests.DecreaseCurrency(CurrencyType.Gold,LostPanelUIManager.REVIVE_COST);
+            var hasPlayerEnoughMoney = respond.Balance >= reviveCost;
+            await EconomyCloudRequests.DecreaseCurrency(CurrencyType.Gold,reviveCost);
             var response = new RevivePlayerResponse() { ReviveSuccessful = hasPlayerEnoughMoney };
             return JsonUtility.ToJson(response);
         }

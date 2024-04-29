@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CardGame.Extensions;
 using CardGame.Inventory;
 using CardGame.Items;
+using CardGame.RemoteConfig;
+using CardGame.ServiceManagement;
 using CardGame.SpinWheel;
 using TMPro;
 using UnityEngine;
@@ -14,11 +17,11 @@ public class LostPanelUIManager : MonoBehaviour
     [SerializeField] private Button _reviveButton;
     [SerializeField] private Button _restartButton;
     [SerializeField] private TextMeshProUGUI _reviveCurrencyAmountText;
-
-    public const float REVIVE_COST = 12;
     
     public static event Action OnRestartButtonClickedEvent;
     public static event Action OnReviveButtonClickedEvent;
+
+    private int _reviveCost;
     
     private void OnEnable()
     {
@@ -28,6 +31,16 @@ public class LostPanelUIManager : MonoBehaviour
     private void OnDisable()
     {
         RemoveListeners();
+    }
+
+    private void Start()
+    {
+        SpinWheelConfigData wheelData = null;
+        ServiceLocator.Global.OrNull()?.Get(out wheelData);
+        if (wheelData != null)
+        {
+            _reviveCost = wheelData.ConfigData.ReviveCost;
+        }
     }
 
     private void HandleOnRestartButtonClicked()
@@ -55,9 +68,9 @@ public class LostPanelUIManager : MonoBehaviour
 
     private void UpdateReviveButton()
     {
-        var hasPlayerEnoughMoney = PlayerInventory.GetCurrencyAmount(CurrencyType.Gold) >= REVIVE_COST;
+        var hasPlayerEnoughMoney = PlayerInventory.GetCurrencyAmount(CurrencyType.Gold) >= _reviveCost;
         _reviveButton.interactable = hasPlayerEnoughMoney;
-        _reviveCurrencyAmountText.text = $"{REVIVE_COST}";
+        _reviveCurrencyAmountText.text = $"{_reviveCost}";
     }
     
     private void AddListeners()
