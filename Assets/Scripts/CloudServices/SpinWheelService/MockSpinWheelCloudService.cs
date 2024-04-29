@@ -31,12 +31,9 @@ namespace CardGame.CloudServices
 
         public async Task<string> Revive()
         {
-            //TODO:
-            // Set player state from death to alive   
-            // Decrease Player Money
             int reviveCost = 0;
             LevelManager levelManager = null;
-            ServiceLocator.Global.OrNull()?.Get(out levelManager);
+            ServiceLocator.ForActiveScene()?.Get(out levelManager);
             if (levelManager != null)
             {
                 reviveCost = levelManager.GetReviveCost();

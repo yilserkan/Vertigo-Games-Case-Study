@@ -125,7 +125,7 @@ namespace CardGame.SpinWheel
 
         private async void HandleOnReviveButtonClicked()
         {
-            PlayerInventory.DecreaseCurrencyLocally(CurrencyType.Gold, _reviveCost);
+            PlayerInventory.DecreaseCurrencyLocally(CurrencyType.Gold, GetReviveCost());
             var revivePlayerResponse = await SpinWheelCloudRequests.Revive();
 
             if (revivePlayerResponse.ReviveSuccessful)

@@ -20,7 +20,7 @@ public class LostPanelUIManager : MonoBehaviour
     public static event Action OnRestartButtonClickedEvent;
     public static event Action OnReviveButtonClickedEvent;
 
-    private int _reviveCost;
+    private LevelManager _levelManager;
     
     private void OnEnable()
     {
@@ -34,12 +34,7 @@ public class LostPanelUIManager : MonoBehaviour
 
     private void Start()
     {
-        LevelManager levelManager = null;
-        ServiceLocator.Global.OrNull()?.Get(out levelManager);
-        if (levelManager != null)
-        {
-            _reviveCost = levelManager.GetReviveCost();
-        }
+        ServiceLocator.ForScene(this).OrNull()?.Get(out _levelManager);
     }
 
     private void HandleOnRestartButtonClicked()
@@ -67,9 +62,10 @@ public class LostPanelUIManager : MonoBehaviour
 
     private void UpdateReviveButton()
     {
-        var hasPlayerEnoughMoney = PlayerInventory.GetCurrencyAmount(CurrencyType.Gold) >= _reviveCost;
+        var reviveCost = _levelManager.GetReviveCost();
+        var hasPlayerEnoughMoney = PlayerInventory.GetCurrencyAmount(CurrencyType.Gold) >= reviveCost;
         _reviveButton.interactable = hasPlayerEnoughMoney;
-        _reviveCurrencyAmountText.text = $"{_reviveCost}";
+        _reviveCurrencyAmountText.text = $"{reviveCost}";
     }
     
     private void AddListeners()
