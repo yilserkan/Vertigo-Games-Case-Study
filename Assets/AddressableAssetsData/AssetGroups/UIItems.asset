@@ -1,0 +1,315 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UIItems
+  m_EditorClassIdentifier: 
+  m_GroupName: UIItems
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a14fbc136607cc342a33d16c007ec08a
+  m_SerializeEntries:
+  - m_GUID: 9d95ef345cb2aab4aa25a093031c076d
+    m_Address: Assets/UI/Buttons/UI_button_grey_standard.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed62153e8cb5c49498f6244bb0d52246
+    m_Address: Assets/UI/Buttons/UI_button_orange_standard.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0146d4140484d8d4dbbc4bca59e6b200
+    m_Address: Assets/UI/Buttons/ui_spin_generic_button.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 69f97e24098b8cd4fadbd7118437a4bd
+    m_Address: Assets/UI/CardFrames/ui_card_frame_4px_zone.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e5a6709bb4a05a04cb7aff8073e525d3
+    m_Address: Assets/UI/CardFrames/ui_card_frame_12px_neutral.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e79419ce1360c3f4e84a20210900327c
+    m_Address: Assets/UI/CardFrames/ui_card_frame_gardient.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4ddcc585715da0429c2de9e5c8eff17
+    m_Address: Assets/UI/CardFrames/ui_card_zone_map_frame.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c67d09b96e04d564b85a7c4d221ee7bb
+    m_Address: Assets/UI/Chests/UI_icon_chest_big_nolight.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 645f2dd1411db3441b7ddc420dfefcba
+    m_Address: Assets/UI/Chests/UI_icon_chest_Bronze_nolight.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 13db19649ebfce3469ff92b94d97758c
+    m_Address: Assets/UI/Chests/UI_icon_chest_gold_nolight.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0aa90339c0f473a4dbbd5259da0c2cd0
+    m_Address: Assets/UI/Chests/UI_icon_chest_silver_nolight.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e98e9fc40aeb4c4894fdd090566d3b8
+    m_Address: Assets/UI/Chests/UI_icon_chest_small_noligt.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4066666c71ca4854bbff1b8c9533ae8d
+    m_Address: Assets/UI/Chests/UI_icon_chest_standart_nolight.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be740a6d3bf9dfc4a817765b57248287
+    m_Address: Assets/UI/Chests/UI_icon_chest_super_nolight.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d2851c609b25ad1479123fe0710226f0
+    m_Address: Assets/UI/Costumes/ui_icon_aviator_glasses_easter.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5f8969784075d643971a1a28c04b3c9
+    m_Address: Assets/UI/Costumes/ui_icon_baseball_cap_easter.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 758e66ec81c238342b10dfcfb0d6ed90
+    m_Address: Assets/UI/Costumes/ui_icon_helmet_pumpkin.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d28b205c71bd2864eb12aaac951afee3
+    m_Address: Assets/UI/Currencies/UI_icon_cash.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45d41823cfd714f4c9bb423de0dcf802
+    m_Address: Assets/UI/Currencies/UI_icon_gold.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bbee83bc7b728d642a404db5dc04f673
+    m_Address: Assets/UI/Equipments/ui_icon_render_cons_grenade_m26.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e8570e67dad5eb44b044bbb0fb876e6
+    m_Address: Assets/UI/Equipments/ui_icon_render_cons_grenade_m67.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 94ee6f3fbe0654f40a00497a7c87dda2
+    m_Address: Assets/UI/Equipments/ui_icon_render_cons_healthshot_2_neurostim.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d0ce4bbd154dde146abc99c8b6f5503f
+    m_Address: Assets/UI/Equipments/ui_icon_render_cons_healthshot_2_regenerator.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77002fda9e89df745af26024a3a4b83c
+    m_Address: Assets/UI/Equipments/ui_icon_render_t_cons_molotov.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c7778eb54efd934690a353be818ff6a
+    m_Address: Assets/UI/Icons/ui_card_icon_death.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 118267b4694770d47884c794c36257da
+    m_Address: Assets/UI/Icons/UI_Icons_Armor_Points.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f43cc31ed13fb16439b10c2e5d710872
+    m_Address: Assets/UI/Icons/UI_Icons_Knife_Points.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 30eab2b01f565df47be8e77fcdba65e5
+    m_Address: Assets/UI/Icons/UI_Icons_Pistol_Points.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e15c5629e36998488cbc0a96879837a
+    m_Address: Assets/UI/Icons/UI_Icons_Pistol_Points_.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 87b278f8d9742074f9629ac081bf57ba
+    m_Address: Assets/UI/Icons/UI_Icons_Rifle_Points.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 402ff8aaf93585c44a30f396ec11e8e5
+    m_Address: Assets/UI/Icons/UI_Icons_Shotgun_Points.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 076aa45ad25863149b627f212aee535f
+    m_Address: Assets/UI/Icons/UI_Icons_SMG_Points.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c22f89b7fddfbe6478442e65a75bbd57
+    m_Address: Assets/UI/Icons/UI_Icons_Sniper_Points.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d816c30952803c4cbd1316c3f4be73e
+    m_Address: Assets/UI/Icons/UI_Icons_Submachine_Points.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e8f92ce6fdddda142b73e5a91240ffc9
+    m_Address: Assets/UI/Icons/UI_Icons_Vest_Points.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 736deccbbf4047343b35eb89bf8e6260
+    m_Address: Assets/UI/Panels/image_white_bg_10px.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 73d2b804cd8c0fd49ab40654b93f947a
+    m_Address: Assets/UI/Panels/ui_card_panel_zone_bg.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a2a269e89cbd474b907c3775915a5ac
+    m_Address: Assets/UI/Panels/ui_card_panel_zone_coming.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de251c8b9fc00c7428f0e601eb8bfa5f
+    m_Address: Assets/UI/Panels/ui_card_panel_zone_current.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0985826208a8df148acb637ba6e1ba05
+    m_Address: Assets/UI/Panels/ui_card_panel_zone_current_white.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd043170167946c41a9a66cbef3042ff
+    m_Address: Assets/UI/Panels/ui_card_panel_zone_super.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a984289f58958f40b28c1115f2aed27
+    m_Address: Assets/UI/Panels/ui_card_panel_zone_white.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 44b25e14c01463d46ab28caf19b87324
+    m_Address: Assets/UI/SpinWheel/ui_spin_bronze_base.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8365fb3397804d447afdd8ddbf164295
+    m_Address: Assets/UI/SpinWheel/ui_spin_bronze_indicator.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: afed932c001076745b061554078ea6a7
+    m_Address: Assets/UI/SpinWheel/ui_spin_golden_base.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f749e8ad42f1de2468156e4df7bf209b
+    m_Address: Assets/UI/SpinWheel/ui_spin_golden_indicator.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2996cfd3173662d48971c27774631523
+    m_Address: Assets/UI/SpinWheel/ui_spin_silver_base.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b19d4b9ceaaca6f4c9f9a2b9240a0744
+    m_Address: Assets/UI/SpinWheel/ui_spin_silver_indicator.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cae6f36c078ea1d4d964d8ecdd7f29d1
+    m_Address: Assets/UI/SpinWheel/ui_level_panel_indicator.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 433561047cb67ba43a7078ef96245277
+    m_Address: Assets/UI/Weapons/ui_icon_mle_bayonet_easter_time.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 15d6d7a58e5b2cf488a442895e9a1bca
+    m_Address: Assets/UI/Weapons/ui_icon_mle_bayonet_summer_vice.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 744a4ba79186d3c4997039be072d07c8
+    m_Address: Assets/UI/Weapons/UI_Icon_Renders_tier1_shotgun.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0290265c8fcad164b8c427e1b5bd8edd
+    m_Address: Assets/UI/Weapons/UI_Icon_Renders_tier2_mle.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58916c7d899849b43a0ee6e663828692
+    m_Address: Assets/UI/Weapons/UI_Icon_Renders_tier2_rifle.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 35280c01512c31a419f8b0925ecd455a
+    m_Address: Assets/UI/Weapons/UI_Icon_Renders_tier3_shotgun.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 432ece45a25e51e489512f0759618986
+    m_Address: Assets/UI/Weapons/UI_Icon_Renders_tier3_smg.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5823f725e73da8d4f93cf6736bcde89e
+    m_Address: Assets/UI/Weapons/UI_Icon_Renders_tier3_sniper.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f53886064237a7b49ad9d73de5d15556
+    m_Address: Assets/SpriteAtlases/UI Sprite Atlas.spriteatlasv2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b80173dc628bd0742ac65f79fb1e9796, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 8beb3380a01624c499e6243c9d86c9af, type: 2}
+    - {fileID: 11400000, guid: f465d939dc56c2a4db31a55cafab42da, type: 2}

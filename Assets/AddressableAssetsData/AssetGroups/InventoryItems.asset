@@ -1,0 +1,185 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: InventoryItems
+  m_EditorClassIdentifier: 
+  m_GroupName: InventoryItems
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 61ad19e45a2c8764aa2d78993b6d5bc9
+  m_SerializeEntries:
+  - m_GUID: 7240a01660de6784395613f913ba5e19
+    m_Address: Assets/ScriptableObjects/Items/ItemContainers/BombItemDataContainer.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 04b283e0a2fb2854d854126022458355
+    m_Address: Assets/ScriptableObjects/Items/ItemContainers/ChestItemDataContainer.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6082ddb72cd91b54ebdb3bda045608cc
+    m_Address: Assets/ScriptableObjects/Items/ItemContainers/CostumeItemDataContainer.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bcdaf60d4e7e1d04bb60fdc11177eee2
+    m_Address: Assets/ScriptableObjects/Items/ItemContainers/CurrencyItemDataContainer.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41db044b30f4b654495a02cbb165c3df
+    m_Address: Assets/ScriptableObjects/Items/ItemContainers/EquipmentItemDataContainer.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2b0065cf643d50d488dd5d5176c2ec93
+    m_Address: Assets/ScriptableObjects/Items/ItemContainers/WeaponItemDataContainer.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ccb9bdc7d9f211c4fb2fa4cc70579045
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Bomb/Item_Equipment_Grenade_M26_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e11a08292fcd0940bf18e31b48670f4
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Bomb/Item_Equipment_Grenade_M67_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3a8c664eaeba0a64294973a700f6d637
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Bomb/Item_Equipment_Molotov_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dcc86452a18f11a459abd72dae570746
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Chests/Item_Chest_Big_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 438e975eccff35a45a383773572a64ce
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Chests/Item_Chest_Bronze_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 071a3aa632174744b86f3e817ca75518
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Chests/Item_Chest_Gold_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0208625c3177e224fbd7f3aa1bb30fc5
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Chests/Item_Chest_Silver_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d99966f245ffba43a2ba92833eaaa64
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Chests/Item_Chest_Small_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 64f5b5d56cbe8fb4d9d4ba95c36c5ea5
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Chests/Item_Chest_Standart_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9158168ffd4c8748b00787ab4c3d58b
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Chests/Item_Chest_Super_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 149190b9029f1214ea0077b61b13b1b4
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Costumes/Item_Costumes_Glasses_Easter_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d491de7f1d964c84eae3b12a9da7c652
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Costumes/Item_Costumes_Helmet_Baseball_Cap_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c8ee3e41112b31949a447af7cb421cd4
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Costumes/Item_Costumes_Helmet_Pumpkin_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58394c226ae15a44db0624f3e17f6f9f
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Currency/Item_Currency_Gold.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8de4836427fb43c409462ac661cd505b
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Currency/Item_Currency_Money.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 51d288f6db1d965429b4f9cbc00e449d
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Equipments/Item_Equipment_Healthshot_Neurostim_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 03051983debc5df4d8722d29a660a2de
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Equipments/Item_Equipment_Healthshot_Regenerator_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 87a2c451e0b061846964c3232ddfa796
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Weapons/Item_Weapon_Bayonet_Easter_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 39329486c0cc619409039ca3a93832be
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Weapons/Item_Weapon_Bayonet_Summer_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7e86ec40b1899be419ebf86df289590d
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Weapons/Item_Weapon_Melee_Tier2_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c55031833049bd439899df3b27dba6d
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Weapons/Item_Weapon_Rifle_Tier2_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f8f79828e0eca0a4cb5568094e312777
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Weapons/Item_Weapon_Shotgun_Tier1_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 707a4893815258e4a964705843a4ca1e
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Weapons/Item_Weapon_Shotgun_Tier3_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2cc49420a9ffefd4eb9cff40a0c266c3
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Weapons/Item_Weapon_SMG_Tier3_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bde1ddfbf09567f4596fe8bfc0b024be
+    m_Address: Assets/ScriptableObjects/Items/ItemDatas/Weapons/Item_Weapon_Sniper_Tier3_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d9c4390b51fc74b40a5c16f06a73a648
+    m_Address: Assets/ScriptableObjects/Items/ItemContainers.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b80173dc628bd0742ac65f79fb1e9796, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 95db597e0303cd148a39d625ee332677, type: 2}
+    - {fileID: 11400000, guid: 34771c435403bcd4a98880669a140aec, type: 2}
