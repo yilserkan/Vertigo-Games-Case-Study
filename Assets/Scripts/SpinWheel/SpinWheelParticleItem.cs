@@ -2,6 +2,7 @@ using System;
 using CardGame.Extensions;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -27,6 +28,7 @@ namespace CardGame.SpinWheel
         {
             _particleImage.sprite = sprite;
             _targetRewardItemRect = rewardItemRect;
+            _particleImage.enabled = true;
             PlayScaleAnimation();
         }
         
@@ -48,7 +50,7 @@ namespace CardGame.SpinWheel
         private void OnParticleCompleted()
         {
             OnParticleCompletedEvent?.Invoke();
-            Destroy(gameObject);
+            Addressables.ReleaseInstance(gameObject);
         }
         
         private Vector2 GetRandomPointInCircle()

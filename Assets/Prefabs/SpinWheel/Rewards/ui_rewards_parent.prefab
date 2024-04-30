@@ -269,6 +269,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c4710bd845404fa5692b9ad32d6b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _particleReference:
+    m_AssetGUID: c121aa7c1bfe82447ad37a1ee92b8649
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   _particleImagePrefab: {fileID: 7977952532505285316, guid: c121aa7c1bfe82447ad37a1ee92b8649,
     type: 3}
   _particleParent: {fileID: 819888074932072087}
