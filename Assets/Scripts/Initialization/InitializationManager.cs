@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using CardGame.Extensions;
 using CardGame.Inventory;
+using CardGame.NetworkConnection;
 using CardGame.SceneManagement;
 using CardGame.ServiceManagement;
-using CardGame.Singleton;
 using CardGame.Utils;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
@@ -34,12 +34,22 @@ namespace CardGame.Initialization
 
         private async void Initialize()
         {
-            // initialize Unity's authentication and core services, however check for internet connection
-            // in order to fail gracefully without throwing exception if connection does not exist
-            if (Utilities.CheckForInternetConnection())
+            NetworkConnectionHelper connectionHelper = null;
+            ServiceLocator.Global.OrNull()?.Get(out connectionHelper);
+            if (connectionHelper == null)
             {
-                await InitializeRemoteConfigAsync();
+                Debug.LogError("Network Connection Helper Not Found!");
+                return;
             }
+            
+            while (!connectionHelper.HasInternetConnection)
+            {
+                Debug.LogWarning("Trying to Reconnect...");
+                await Task.Delay(500);
+            }
+            
+            Debug.Log("Started Initializing Unity Services...");
+            await InitializeRemoteConfigAsync();
 
             RemoteConfigService.Instance.FetchCompleted += ApplyRemoteSettings;
             RemoteConfigService.Instance.FetchConfigs(new userAttributes(), new appAttributes());
@@ -59,7 +69,7 @@ namespace CardGame.Initialization
         
         async void ApplyRemoteSettings(ConfigResponse configResponse)
         {
-            Debug.Log("RemoteConfigService.Instance.appConfig fetched: " + RemoteConfigService.Instance.appConfig.config);
+            Debug.Log("Unity Services Initialized ");
             Debug.Log("PlayerId : " + AuthenticationService.Instance.PlayerId);
             ServiceLocator.LazyGlobal
                 .Get(out SceneLoader sceneLoader)
