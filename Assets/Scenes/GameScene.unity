@@ -5012,6 +5012,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: ui_spinWheel_parent
       objectReference: {fileID: 0}
+    - target: {fileID: 5502576204813492804, guid: 9b9c7f7708db68a40948dbbd93ad7ea3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502576204813492804, guid: 9b9c7f7708db68a40948dbbd93ad7ea3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099635408667537145, guid: 9b9c7f7708db68a40948dbbd93ad7ea3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099635408667537145, guid: 9b9c7f7708db68a40948dbbd93ad7ea3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -7.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
