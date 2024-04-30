@@ -24,6 +24,7 @@ namespace CardGame.SpinWheel
         public static event Action OnStartGame;
         public static event Action OnQuitGame;
         public static event Action OnPlayerHasLostEvent;
+        public static event Action OnPlayerCompletedAllLevels;
         public static event Action<int> OnShowNextStage;
         public static event Action OnShowZonePanel;
         public static event Action<LevelSlotData> OnRewardClaimed; 
@@ -99,7 +100,11 @@ namespace CardGame.SpinWheel
 
         private void HandleOnRewardParticlesCompleted()
         {
-            // TODO : Check for game end
+            if (HasCompletedAllLevels())
+            {
+                OnPlayerCompletedAllLevels?.Invoke();
+                return;
+            }
             
             if (IsAtZoneLevel())
             {
@@ -174,8 +179,8 @@ namespace CardGame.SpinWheel
             return _reviveCost * (_revivedAmount + 1);
         }
 
-        private bool IsAtZoneLevel() => (LevelType)LevelData.Levels[_currentStage.Value].LevelType is LevelType.SafeZone or LevelType.SuperZone; 
-        
+        private bool IsAtZoneLevel() => (LevelType)LevelData.Levels[_currentStage.Value].LevelType is LevelType.SafeZone or LevelType.SuperZone;
+        private bool HasCompletedAllLevels() => _currentStage.Value == LevelData.Levels.Length - 1;
         private void AddListeners()
         {
             SpinWheelManager.OnSpinAnimationCompleted += HandleOnSpinWheelAnimCompleted;
@@ -184,6 +189,7 @@ namespace CardGame.SpinWheel
             LostPanelUIManager.OnReviveButtonClickedEvent += HandleOnReviveButtonClicked;
             ZonePanelUIManager.OnClaimRewardsButtonClicked += HandleOnClaimRewardsButtonClicked;
             ZonePanelUIManager.OnContinuButtonClicked += ShowNextStage;
+            WinPanelUIManager.OnPlayAgainButtonClicked += HandleOnClaimRewardsButtonClicked;
         }
 
         private void RemoveListeners()
@@ -194,6 +200,7 @@ namespace CardGame.SpinWheel
             LostPanelUIManager.OnReviveButtonClickedEvent -= HandleOnReviveButtonClicked;
             ZonePanelUIManager.OnClaimRewardsButtonClicked -= HandleOnClaimRewardsButtonClicked;
             ZonePanelUIManager.OnContinuButtonClicked -= ShowNextStage;
+            WinPanelUIManager.OnPlayAgainButtonClicked -= HandleOnClaimRewardsButtonClicked;
         }
     }
 }
