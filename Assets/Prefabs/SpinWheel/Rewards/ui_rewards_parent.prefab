@@ -274,8 +274,6 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  _particleImagePrefab: {fileID: 7977952532505285316, guid: c121aa7c1bfe82447ad37a1ee92b8649,
-    type: 3}
   _particleParent: {fileID: 819888074932072087}
   _minParticleCount: 4
   _maxParticleCount: 6
@@ -303,7 +301,7 @@ GameObject:
   - component: {fileID: 3606398611336318888}
   - component: {fileID: 7136710015989968900}
   m_Layer: 0
-  m_Name: ui_text_exit
+  m_Name: ui_text_inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EXIT
+  m_text: INVENTORY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -591,8 +589,9 @@ GameObject:
   - component: {fileID: 338175198741626591}
   - component: {fileID: 2805875866680556781}
   - component: {fileID: 175588513163868102}
+  - component: {fileID: 3771261612151996220}
   m_Layer: 0
-  m_Name: ui_button_exit
+  m_Name: ui_button_inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -700,3 +699,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3771261612151996220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7393552653175917576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef75bb8e9a714ce0848ae5d23f09c45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _openInventoryButton: {fileID: 175588513163868102}

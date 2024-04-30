@@ -24,8 +24,8 @@ namespace CardGame.Inventory
         
         public static async Task Initialize()
         {
-            await InitializeCurrencies();
             await InitializeInventoryItems();
+            await InitializeCurrencies();
         }
 
         private static async Task InitializeInventoryItems()
@@ -37,7 +37,7 @@ namespace CardGame.Inventory
             {
                 if (!_inventoryItems.ContainsKey(datas.InventoryDatas[i].ID))
                 {
-                    var itemData = new InventoryItemData() { Amount = datas.InventoryDatas[i].Amount, Type = datas.InventoryDatas[i].Type};
+                    var itemData = new InventoryItemData() { ID = datas.InventoryDatas[i].ID, Amount = datas.InventoryDatas[i].Amount, Type = datas.InventoryDatas[i].Type};
                     _inventoryItems.Add(datas.InventoryDatas[i].ID, itemData);
                 }
             }
@@ -66,7 +66,7 @@ namespace CardGame.Inventory
             }
             else
             {
-                InventoryItemDatas[data.ID] = new InventoryItemData() { Amount = data.Amount, Type = data.Type};
+                InventoryItemDatas[data.ID] = new InventoryItemData() { Amount = data.Amount, Type = data.Type, ID = data.ID};
             }
         }
 
@@ -95,7 +95,7 @@ namespace CardGame.Inventory
                     }
                     else
                     {
-                        _inventoryItems.Add(reward.Value.ID, new InventoryItemData(){Type = reward.Value.Type, Amount = reward.Value.Amount});
+                        _inventoryItems.Add(reward.Value.ID, new InventoryItemData(){Type = reward.Value.Type, Amount = reward.Value.Amount, ID = reward.Value.ID});
                     }
                 }
             }
@@ -155,6 +155,7 @@ namespace CardGame.Inventory
     
     public class InventoryItemData
     {
+        public string ID;
         public float Amount;
         public int Type;
     }
