@@ -22,6 +22,8 @@ namespace CardGame.Initialization
 {
     public class InitializationManager : MonoBehaviour
     {
+        [SerializeField] private AssetReferenceGameObject _loadingHelper;
+        
         public struct userAttributes {}
         public struct appAttributes {}
         
@@ -69,7 +71,8 @@ namespace CardGame.Initialization
             }
             
             await PlayerInventory.Initialize();
-                
+
+            await _loadingHelper.InstantiateAddressableAsync();
             sceneLoader.OrNull()?.LoadScene(SceneType.GameScene);
         }
     }
