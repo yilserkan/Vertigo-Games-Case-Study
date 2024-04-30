@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Serialization;
+
 
 namespace CardGame.CloudServices
 {
@@ -12,55 +12,110 @@ namespace CardGame.CloudServices
         
         public static async Task<GetLevelResponse> GetLevelData()
         {
-            var json = await _cloudService.GetLevelData();
-            return JsonUtility.FromJson<GetLevelResponse>(json);
+            try
+            {
+                var json = await _cloudService.GetLevelData();
+                var response = JsonUtility.FromJson<GetLevelResponse>(json);
+                response.RequestSuccessful = true;
+                return response;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Request Error : " + e.Message);
+                var response = new GetLevelResponse() { RequestSuccessful = false, Levels = Array.Empty<LevelData>()};
+                return response;
+            }
         }
 
         public static async Task<SpinWheelResponse> SpinWheel()
         {
-            var json = await _cloudService.SpinWheel();
-            return JsonUtility.FromJson<SpinWheelResponse>(json);
+            try
+            {
+                var json = await _cloudService.SpinWheel();
+                var response = JsonUtility.FromJson<SpinWheelResponse>(json);
+                response.RequestSuccessful = true;
+                return response;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Request Error : " + e.Message);
+                var response = new SpinWheelResponse() { RequestSuccessful = false, SlotIndex = 0};
+                return response;
+            }
         }
 
         public static async Task<RevivePlayerResponse> Revive()
         {
-            var json = await _cloudService.Revive();
-            return JsonUtility.FromJson<RevivePlayerResponse>(json);
+            try
+            {
+                var json = await _cloudService.Revive();
+                var response = JsonUtility.FromJson<RevivePlayerResponse>(json);
+                response.RequestSuccessful = true;
+                return response;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Request Error : " + e.Message);
+                var response = new RevivePlayerResponse() { RequestSuccessful = false, ReviveSuccessful = false};
+                return response;
+            }
         }
 
         public static async Task<GiveUpResponse> GiveUp()
         {
-            var json = await _cloudService.GiveUp();
-            return JsonUtility.FromJson<GiveUpResponse>(json);
+            try
+            {
+                var json = await _cloudService.GiveUp();
+                var response = JsonUtility.FromJson<GiveUpResponse>(json);
+                response.RequestSuccessful = true;
+                return response;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Request Error : " + e.Message);
+                var response = new GiveUpResponse() { RequestSuccessful = false, Successful = false};
+                return response;
+            }
         }
 
         public static async Task<ClaimRewardsResponse> ClaimRewards()
         {
-            var json = await _cloudService.ClaimRewards();
-            return JsonUtility.FromJson<ClaimRewardsResponse>(json);
+            try
+            {
+                var json = await _cloudService.ClaimRewards();
+                var response = JsonUtility.FromJson<ClaimRewardsResponse>(json);
+                response.RequestSuccessful = true;
+                return response;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Request Error : " + e.Message);
+                var response = new ClaimRewardsResponse() { RequestSuccessful = false, Successful = false};
+                return response;
+            }
         }
     }
 
     [Serializable]
-    public class RevivePlayerResponse
+    public class RevivePlayerResponse : BaseResponse
     {
         public bool ReviveSuccessful;
     }
 
     [Serializable]
-    public class GiveUpResponse
+    public class GiveUpResponse : BaseResponse
     {
         public bool Successful;
     }
 
     [Serializable]
-    public class ClaimRewardsResponse
+    public class ClaimRewardsResponse : BaseResponse
     {
         public bool Successful;
     }
 
     [Serializable]
-    public class GetLevelResponse
+    public class GetLevelResponse : BaseResponse
     {
         public LevelData[] Levels;
     }
@@ -81,7 +136,7 @@ namespace CardGame.CloudServices
     }
     
     [Serializable]
-    public class SpinWheelResponse
+    public class SpinWheelResponse : BaseResponse
     {
         public int SlotIndex;
     }

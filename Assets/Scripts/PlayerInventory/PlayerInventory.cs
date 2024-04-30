@@ -30,7 +30,7 @@ namespace CardGame.Inventory
 
         private static async Task InitializeInventoryItems()
         {
-            var datas = await InventoryCloudRequests.GetPlayerInventory();
+            var datas = await CloudRequests.RequestRepeated(InventoryCloudRequests.GetPlayerInventory(), 3);
             if (datas == null || datas.InventoryDatas == null) { return; }
             
             for (int i = 0; i < datas.InventoryDatas.Length; i++)
@@ -45,7 +45,7 @@ namespace CardGame.Inventory
 
         private static async Task InitializeCurrencies()
         {
-            var currencies = await EconomyCloudRequests.GetCurrencies();
+            var currencies = await CloudRequests.RequestRepeated(EconomyCloudRequests.GetCurrencies(), 3);
             if (currencies == null) { return; }
 
             for (int i = 0; i < currencies.CurrencyDatas.Length; i++)

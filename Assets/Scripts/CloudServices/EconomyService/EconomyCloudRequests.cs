@@ -14,57 +14,102 @@ namespace CardGame.CloudServices.EconomyService
 
         public static async Task<GetCurrencyRespond> GetCurrency(string currencyID)
         {
-            var json = await _economyService.GetCurrency(currencyID);
-            return JsonUtility.FromJson<GetCurrencyRespond>(json);
+            try
+            {
+                var json = await _economyService.GetCurrency(currencyID);
+                var response = JsonUtility.FromJson<GetCurrencyRespond>(json);
+                response.RequestSuccessful = true;
+                return response;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Request Error : " + e.Message);
+                var response = new GetCurrencyRespond() { RequestSuccessful = false, Balance = 0 };
+                return response;
+            }
+          
         }
         
         public static async Task<GetCurrenciesRespond> GetCurrencies()
         {
-            var json = await _economyService.GetCurrencies();
-            return JsonUtility.FromJson<GetCurrenciesRespond>(json);
+            try
+            {
+                var json = await _economyService.GetCurrencies();
+                var response = JsonUtility.FromJson<GetCurrenciesRespond>(json);
+                response.RequestSuccessful = true;
+                return response;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Request Error : " + e.Message);
+                var response = new GetCurrenciesRespond() { RequestSuccessful = false, CurrencyDatas = Array.Empty<CurrencyData>()};
+                return response;
+            }
         }
 
         public static async Task<UpdateCurrencyResponse> IncreaseCurrency(IEnumerable<KeyValuePair<string, float>> currencies)
         {
-            var json = await _economyService.IncreaseCurrency(currencies);
-            return JsonUtility.FromJson<UpdateCurrencyResponse>(json);
+            try
+            {
+                var json = await _economyService.IncreaseCurrency(currencies);
+                var response = JsonUtility.FromJson<UpdateCurrencyResponse>(json);
+                response.RequestSuccessful = true;
+                return response;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Request Error : " + e.Message);
+                var response = new UpdateCurrencyResponse() { RequestSuccessful = false, Successful = false};
+                return response;
+            }
         }
 
         public static async Task<UpdateCurrencyResponse> DecreaseCurrency(IEnumerable<KeyValuePair<string, float>> currencies)
         {
-            var json = await _economyService.DecreaseCurrency(currencies);
-            return JsonUtility.FromJson<UpdateCurrencyResponse>(json);
+            try
+            {
+                var json = await _economyService.DecreaseCurrency(currencies);
+                var response = JsonUtility.FromJson<UpdateCurrencyResponse>(json);
+                response.RequestSuccessful = true;
+                return response;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Request Error : " + e.Message);
+                var response = new UpdateCurrencyResponse() { RequestSuccessful = false, Successful = false};
+                return response;
+            }
         }
         
-        public static async Task<bool> DecreaseCurrency(CurrencyType id, float amount)
+        public static async Task<UpdateCurrencyResponse> DecreaseCurrency(CurrencyType id, float amount)
         {
             var dict = new Dictionary<string, float>();
             dict.Add(PlayerInventory.GetCurrencyID(id), amount);
-            var json = await _economyService.DecreaseCurrency(dict);
-            return JsonUtility.FromJson<bool>(json);
+            var data = await DecreaseCurrency(dict);
+            return data;
         }
     }
 
     [Serializable]
-    public class GetCurrencyRespond
+    public class GetCurrencyRespond : BaseResponse
     {
         public float Balance;
     }
 
     [Serializable]
-    public class UpdateCurrencyResponse
+    public class UpdateCurrencyResponse : BaseResponse
     {
         public bool Successful;
     }
     
     [Serializable]
-    public class GetCurrenciesRespond
+    public class GetCurrenciesRespond : BaseResponse
     {
         public CurrencyData[] CurrencyDatas;
     }
 
     [Serializable]
-    public class CurrencyData
+    public class CurrencyData : BaseResponse
     {
         public string CurrencyID;
         public float Balance;
