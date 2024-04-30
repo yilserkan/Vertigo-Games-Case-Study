@@ -20,7 +20,7 @@ namespace CardGame.NetworkConnection
         
         private float _time;
         public Observable<bool> _hasInternetConnection;
-        public bool HasInternetConnection => _hasInternetConnection.Value;
+        public bool HasInternetConnection => _hasInternetConnection != null && _hasInternetConnection.Value;
         
         private void Awake()
         {
@@ -29,7 +29,6 @@ namespace CardGame.NetworkConnection
     
         private void Start()
         {
-            _hasInternetConnection = new Observable<bool>(false, connectionUIManager);
             _time = _pingInterval;
         }
     
@@ -65,31 +64,25 @@ namespace CardGame.NetworkConnection
         {
 #if UNITY_EDITOR
             Debug.Log("Has Internet Connection : " + (hasConnection && !_forceDisableInternetConnection)) ;
-            _hasInternetConnection.Value = hasConnection && !_forceDisableInternetConnection;
+            if (_hasInternetConnection == null)
+            {
+                _hasInternetConnection = new Observable<bool>(hasConnection && !_forceDisableInternetConnection, connectionUIManager);
+            }
+            else
+            {
+                _hasInternetConnection.Value = hasConnection && !_forceDisableInternetConnection;
+            }
 #else
             Debug.Log("Has Internet Connection : " + hasConnection);
-            _hasInternetConnection.Value = hasConnection;
+            if (_hasInternetConnection == null)
+            {
+                _hasInternetConnection = new Observable<bool>(hasConnection, connectionUIManager);
+            }
+            else
+            {
+                _hasInternetConnection.Value = hasConnection;
+            }
 #endif
         }
-
-        // public bool CheckInternetConnection()
-        // {
-        //     _hasInternetConnection.Value = GetInternetConnection();
-        //     return _hasInternetConnection.Value;
-        // }
-        
-        // Dont Check for Force Disable Internet Connection in builds
-//         private bool GetInternetConnection()
-//         {
-// #if UNITY_EDITOR
-//             var hasConnection = Utilities.CheckForInternetConnection();
-//             Debug.Log("Has Internet Connection : " + (hasConnection && !_forceDisableInternetConnection)) ;
-//             return hasConnection && !_forceDisableInternetConnection;
-// #else
-//             var hasConnection = Utilities.CheckForInternetConnection();
-//             Debug.Log("Has Internet Connection : " + hasConnection);
-//             return hasConnection;
-// #endif
-//         }
     }
 }
