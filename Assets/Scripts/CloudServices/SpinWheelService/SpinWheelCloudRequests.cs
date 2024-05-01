@@ -1,5 +1,8 @@
 using System;
 using System.Threading.Tasks;
+using CardGame.Extensions;
+using CardGame.SceneManagement;
+using CardGame.ServiceManagement;
 using UnityEngine;
 
 
@@ -9,20 +12,25 @@ namespace CardGame.CloudServices
     {
         // private static ISpinWheelCloudService _cloudService = new MockSpinWheelCloudService();
         private static ISpinWheelCloudService _cloudService = new UGSSpinWheelCloudService();
+        private static RequestLoadingHelper _loadingHelper;
         
         public static async Task<GetLevelResponse> GetLevelData()
         {
+            SetLoadingHelper();
             try
-            {
+            {   
+                EnableLoadingPanel(true);
                 var json = await _cloudService.GetLevelData();
                 var response = JsonUtility.FromJson<GetLevelResponse>(json);
                 response.RequestSuccessful = true;
+                EnableLoadingPanel(false);
                 return response;
             }
             catch (Exception e)
             {
                 Debug.LogError("Request Error : " + e.Message);
                 var response = new GetLevelResponse() { RequestSuccessful = false, Levels = Array.Empty<LevelData>()};
+                EnableLoadingPanel(false);
                 return response;
             }
         }
@@ -48,15 +56,18 @@ namespace CardGame.CloudServices
         {
             try
             {
+                EnableLoadingPanel(true);
                 var json = await _cloudService.Revive();
                 var response = JsonUtility.FromJson<RevivePlayerResponse>(json);
                 response.RequestSuccessful = true;
+                EnableLoadingPanel(false);
                 return response;
             }
             catch (Exception e)
             {
                 Debug.LogError("Request Error : " + e.Message);
                 var response = new RevivePlayerResponse() { RequestSuccessful = false, ReviveSuccessful = false};
+                EnableLoadingPanel(false);
                 return response;
             }
         }
@@ -65,15 +76,18 @@ namespace CardGame.CloudServices
         {
             try
             {
+                EnableLoadingPanel(true);
                 var json = await _cloudService.GiveUp();
                 var response = JsonUtility.FromJson<GiveUpResponse>(json);
                 response.RequestSuccessful = true;
+                EnableLoadingPanel(false);
                 return response;
             }
             catch (Exception e)
             {
                 Debug.LogError("Request Error : " + e.Message);
                 var response = new GiveUpResponse() { RequestSuccessful = false, Successful = false};
+                EnableLoadingPanel(false);
                 return response;
             }
         }
@@ -82,16 +96,32 @@ namespace CardGame.CloudServices
         {
             try
             {
+                EnableLoadingPanel(true);
                 var json = await _cloudService.ClaimRewards();
                 var response = JsonUtility.FromJson<ClaimRewardsResponse>(json);
                 response.RequestSuccessful = true;
+                EnableLoadingPanel(false);
                 return response;
             }
             catch (Exception e)
             {
                 Debug.LogError("Request Error : " + e.Message);
                 var response = new ClaimRewardsResponse() { RequestSuccessful = false, Successful = false};
+                EnableLoadingPanel(false);
                 return response;
+            }
+        }
+
+        private static void EnableLoadingPanel(bool isEnabled)
+        {
+            _loadingHelper.OrNull()?.EnableRequestLoadingPanel(isEnabled);
+        }
+
+        private static void SetLoadingHelper()
+        {
+            if (_loadingHelper == null)
+            {
+                ServiceLocator.Global.OrNull()?.Get(out _loadingHelper);
             }
         }
     }

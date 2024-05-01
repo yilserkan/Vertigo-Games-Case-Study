@@ -33,7 +33,7 @@ namespace CardGame.SceneManagement
             }
             else
             {
-             StopLoadingAnimation();
+                StopLoadingAnimation();
             }
         }
 
