@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 627156317}
   - component: {fileID: 627156316}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: ui_canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -590,6 +590,12 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+--- !u!4 &1054419658 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7066308612743208844, guid: 55afe9cd157181b409bf36e93ac8ebf3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8229275966921891353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1083029901
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,8 +732,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6498746937475824839}
   - {fileID: 1393271828}
+  - {fileID: 1054419658}
   m_Father: {fileID: 634618392}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -810,7 +816,7 @@ GameObject:
   - component: {fileID: 1548139033}
   - component: {fileID: 1548139032}
   m_Layer: 0
-  m_Name: Image
+  m_Name: ui_image_splash_screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1143,12 +1149,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ca65a2f7b12d5542bbab3d046457ef6, type: 3}
---- !u!224 &6498746937475824839 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8948388205778435875, guid: 55afe9cd157181b409bf36e93ac8ebf3,
-    type: 3}
-  m_PrefabInstance: {fileID: 8229275966921891353}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8229275966921891353
 PrefabInstance:
   m_ObjectHideFlags: 0
