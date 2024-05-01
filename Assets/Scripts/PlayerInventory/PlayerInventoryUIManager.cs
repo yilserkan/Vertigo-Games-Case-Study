@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using CardGame.Extensions;
 using CardGame.Items;
+using CardGame.Panels;
 using CardGame.ServiceManagement;
-using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace CardGame.Inventory

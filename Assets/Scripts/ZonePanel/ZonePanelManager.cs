@@ -1,4 +1,4 @@
-using CardGame.Inventory;
+using CardGame.Panels;
 using CardGame.ServiceManagement;
 using CardGame.SpinWheel;
 using CardGame.Utils;

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace CardGame.Inventory
+namespace CardGame.Panels
 {
     public class PanelAnimationHelper : MonoBehaviour
     {

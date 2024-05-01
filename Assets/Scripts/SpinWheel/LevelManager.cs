@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using CardGame.CloudServices;
 using CardGame.CloudServices.EconomyService;
-using CardGame.CloudServices.InventoryService;
 using CardGame.Extensions;
 using CardGame.Inventory;
 using CardGame.Items;
+using CardGame.Panels;
 using CardGame.RemoteConfig;
 using CardGame.ServiceManagement;
 using CardGame.Utils;
@@ -23,8 +23,8 @@ namespace CardGame.SpinWheel
         
         public static event Action OnStartGame;
         public static event Action OnQuitGame;
-        public static event Action OnPlayerHasLostEvent;
-        public static event Action OnPlayerCompletedAllLevels;
+        public static event Action OnGameLost;
+        public static event Action OnGameCompleted;
         public static event Action<int> OnShowNextStage;
         public static event Action OnShowZonePanel;
         public static event Action<LevelSlotData> OnRewardClaimed; 
@@ -91,7 +91,7 @@ namespace CardGame.SpinWheel
             if (HasPlayerLost(slotData))
             {
                 Debug.Log("Player Has Lost");
-                OnPlayerHasLostEvent?.Invoke();
+                OnGameLost?.Invoke();
                 return;
             }
             
@@ -102,7 +102,7 @@ namespace CardGame.SpinWheel
         {
             if (HasCompletedAllLevels())
             {
-                OnPlayerCompletedAllLevels?.Invoke();
+                OnGameCompleted?.Invoke();
                 return;
             }
             
@@ -118,7 +118,6 @@ namespace CardGame.SpinWheel
         private void ShowNextStage()
         {
             _currentStage.Value++;
-            // _spinWheelManager.ShowStage(_currentStage.Value);
             OnShowNextStage?.Invoke(_currentStage.Value);
         }
         
@@ -148,8 +147,7 @@ namespace CardGame.SpinWheel
         {
             PlayerInventory.ClaimRewardsLocally();
             await SpinWheelCloudRequests.ClaimRewards();
-
-            //TODO : Show Rewards
+            
             StartGame();
         }
 
@@ -157,6 +155,11 @@ namespace CardGame.SpinWheel
         {
             Debug.Log("Item ID : " + slotData.ID);
             return (ItemType)slotData.Type == ItemType.Bomb;
+        }
+        
+        public int GetReviveCost()
+        {
+            return _reviveCost * (_revivedAmount + 1);
         }
 
         [ContextMenu("Increas")]
@@ -169,16 +172,11 @@ namespace CardGame.SpinWheel
         }
 
         [ContextMenu("GetCurrency")]
-        public void GetCurrency()
+        public void TestGetCurrency()
         {
             EconomyCloudRequests.GetCurrency(PlayerInventory.GetCurrencyID(CurrencyType.Money));
         }
-
-        public int GetReviveCost()
-        {
-            return _reviveCost * (_revivedAmount + 1);
-        }
-
+        
         private bool IsAtZoneLevel() => (LevelType)LevelData.Levels[_currentStage.Value].LevelType is LevelType.SafeZone or LevelType.SuperZone;
         private bool HasCompletedAllLevels() => _currentStage.Value == LevelData.Levels.Length - 1;
         private void AddListeners()
