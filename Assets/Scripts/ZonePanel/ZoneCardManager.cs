@@ -40,8 +40,9 @@ namespace CardGame.Zones
 
         private void PlayNextZoneAnimation(int value)
         {
+            _parent.DOKill();
             _parent.localScale = Vector3.one;
-            _zoneLevelText.CustomDOText(value.ToString(), NEXT_ZONE_ANIM_DURATION);
+            _zoneLevelText.text = value.ToString();
             _parent.DOScale(1.15f, NEXT_ZONE_ANIM_DURATION).SetLoops(2, LoopType.Yoyo);
         }
 
