@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CardGame.Inventory;
 using CardGame.ServiceManagement;
 using CardGame.SpinWheel;
 using TMPro;
@@ -10,6 +11,7 @@ using UnityEngine.UI;
 
 namespace CardGame.Zones
 {
+
     public class ZonePanelUIManager : MonoBehaviour
     {
         [SerializeField] private GameObject _parent;
@@ -18,7 +20,8 @@ namespace CardGame.Zones
         [SerializeField] private Image _zonePanelBgImage;
         [SerializeField] private TextMeshProUGUI _zoneText;
         [SerializeField] private ZonePanelUIAssets zonePanelUIAssets;
-    
+  
+        
         public static event Action OnClaimRewardsButtonClicked;
         public static event Action OnContinuButtonClicked;
         
@@ -31,7 +34,7 @@ namespace CardGame.Zones
         {
             RemoveListeners();
         }
-    
+
         private void Awake()
         {
             ServiceLocator.For(this)?.Register(this);
@@ -58,6 +61,13 @@ namespace CardGame.Zones
         {
             SetUI(levelType);
             EnableClaimRewardsPanel(true);
+            SetButtonInteractables(false);
+        }
+
+        public void SetButtonInteractables(bool interactable)
+        {
+            _continueButton.interactable = interactable;
+            _claimRewardsButton.interactable = interactable;
         }
     
         private void SetUI(LevelType levelType)

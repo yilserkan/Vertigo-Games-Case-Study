@@ -1,22 +1,28 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CardGame.Extensions;
 using CardGame.Items;
 using CardGame.ServiceManagement;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace CardGame.Inventory
 {
+    [RequireComponent(typeof(PanelAnimationHelper))]
     public class PlayerInventoryUIManager : MonoBehaviour
     {
-        [SerializeField] private GameObject _inventoryParent;
+        [SerializeField] private Image _inventoryDarkBg;
         [SerializeField] private PlayerInventoryItemCardUIManager _cardPrefab;
+        [SerializeField] private PanelAnimationHelper _panelAnimationHelper;
         [SerializeField] private Transform _cardParent;
         [SerializeField] private Button _closeButton;
 
         private ItemContainers _itemContainers;
         private List<PlayerInventoryItemCardUIManager> _cardUIManagers = new();
+
         private void OnEnable()
         {
             AddListeners();
@@ -26,7 +32,12 @@ namespace CardGame.Inventory
         {
             RemoveListeners();
         }
-        
+
+        private void OnValidate()
+        {
+            _panelAnimationHelper = GetComponent<PanelAnimationHelper>();
+        }
+
         private void Start()
         {
             ServiceLocator.Global.OrNull()?.Get(out _itemContainers);
@@ -36,6 +47,8 @@ namespace CardGame.Inventory
         {
             SetupInventory();
             EnableInventoryPanel(true);
+            SetCloseButtonInteractable(false);
+            _panelAnimationHelper.PlayOpeningAnimation(() => SetCloseButtonInteractable(true));
         }
 
         private void CloseInventory()
@@ -81,7 +94,12 @@ namespace CardGame.Inventory
         
         private void EnableInventoryPanel(bool isEnabled)
         {
-            _inventoryParent.SetActive(isEnabled);
+            _inventoryDarkBg.gameObject.SetActive(isEnabled);
+        }
+
+        private void SetCloseButtonInteractable(bool interactable)
+        {
+            _closeButton.interactable = interactable;
         }
         
         private void AddListeners()

@@ -1,12 +1,15 @@
 using System;
+using CardGame.Inventory;
 using CardGame.SpinWheel;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(PanelAnimationHelper))]
 public class WinPanelUIManager : MonoBehaviour
 {
     [SerializeField] private Button _playAgainButton;
     [SerializeField] private GameObject _winPanelParent;
+    [SerializeField] private PanelAnimationHelper _panelAnimationHelper;
     
     public static event Action OnPlayAgainButtonClicked;
     
@@ -20,9 +23,21 @@ public class WinPanelUIManager : MonoBehaviour
         RemoveListeners();
     }
 
+    private void OnValidate()
+    {
+        _panelAnimationHelper = GetComponent<PanelAnimationHelper>();
+    }
+
     private void ShowWinPanel()
     {
         EnableWinPanel(true);
+        SetPlayAgainButtonInteractable(false);
+        _panelAnimationHelper.PlayOpeningAnimation((() => SetPlayAgainButtonInteractable(true)));
+    }
+
+    private void SetPlayAgainButtonInteractable(bool interactable)
+    {
+        _playAgainButton.interactable = interactable;
     }
     
     private void HandleOnPlayAgainButtonClicked()

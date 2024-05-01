@@ -437,7 +437,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1179095721}
   m_Father: {fileID: 1720658503}
@@ -459,6 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26cb0266a94e6d0439d2fa1b3f77cf9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _parent: {fileID: 1179095721}
   _zoneLevelText: {fileID: 410113997}
 --- !u!1 &265800789
 GameObject:
@@ -816,6 +817,7 @@ GameObject:
   m_Component:
   - component: {fileID: 363783309}
   - component: {fileID: 363783310}
+  - component: {fileID: 363783311}
   m_Layer: 0
   m_Name: ui_lost_panel
   m_TagString: Untagged
@@ -859,6 +861,24 @@ MonoBehaviour:
   _reviveButton: {fileID: 808809787}
   _restartButton: {fileID: 1957891179}
   _reviveCurrencyAmountText: {fileID: 1161989645}
+  _panelAnimationHelper: {fileID: 363783311}
+--- !u!114 &363783311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363783308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e676be387049a9a1d8973aeacb0ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _darkBgImage: {fileID: 2039639957}
+  _parent: {fileID: 1526778082}
+  _buttonsTransforms:
+  - {fileID: 1957891178}
+  - {fileID: 808809786}
 --- !u!1 &379658704
 GameObject:
   m_ObjectHideFlags: 0
@@ -2804,7 +2824,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 533390099}
   - {fileID: 992848176}
@@ -4600,6 +4620,7 @@ GameObject:
   - component: {fileID: 1720658503}
   - component: {fileID: 1720658505}
   - component: {fileID: 1720658504}
+  - component: {fileID: 1720658507}
   - component: {fileID: 1720658506}
   m_Layer: 0
   m_Name: ui_zone_panel
@@ -4660,6 +4681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e9c5f703dd40d34bb4a6b5f66a46763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _panelAnimationHelper: {fileID: 1720658507}
   _safeZoneCardManager: {fileID: 249375491}
   _superZoneCardManager: {fileID: 1746347272}
 --- !u!114 &1720658506
@@ -4674,6 +4696,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f00851277bb8240911da14820f227d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1720658507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720658502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e676be387049a9a1d8973aeacb0ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _darkBgImage: {fileID: 1281035208}
+  _parent: {fileID: 1782810060}
+  _buttonsTransforms:
+  - {fileID: 379658705}
+  - {fileID: 1686723414}
 --- !u!1 &1746347270
 GameObject:
   m_ObjectHideFlags: 0
@@ -4723,6 +4762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26cb0266a94e6d0439d2fa1b3f77cf9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _parent: {fileID: 1400661374}
   _zoneLevelText: {fileID: 1320606818}
 --- !u!1 &1782810059
 GameObject:
@@ -4810,6 +4850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1794394055}
   - component: {fileID: 1794394056}
+  - component: {fileID: 1794394057}
   m_Layer: 0
   m_Name: ui_win_panel
   m_TagString: Untagged
@@ -4851,6 +4892,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playAgainButton: {fileID: 233172705}
   _winPanelParent: {fileID: 1951966577}
+  _panelAnimationHelper: {fileID: 1794394057}
+--- !u!114 &1794394057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794394054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e676be387049a9a1d8973aeacb0ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _darkBgImage: {fileID: 1449732727}
+  _parent: {fileID: 1313733510}
+  _buttonsTransforms:
+  - {fileID: 233172704}
 --- !u!1 &1818416228
 GameObject:
   m_ObjectHideFlags: 0
@@ -4887,9 +4945,9 @@ RectTransform:
   - {fileID: 2131826049}
   - {fileID: 1185033796}
   - {fileID: 2005984012}
-  - {fileID: 363783309}
   - {fileID: 1720658503}
   - {fileID: 1986514816}
+  - {fileID: 363783309}
   - {fileID: 1794394055}
   m_Father: {fileID: 222587461}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5129,6 +5187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1986514816}
   - component: {fileID: 1986514817}
+  - component: {fileID: 1986514818}
   m_Layer: 0
   m_Name: ui_player_inventory
   m_TagString: Untagged
@@ -5168,11 +5227,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb326910ded7422ea5f1db0e48a0d488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryParent: {fileID: 1104646418}
+  _inventoryDarkBg: {fileID: 1104646420}
   _cardPrefab: {fileID: 142977378529086641, guid: 50876d81e5f7e6445be4cf2e82982af6,
     type: 3}
+  _panelAnimationHelper: {fileID: 1986514818}
   _cardParent: {fileID: 914312426}
   _closeButton: {fileID: 1217392920}
+--- !u!114 &1986514818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986514815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e676be387049a9a1d8973aeacb0ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _darkBgImage: {fileID: 1104646420}
+  _parent: {fileID: 613676629}
+  _buttonsTransforms: []
 --- !u!224 &2005984012 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8129230925926847589, guid: fb4ac834dd0431a4eae9937480e9ab0a,

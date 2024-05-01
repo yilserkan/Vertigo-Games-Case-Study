@@ -10,12 +10,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+[RequireComponent(typeof(PanelAnimationHelper))]
 public class LostPanelUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject _parent;
     [SerializeField] private Button _reviveButton;
     [SerializeField] private Button _restartButton;
     [SerializeField] private TextMeshProUGUI _reviveCurrencyAmountText;
+    [SerializeField] private PanelAnimationHelper _panelAnimationHelper;
     
     public static event Action OnRestartButtonClickedEvent;
     public static event Action OnReviveButtonClickedEvent;
@@ -35,6 +38,11 @@ public class LostPanelUIManager : MonoBehaviour
     private void Start()
     {
         ServiceLocator.ForScene(this).OrNull()?.Get(out _levelManager);
+    }
+
+    private void OnValidate()
+    {
+        _panelAnimationHelper = GetComponent<PanelAnimationHelper>();
     }
 
     private void HandleOnRestartButtonClicked()
@@ -58,6 +66,14 @@ public class LostPanelUIManager : MonoBehaviour
     {
         UpdateReviveButton();
         _parent.SetActive(enable);
+        SetButtonInteractables(false);
+        _panelAnimationHelper.PlayOpeningAnimation((() => SetButtonInteractables(true)));
+    }
+
+    private void SetButtonInteractables(bool interactable)
+    {
+        _reviveButton.interactable = interactable;
+        _restartButton.interactable = interactable;
     }
 
     private void UpdateReviveButton()

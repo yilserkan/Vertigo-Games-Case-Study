@@ -60,6 +60,7 @@ namespace CardGame.LevelSlider
             }
             
             CheckIfReachedMaxLevel();
+            AnimateBgColor(0);
         }
         
         private async Task InstantiateLevels()
@@ -96,7 +97,7 @@ namespace CardGame.LevelSlider
         private void HandleOnShowNextStage(int level)
         {
             AnimateToNextLevel();
-            AnimateBgColor();
+            AnimateBgColor(_levelSliderData.AnimDuration);
         }
         
         private void AnimateToNextLevel()
@@ -105,11 +106,11 @@ namespace CardGame.LevelSlider
             _levelParentRect.DOAnchorPosX(targetPos, _levelSliderData.AnimDuration).OnComplete(CheckIfNeedToReAdjustPosition);
         }
 
-        private void AnimateBgColor()
+        private void AnimateBgColor(float duration)
         {
             var levelType = (LevelType)_levelManager.LevelData.Levels[_levelManager.CurrentStage].LevelType;
             var targetColor = _levelSliderData.GetLevelBgColor(levelType);
-            _currentLevelBgImage.DOColor(targetColor, _levelSliderData.AnimDuration);
+            _currentLevelBgImage.DOColor(targetColor, duration);
         }
         
         private void CheckIfNeedToReAdjustPosition()
